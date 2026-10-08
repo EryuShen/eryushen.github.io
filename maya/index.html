@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maya's Friday | Northbridge Partners training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#E9ECF1; --slide:#FFFFFF; --navy:#13294B; --ink:#1B2433; --ink-2:#465163; --muted:#6B7686; --rule:#D8DDE5; --tint:#F3F5F8;
+  --amber:#F7DA8E; --ok:#2E7D5B; --ok-bg:#E5F2EC; --warn:#9A6200; --warn-bg:#FDF1D6; --bad:#B3261E; --bad-bg:#FBE4E2;
+  --font:"Source Sans 3","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #3D74D6;outline-offset:3px;border-radius:4px}
+h1,h2{margin:0;font-weight:700;letter-spacing:-.01em;color:var(--navy)}
+h1{font-size:clamp(34px,5vw,48px);line-height:1.08}
+h2{font-size:clamp(23px,2.8vw,29px);line-height:1.2}
+h1:focus,h2:focus{outline:none}
+p{margin:0}
+
+/* the deck frame */
+.outer{max-width:1180px;margin:0 auto;padding:clamp(10px,2.5vw,28px)}
+.deck{background:var(--slide);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 2px rgba(19,41,75,.06);display:flex;flex-direction:column;min-height:min(640px,calc(100vh - 40px))}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;padding:16px clamp(18px,3.5vw,40px);border-bottom:3px solid var(--navy)}
+.brand{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--ink-2)}
+.brand .mark{width:30px;height:30px;border-radius:4px;background:var(--navy);display:flex;align-items:center;justify-content:center}
+.brand b{color:var(--navy);font-weight:700}
+.body{flex-grow:1;padding:clamp(22px,4vw,44px) clamp(18px,3.5vw,40px)}
+.foot{display:flex;justify-content:space-between;gap:12px;padding:12px clamp(18px,3.5vw,40px);border-top:1px solid var(--rule);font-size:13px;color:var(--muted)}
+
+/* the clock: the one loud thing */
+.clock{display:flex;align-items:center;gap:16px;padding:8px 14px;border-radius:8px;background:var(--tint);border:1px solid var(--rule);position:relative;min-height:56px}
+.clock .now{font-size:28px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
+.clock .side{display:flex;flex-direction:column;gap:6px;min-width:170px}
+.clock .left{font-size:14px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.clock .left b{color:var(--ink)}
+.track{height:8px;border-radius:4px;background:var(--rule);overflow:hidden}
+.fill{height:100%;border-radius:4px;background:var(--navy);transition:width .9s cubic-bezier(.3,.7,.3,1),background .3s}
+.clock.low{background:var(--warn-bg);border-color:#EBCB86}.clock.low .fill{background:#C98A10}.clock.low .now{color:var(--warn)}
+.clock.late{background:var(--bad-bg);border-color:#EAB3AE}.clock.late .now{color:var(--bad)}.clock.late .left b{color:var(--bad)}
+.minus{position:absolute;right:12px;top:-14px;background:var(--bad);color:#fff;font-weight:700;font-size:15px;border-radius:999px;padding:3px 10px;animation:drop 1.6s ease-out forwards}
+@keyframes drop{0%{opacity:0;transform:translateY(6px)}15%{opacity:1;transform:translateY(0)}75%{opacity:1}100%{opacity:0;transform:translateY(-8px)}}
+.clock.shake{animation:shake .5s}
+@keyframes shake{25%{transform:translateX(-3px)}50%{transform:translateX(3px)}75%{transform:translateX(-2px)}}
+
+/* layout inside a slide */
+.two{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(22px,4vw,48px);align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.col{display:flex;flex-direction:column;gap:14px}
+.kicker{font-size:14px;font-weight:600;color:var(--muted)}
+.lead{font-size:clamp(17px,1.8vw,19px);color:var(--ink-2);max-width:34em}
+
+/* people */
+.person{display:flex;gap:12px;align-items:flex-start}
+.person svg{flex:none;width:64px;height:64px;border-radius:50%}
+.person .name{font-size:14px;color:var(--muted)}
+.person .name b{color:var(--ink);font-weight:600}
+.bubble{background:var(--tint);border-radius:4px 12px 12px 12px;padding:12px 16px;font-size:16px;margin-top:4px;max-width:34em}
+.bubble.dark{background:var(--navy);color:#fff}
+.bubble.coach{background:var(--ok-bg)}
+.bubble.think{background:#fff;border:1px dashed var(--rule)}
+
+/* workplace artifacts */
+.win{border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:#fff}
+.win .wt{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--tint);border-bottom:1px solid var(--rule);padding:8px 14px;font-size:13px;color:var(--ink-2)}
+.win .wb{padding:16px;display:flex;flex-direction:column;gap:12px;font-size:15px}
+.q{align-self:flex-end;max-width:85%;background:var(--navy);color:#fff;border-radius:10px 10px 2px 10px;padding:10px 14px}
+.a{align-self:flex-start;max-width:92%;background:var(--tint);border-radius:10px 10px 10px 2px;padding:12px 14px;line-height:1.55}
+mark{background:var(--amber);color:inherit;font-weight:700;padding:0 3px;border-radius:2px}
+.sheet{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;font-size:13px;border:1px solid var(--rule)}
+.sheet div{padding:6px 8px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.sheet div:nth-child(4n){border-right:0}
+.sheet .h{background:var(--tint);font-weight:600}
+.conf{font-size:13px;font-weight:600;color:var(--bad)}
+.src{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:8px}
+ol.r{margin:4px 0 0;padding-left:20px}
+
+/* choices */
+.choice{display:flex;gap:14px;align-items:center;text-align:left;background:#fff;border:1.5px solid var(--rule);border-radius:6px;padding:13px 16px;min-height:58px;font-size:17px;line-height:1.35;cursor:pointer;width:100%}
+.choice:hover{border-color:var(--navy);background:var(--tint)}
+.choice .k{flex:none;width:28px;height:28px;border-radius:4px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.choice .t{flex-grow:1}
+.choice .c{flex:none;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:6px;padding:12px 26px;min-height:50px;font-weight:600;font-size:17px;cursor:pointer;align-self:flex-start}
+.btn:hover{background:#0C1D38}
+.btn.line{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+
+/* outcome */
+.event{border:1px solid var(--rule);border-left:6px solid var(--navy);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.event .when{font-size:14px;font-weight:600;color:var(--muted)}
+.event .say{font-size:clamp(20px,2.3vw,24px);font-weight:700;line-height:1.3;color:var(--navy)}
+.event.bad{border-left-color:var(--bad)}.event.ok{border-left-color:#C98A10}.event.good{border-left-color:var(--ok)}
+.pill{align-self:flex-start;font-size:14px;font-weight:600;border-radius:4px;padding:3px 10px}
+.pill.good{background:var(--ok-bg);color:var(--ok)}.pill.ok{background:var(--warn-bg);color:var(--warn)}.pill.bad{background:var(--bad-bg);color:var(--bad)}
+
+/* debrief + wrap */
+table.db{width:100%;border-collapse:collapse;font-size:15px}
+table.db th{text-align:left;font-size:13px;color:var(--muted);font-weight:600;border-bottom:2px solid var(--navy);padding:6px 8px}
+table.db td{border-bottom:1px solid var(--rule);padding:10px 8px;vertical-align:top}
+.score{display:inline-flex;gap:3px}.score i{width:10px;height:10px;border-radius:2px;background:var(--rule)}.score i.f{background:var(--navy)}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:640px){.checks{grid-template-columns:1fr}.clock .side{min-width:130px}}
+.check{border:1px solid var(--rule);border-top:4px solid var(--navy);border-radius:4px;padding:14px 16px}
+.check b{display:block;color:var(--navy);font-size:17px;margin-bottom:4px}
+.check span{font-size:15px;color:var(--ink-2)}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cite{background:none;border:0;padding:0;color:#2457B8;text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-size:inherit}
+.peek{font-size:14px;background:var(--warn-bg);color:var(--warn);border-radius:4px;padding:8px 12px}
+.task{display:flex;flex-direction:column;gap:14px}
+.searchbar{display:flex;gap:10px;align-items:center}
+.searchbar .fieldv{flex-grow:1;border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-size:15px;background:#fff}
+.result{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.result .u{font-size:13px;color:var(--ok)}
+.result b{color:#2457B8;font-size:17px}
+.none{font-size:15px;color:var(--bad);background:var(--bad-bg);border-radius:4px;padding:10px 12px}
+.redact{width:100%;border-collapse:collapse;font-size:15px}
+.redact th{padding:0;border-bottom:2px solid var(--navy)}
+.redact th button{width:100%;text-align:left;background:var(--tint);border:0;border-right:1px solid #fff;padding:10px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;gap:6px}
+.redact th button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.redact td{padding:9px 10px;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.redact td.x span{background:var(--ink);color:transparent;border-radius:2px;user-select:none}
+.status{font-size:15px;min-height:24px;color:var(--ink-2)}
+.status.good{color:var(--ok);font-weight:600}.status.bad{color:var(--bad)}
+.arts{display:grid;gap:10px}
+.art{border:1px solid var(--rule);border-radius:6px;padding:12px 14px}
+.art .src2{font-size:13px;color:var(--muted);margin-bottom:6px}
+.sent{display:block;width:100%;text-align:left;background:none;border:0;border-radius:4px;padding:5px 6px;margin:2px -6px;font-size:15px;line-height:1.45;cursor:pointer}
+.sent:hover{background:var(--tint)}
+.sent.got{background:var(--amber);font-weight:600}
+.sent.seen{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--rule)}
+.btn[disabled]{background:var(--rule);color:var(--muted);cursor:not-allowed}
+.zone{display:flex;flex-direction:column;gap:14px;border-radius:8px;padding:18px 20px 20px}
+.zlab{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;align-self:flex-start;border-radius:4px;padding:4px 10px}
+.scenez{background:#E6EBF3;border:1px solid #D3DBE7}
+.scenez .zlab{background:#fff;color:var(--ink-2)}
+.scenez .bubble.think{background:#fff}
+.choosez{background:#fff;border:2px solid var(--navy);box-shadow:0 6px 18px rgba(19,41,75,.10)}
+.choosez .zlab{background:var(--navy);color:#fff}
+.choosez .choice{border-color:#B9C3D2}
+.lapse{display:flex;flex-direction:column;align-items:center;gap:16px}
+.lapse svg.scene{width:100%;max-width:760px;height:auto;border-radius:6px;background:#EEF1F6}
+.lcap{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:8px 18px;text-align:center}
+.lcap b{font-size:20px;color:var(--navy)}
+.lcap .dig{font-size:30px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.lcap .dig.late{color:var(--bad)}
+.skip{background:none;border:1px solid var(--rule);border-radius:6px;padding:8px 16px;min-height:44px;font-size:15px;color:var(--ink-2);cursor:pointer}
+.hand{transform-box:view-box;transform-origin:520px 96px;animation:spin 2.6s cubic-bezier(.45,.05,.4,1) forwards}
+@keyframes spin{from{transform:rotate(var(--a0))}to{transform:rotate(var(--a1))}}
+.pop{opacity:0;animation:pop .35s ease-out forwards}
+@keyframes pop{to{opacity:1}}
+.cell{opacity:0;animation:pop .2s linear forwards}
+.slide-in{animation:slidein 1.2s ease-out .5s both}
+@keyframes slidein{from{transform:translateX(220px)}to{transform:translateX(0)}}
+.scan{animation:scan 1.3s ease-in-out infinite alternate}
+@keyframes scan{from{transform:translate(0,0)}to{transform:translate(110px,46px)}}
+.flip{transform-box:fill-box;transform-origin:center bottom;animation:flip .45s ease-in-out infinite alternate}
+@keyframes flip{from{transform:scaleY(1)}to{transform:scaleY(.15)}}
+.fly{animation:fly 1.6s ease-in .3s both}
+@keyframes fly{from{transform:translate(0,0)}to{transform:translate(70px,-70px);opacity:.2}}
+.blink{animation:blink .5s steps(2) 1.4s infinite}
+@keyframes blink{50%{opacity:0}}
+.type{animation:typing .9s steps(2) infinite}
+@keyframes typing{50%{transform:translateY(2px)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="outer"><div class="deck" id="deck"></div></div>
+<div class="sr" id="announce" aria-live="polite"></div>
+
+<script>
+/* ---------- people (illustrated, no photos) ---------- */
+function face(o, mood){
+  mood = mood || "smile";
+  const cap = `<path d="M19.5 28c1-8 6-13 12.5-13s11.5 5 12.5 13c-3.5-3.2-7.5-4.8-12.5-4.8s-9 1.6-12.5 4.8z" fill="${o.hair}"/>`;
+  const back = {
+    long:`<path d="M14 33c0-13 8-21 18-21s18 8 18 21v19H14z" fill="${o.hair}"/>`,
+    bun:`<circle cx="32" cy="12" r="6" fill="${o.hair}"/>`,
+    curly:`<circle cx="20" cy="25" r="6" fill="${o.hair}"/><circle cx="44" cy="25" r="6" fill="${o.hair}"/><circle cx="25" cy="17" r="6" fill="${o.hair}"/><circle cx="39" cy="17" r="6" fill="${o.hair}"/>`,
+    short:""
+  }[o.style];
+  const ink = "#1B2433";
+  const mouths = {
+    smile:`<path d="M28.5 36.2c2.2 1.6 4.8 1.6 7 0" fill="none" stroke="${ink}" stroke-width="1.3" stroke-linecap="round"/>`,
+    happy:`<path d="M27.6 35.4c2.4 3 6.4 3 8.8 0z" fill="${ink}"/>`,
+    neutral:`<path d="M29 36.6h6" stroke="${ink}" stroke-width="1.3" stroke-linecap="round"/>`,
+    worried:`<path d="M28.6 37.6c2.2-1.6 4.6-1.6 6.8 0" fill="none" stroke="${ink}" stroke-width="1.3" stroke-linecap="round"/>`,
+    stern:`<path d="M28.8 36.8h6.4" stroke="${ink}" stroke-width="1.5" stroke-linecap="round"/>`
+  };
+  const brows = {
+    worried:`<path d="M24.6 26.6l4.2-1.4M39.4 26.6l-4.2-1.4" stroke="${ink}" stroke-width="1.3" stroke-linecap="round"/>`,
+    stern:`<path d="M24.8 25.6l4.2 1.4M39.2 25.6l-4.2 1.4" stroke="${ink}" stroke-width="1.4" stroke-linecap="round"/>`,
+    happy:`<path d="M25 26.2c1.4-.9 2.8-.9 4.2 0M34.8 26.2c1.4-.9 2.8-.9 4.2 0" fill="none" stroke="${ink}" stroke-width="1.2" stroke-linecap="round"/>`
+  };
+  const eyes = `<circle cx="27.5" cy="31" r="1.4" fill="${ink}"/><circle cx="36.5" cy="31" r="1.4" fill="${ink}"/>${brows[mood] || ""}${mouths[mood] || mouths.smile}`;
+  const glasses = o.glasses ? `<g fill="none" stroke="${ink}" stroke-width="1.4"><circle cx="27.5" cy="31" r="3.6"/><circle cx="36.5" cy="31" r="3.6"/><path d="M31.1 31h1.8"/></g>` : "";
+  return `<svg viewBox="0 0 64 64" role="img" aria-label="${o.label}"><rect width="64" height="64" fill="${o.bg}"/>${back}<path d="M10 64c2-11 11-17 22-17s20 6 22 17z" fill="${o.shirt}"/><rect x="27.5" y="40" width="9" height="9" fill="${o.skin}"/><circle cx="32" cy="30" r="12" fill="${o.skin}"/>${cap}${eyes}${glasses}</svg>`;
+}
+const P = {
+  maya:   { name:"Maya", role:"Analyst, 3 months in", look:{label:"Maya", bg:"#DCE6F5", skin:"#E8B992", hair:"#2B1D16", style:"long", shirt:"#13294B"} },
+  daniel: { name:"Daniel", role:"Partner", look:{label:"Daniel", bg:"#E6E2D8", skin:"#C68A62", hair:"#3A2A20", style:"short", shirt:"#5B6B82", glasses:true} },
+  priya:  { name:"Priya", role:"Senior associate", look:{label:"Priya", bg:"#DDEFE6", skin:"#B9805A", hair:"#1C1412", style:"bun", shirt:"#2E7D5B"} },
+  laura:  { name:"Laura", role:"VP Strategy, client", look:{label:"Laura", bg:"#F3E1DF", skin:"#F0C8A8", hair:"#A86A32", style:"curly", shirt:"#7A2E2A"} }
+};
+function say(who, text, kind, note, mood){
+  const p = P[who];
+  return `<div class="person">${face(p.look, mood)}<div><div class="name"><b>${p.name}</b>, ${p.role}${note ? `, ${note}` : ""}</div><div class="bubble ${kind || ""}">${text}</div></div></div>`;
+}
+
+/* ---------- content ---------- */
+const START_MIN = 16*60 + 12, DUE_MIN = 18*60;
+const D = [
+  {
+    slide: "Decision 1 of 3: the market size",
+    title: "What does Maya do with this number?",
+    think: "That was fast. Is it right?",
+    context: () => `<div class="win"><div class="wt"><span>Firm AI assistant</span><span>4:12 p.m.</span></div><div class="wb">
+      <div class="q">How big is the US plant-based snack market, and how fast is it growing?</div>
+      <div class="a">It's worth <mark>$12.4 billion</mark> and growing <mark>18% a year</mark> (<button class="cite" data-act="cite">Nielsen, 2024</button>).</div>${S.cite ? `<div class="peek">No link attached. The assistant didn't say where to find this report.</div>` : ""}</div></div>`,
+    options: [
+      { t:"Paste it into slide 2 and keep going", act:"paste", cap:"Maya pastes the number into slide 2", cost:2, score:0, who:"laura", when:"Monday, 9:40 a.m., in the client meeting",
+        line:"Where does the $12.4 billion come from?",
+        what:"Maya looks for the Nielsen report on her laptop. It doesn't exist. Daniel has to take the number back in front of the client.",
+        coach:"This happens a lot. AI tools will cite reports that don't exist. If you can't open the source, the number can't go on a slide. Finding it would have taken 20 minutes, and you had them." },
+      { t:"Ask the AI: \"Are you sure? Where's this from?\"", act:"askai", cap:"Maya asks the AI to double-check", cost:3, score:1, who:"maya", when:"auto",
+        line:"\"Yes, this comes from Nielsen's 2024 market report.\" Same number. Still no link.",
+        what:"The AI sounds even more sure of itself, but there's still nothing Maya can open and check.",
+        coach:"Asking the AI if it's sure usually gets you the same answer, just more confident. It can't check itself. You need a source you can open." },
+      { t:"Find the Nielsen report before using it", act:"search", cap:"Maya searches for the Nielsen report", cost:20, score:2, who:"maya", when:"auto", task:"search",
+        line:"There's no such report. The Snack Industry Council puts it at $9.1 billion, growing 11%.",
+        what:"Maya uses that figure and puts the real source in the footnote.",
+        coach:"Good catch. That's the habit: every number on a slide needs a source you've opened yourself." }
+    ]
+  },
+  {
+    slide: "Decision 2 of 3: the client's data",
+    title: "How does Maya analyze the client's sales file?",
+    think: "If AI could find the patterns in this, I'd save an hour.",
+    context: () => `<div class="win"><div class="wt"><span>Greenleaf_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb">
+      <div class="sheet"><div class="h">Customer</div><div class="h">Account no.</div><div class="h">Channel</div><div class="h">Q3 sales</div>
+      ${ROWS.map(r => `<div>${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div><div>${r[3]}</div>`).join("")}</div>
+      <div class="src">Shared by the client under NDA. 14 tabs like this one.</div></div></div>`,
+    options: [
+      { t:"Paste the whole file into a free public AI tool", act:"upload", cap:"Maya uploads the client file to a free AI tool", cost:5, score:0, who:"daniel", when:"Monday, 8:30 a.m., from IT security",
+        line:"IT flagged a confidential client file uploaded to an outside tool. I have to call Laura before the meeting.",
+        what:"The analysis was quick, but the client's data left the firm.",
+        coach:"Client files only go into tools the firm has approved. Even if it saves time, we can't put their data somewhere we don't control." },
+      { t:"Skip AI and do it all in Excel", act:"excel", cap:"Maya builds the analysis in Excel, cell by cell", cost:120, score:1, who:"maya", when:"auto",
+        line:"Done. The analysis is solid. It also took two hours.",
+        what:"Completely safe, and completely manual.",
+        coach:"Totally safe, but you spent two hours on something the approved tool could help with in 25 minutes. Check what's approved before you rule AI out." },
+      { t:"Use the approved AI tool with names and account numbers removed", act:"approved", cap:"Maya opens the firm's approved AI tool", cost:25, score:2, who:"maya", when:"auto", task:"redact",
+        line:"Club stores are growing fastest. That's the story.",
+        what:"With customer names and account numbers taken out, the firm's tool finds the pattern in under half an hour.",
+        coach:"Nice. Approved tool, sensitive details taken out, only the data you needed. That's how to do it." }
+    ]
+  },
+  {
+    slide: "Decision 3 of 3: the risk summary",
+    title: "Is this risk slide ready to send?",
+    think: "Five articles summarized in ten seconds. It reads well.",
+    context: () => `<div class="win"><div class="wt"><span>Firm AI assistant: summary of 5 articles</span><span>5:02 p.m.</span></div><div class="wb">
+      <div class="a"><b>Top 3 risks for Greenleaf</b><ol class="r"><li>Rising ingredient costs</li><li>Competition from established brands</li><li>Shifting consumer tastes</li></ol></div></div></div>`,
+    options: [
+      { t:"Drop the three risks into the slide as they are", act:"paste", cap:"Maya drops the summary into the slide", cost:2, score:0, who:"laura", when:"Monday, 10:05 a.m., in the client meeting",
+        line:"How does the new labeling rule change this?",
+        what:"Two of the five articles covered a new labeling regulation. The summary left it out, and so did the deck.",
+        coach:"The summary read well, but it skipped the biggest risk. Always skim the original articles for anything that's missing." },
+      { t:"Ask Priya to look over the slide", act:"colleague", cap:"Maya asks Priya to look it over", cost:60, score:1, who:"priya", when:"auto",
+        line:"You're missing the new labeling regulation. It's in two of the articles.",
+        what:"Caught in time, but it took an hour of Priya's Friday evening.",
+        coach:"Asking for a review was smart, but a 20-minute skim of the articles would have caught it without pulling me in on a Friday night." },
+      { t:"Skim the five articles for anything the summary skipped", act:"skim", cap:"Maya skims the five source articles", cost:20, score:2, who:"maya", when:"auto", task:"find",
+        line:"Found it: a new labeling regulation, in two of the articles.",
+        what:"Maya adds it as the first risk on the slide.",
+        coach:"That's the one. Summaries leave things out, so checking the sources is how you find what's missing." }
+    ]
+  }
+];
+
+const ROWS = [["Fresh Mart","FM-20417","Grocery","$8.2M"],["Costwise Club","CW-88310","Club stores","$6.9M"],["GreenCart","GC-11902","Online","$2.4M"],["Valley Foods","VF-40236","Grocery","$5.6M"]];
+const COLS = ["Customer","Account no.","Channel","Q3 sales"], SENSITIVE = [0,1];
+const ARTS = [
+  { src:"Food Business Weekly", s:[["Cocoa and oat prices rose sharply this year.","in"],["Brands are passing those costs on to shoppers.","in"]] },
+  { src:"Grocery Ledger", s:[["Established snack brands are launching their own plant-based lines.","in"],["New federal labeling rules for plant-based claims take effect next spring.","miss"]] },
+  { src:"Consumer Pulse", s:[["Younger shoppers try new snacks, then move on quickly.","in"]] },
+  { src:"The Shelf Report", s:[["Retailers expect the labeling change to force costly packaging redesigns.","miss"]] },
+  { src:"Snack Trends Quarterly", s:[["Protein bars are the fastest-growing part of the category.","other"]] }
+];
+
+/* ---------- time-lapse scene ---------- */
+function nest(svg, x, y, w){ return svg.replace('<svg viewBox="0 0 64 64"', `<svg x="${x}" y="${y}" width="${w}" height="${w}" viewBox="0 0 64 64"`); }
+function lapseScene(act, from, to){
+  const cost = to - from;
+  const m0 = (from % 60) * 6, h0 = ((Math.floor(from/60) % 12) * 30) + (from % 60) * 0.5;
+  const m1 = m0 + cost * 6, h1 = h0 + cost * 0.5;
+  const ticks = Array.from({length:12}, (_, i) => { const a = i * 30 * Math.PI / 180; return `<line x1="${520 + 36*Math.sin(a)}" y1="${96 - 36*Math.cos(a)}" x2="${520 + 41*Math.sin(a)}" y2="${96 - 41*Math.cos(a)}" stroke="#13294B" stroke-width="${i % 3 ? 1.5 : 3}"/>`; }).join("");
+  const mood = { paste:"smile", askai:"neutral", search:"neutral", upload:"smile", excel:"worried", approved:"neutral", colleague:"neutral", skim:"neutral" }[act];
+  let screen = "";
+  if (act === "paste") screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/><rect x="304" y="140" width="80" height="8" fill="#C9D1DC"/><g class="pop" style="animation-delay:.8s"><rect x="304" y="160" width="74" height="30" rx="3" fill="#F7DA8E"/><rect x="312" y="168" width="58" height="14" fill="#13294B"/></g><rect x="390" y="160" width="46" height="40" fill="#E2E7EF"/>`;
+  if (act === "askai") screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/><g class="pop" style="animation-delay:.3s"><rect x="362" y="136" width="78" height="18" rx="6" fill="#13294B"/></g><g class="pop" style="animation-delay:1.1s"><rect x="300" y="162" width="96" height="18" rx="6" fill="#E2E7EF"/></g><g class="pop" style="animation-delay:1.8s"><rect x="300" y="186" width="70" height="18" rx="6" fill="#F7DA8E"/></g>`;
+  if (act === "search" || act === "skim") {
+    const pages = act === "skim" ? `<g class="flip"><rect x="300" y="132" width="70" height="78" fill="#fff" stroke="#C9D1DC"/><rect x="308" y="142" width="50" height="5" fill="#C9D1DC"/><rect x="308" y="152" width="44" height="5" fill="#C9D1DC"/><rect x="308" y="162" width="52" height="5" fill="#C9D1DC"/></g><rect x="376" y="132" width="64" height="78" fill="#fff" stroke="#C9D1DC"/>` : `<rect x="292" y="128" width="156" height="86" fill="#fff"/><rect x="302" y="136" width="136" height="14" rx="4" fill="#E2E7EF"/>${[0,1,2,3,4].map(i => `<rect x="304" y="${158 + i*11}" width="${120 - i*12}" height="5" fill="#C9D1DC"/>`).join("")}`;
+    screen = pages + `<g class="scan"><circle cx="314" cy="150" r="13" fill="none" stroke="#13294B" stroke-width="4"/><path d="M323 159l11 11" stroke="#13294B" stroke-width="5" stroke-linecap="round"/></g>`;
+  }
+  if (act === "upload") screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/><path d="M392 156a14 14 0 0 1 27-4a11 11 0 0 1 3 22h-32a10 10 0 0 1 2-18z" fill="#E2E7EF"/><g class="fly"><rect x="318" y="170" width="28" height="34" rx="3" fill="#2E7D5B"/><rect x="324" y="178" width="16" height="3" fill="#fff"/><rect x="324" y="185" width="16" height="3" fill="#fff"/></g><g class="blink"><circle cx="430" cy="140" r="9" fill="#B3261E"/><rect x="429" y="134" width="2" height="7" fill="#fff"/><rect x="429" y="143" width="2" height="2" fill="#fff"/></g>`;
+  if (act === "excel") { let cells = ""; let k = 0; for (let r = 0; r < 5; r++) for (let c = 0; c < 6; c++) { cells += `<rect class="cell" style="animation-delay:${(k++)*0.075}s" x="${300 + c*24}" y="${134 + r*15}" width="22" height="13" fill="${r === 0 ? "#13294B" : (c === 5 ? "#F7DA8E" : "#DDE6DF")}"/>`; } screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/>` + cells; }
+  if (act === "approved") screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/><rect x="302" y="140" width="60" height="64" fill="#fff" stroke="#C9D1DC"/>${[0,1,2,3].map(i => `<rect class="cell" style="animation-delay:${.4 + i*.15}s" x="308" y="${148 + i*13}" width="22" height="7" fill="#1B2433"/><rect x="334" y="${148 + i*13}" width="22" height="7" fill="#C9D1DC"/>`).join("")}<g class="pop" style="animation-delay:1.4s"><path d="M404 142l22 8v18c0 14-10 22-22 26c-12-4-22-12-22-26v-18z" fill="#2E7D5B"/><path d="M394 167l7 7l14-14" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>`;
+  if (act === "colleague") screen = `<rect x="292" y="128" width="156" height="86" fill="#fff"/><rect x="304" y="140" width="80" height="8" fill="#C9D1DC"/>${[0,1,2].map(i => `<rect x="304" y="${158 + i*14}" width="${100 - i*14}" height="7" fill="#E2E7EF"/>`).join("")}`;
+  const priya = act === "colleague" ? `<g class="slide-in">${nest(face(Object.assign({}, P.priya.look, {bg:"transparent"}), "smile"), 500, 132, 104)}</g>` : "";
+  return `<svg class="scene" viewBox="0 0 640 300" role="img" aria-label="${"Time passes while Maya works"}">
+    <rect x="0" y="236" width="640" height="64" fill="#D9DEE6"/><rect x="40" y="226" width="460" height="12" rx="3" fill="#8A6E52"/>
+    <circle cx="520" cy="96" r="46" fill="#fff" stroke="#13294B" stroke-width="4"/>${ticks}
+    <line class="hand" style="--a0:${h0}deg;--a1:${h1}deg" x1="520" y1="96" x2="520" y2="72" stroke="#13294B" stroke-width="5" stroke-linecap="round"/>
+    <line class="hand" style="--a0:${m0}deg;--a1:${m1}deg" x1="520" y1="96" x2="520" y2="60" stroke="#B3261E" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="520" cy="96" r="4" fill="#13294B"/>
+    ${nest(face(Object.assign({}, P.maya.look, {bg:"transparent"}), mood), 120, 104, 126)}
+    <rect x="282" y="118" width="176" height="106" rx="6" fill="#1B2433"/>${screen}<rect x="356" y="224" width="28" height="6" fill="#1B2433"/>
+    <rect x="196" y="212" width="80" height="10" rx="2" fill="#5B6B82" class="type"/>
+    ${priya}
+  </svg>`;
+}
+
+/* ---------- state ---------- */
+let S;
+function reset(){ S = { screen:"title", step:0, picks:[], trust:0, used:0, last:null, drop:0, cite:false, searched:false, red:[], seen:[], found:false, msg:"", tone:"" }; }
+reset();
+const deck = document.getElementById("deck"), announce = document.getElementById("announce");
+
+function tod(min){ const h = Math.floor(min/60), m = min % 60, hh = ((h + 11) % 12) + 1; return `${hh}:${String(m).padStart(2,"0")} ${h >= 12 ? "p.m." : "a.m."}`; }
+function dur(m){ const a = Math.abs(m), h = Math.floor(a/60), r = a % 60; return `${h ? h + " h " : ""}${h && !r ? "" : r + " min"}`.trim(); }
+function clockHTML(){
+  const now = START_MIN + S.used, left = DUE_MIN - now, total = DUE_MIN - START_MIN;
+  const pct = Math.max(0, left) / total * 100;
+  const cls = left < 0 ? "late" : left <= 30 ? "low" : "";
+  const txt = left < 0 ? `<b>${dur(left)} late</b> for the 6:00 deadline` : `<b>${dur(left)}</b> until the deck is due`;
+  return `<div class="clock ${cls}" id="clock" aria-label="Time: ${tod(now)}. ${left < 0 ? dur(left) + " late" : dur(left) + " left"}"><div class="now">${tod(now)}</div><div class="side"><div class="left">${txt}</div><div class="track"><div class="fill" style="width:${pct}%"></div></div></div>${S.drop ? `<span class="minus" aria-hidden="true">−${dur(S.drop)}</span>` : ""}</div>`;
+}
+function frame(inner, footL, footR, showClock){
+  return `<header class="top"><div class="brand"><span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 14V2l12 12V2" fill="none" stroke="#fff" stroke-width="2.2"/></svg></span><span><b>Northbridge Partners</b> | Using AI in client work</span></div>${showClock ? clockHTML() : ""}</header>
+    <div class="body">${inner}</div><footer class="foot"><span>${footL}</span><span>${footR}</span></footer>`;
+}
+const tier = s => s === 2 ? "good" : s === 1 ? "ok" : "bad";
+const tierLabel = s => s === 2 ? "Good call" : s === 1 ? "Partly there" : "Risky";
+const costLabel = c => c >= 60 ? `${c/60} hour${c > 60 ? "s" : ""}` : `${c} min`;
+
+function render(){
+  let h = "";
+  if (S.screen === "title") {
+    h = frame(`<div class="two" style="align-items:center">
+      <div class="col"><span class="kicker">New analyst training, module 2</span>
+        <h1 tabindex="-1">Before it goes to the client</h1>
+        <p class="lead">A Friday deadline, an AI assistant, and three calls to make. About 8 minutes.</p>
+        <button class="btn" data-act="start" style="margin-top:10px">Start</button></div>
+      <div class="col">${say("priya","Last quarter, two decks went out with numbers AI made up. One client caught it in the room. This module is about making sure that doesn't happen to you.","coach")}</div>
+    </div>`, "Northbridge Partners, internal training", "1", false);
+  }
+  else if (S.screen === "setup") {
+    h = frame(`<div class="two">
+      <div class="col"><span class="kicker">Friday, 4:12 p.m.</span><h2 tabindex="-1">You're Maya, three months into the job</h2>
+        <p class="lead">Daniel needs a market overview for Monday's meeting with Greenleaf Foods. You've got the firm's AI assistant, and until 6:00.</p>
+        <p class="lead">Every choice takes time. Watch the clock.</p>
+        <button class="btn" data-act="go" style="margin-top:6px">Open the AI assistant</button></div>
+      <div class="col">${say("daniel","Hi Maya, can you pull together the plant-based snacks overview for Greenleaf? Market size, what their sales file shows, and top risks. Need it by 6 so I can review over the weekend. Thanks!","", "in Teams, 4:12 p.m.")}
+        ${say("maya","Under two hours, three slides. AI should make this easy.","think","","happy")}</div>
+    </div>`, "Northbridge Partners, internal training", "2", true);
+  }
+  else if (S.screen === "decide") {
+    const d = D[S.step];
+    const opts = d.options.map((o,i) => `<button class="choice" data-pick="${i}"><span class="k" aria-hidden="true">${"ABC"[i]}</span><span class="t">${o.t}</span><span class="c"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${costLabel(o.cost)}<span class="sr"> of your time</span></span></button>`).join("");
+    h = frame(`<div class="two">
+      <div class="zone scenez"><span class="zlab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>What's happening</span>${d.context()}${say("maya", d.think, "think", "", "neutral")}</div>
+      <div class="zone choosez"><span class="zlab"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Your decision</span><h2 tabindex="-1">${d.title}</h2>${opts}</div>
+    </div>`, d.slide, String(3 + S.step*2), true);
+  }
+  else if (S.screen === "lapse") {
+    const L = S.lapse;
+    h = frame(`<div class="lapse"><h2 tabindex="-1" class="sr">${L.cap}</h2>${lapseScene(L.act, L.from, L.to)}
+      <div class="lcap"><b>${L.cap}</b><span class="dig" id="dig">${tod(L.from)}</span></div>
+      <button class="skip" data-act="skip">Skip</button></div>`, D[S.step].slide, "", false);
+  }
+  else if (S.screen === "task") {
+    const d = D[S.step], o = d.options[S.last];
+    let inner = "";
+    if (o.task === "search") {
+      inner = `<div class="task"><h2 tabindex="-1">Find the source</h2><p class="lead">Search for the report the AI cited.</p>
+        <div class="win"><div class="wt"><span>Web search</span><span>${tod(START_MIN + S.used)}</span></div><div class="wb">
+        <div class="searchbar"><div class="fieldv">Nielsen 2024 US plant-based snack market report</div><button class="btn" data-act="search" ${S.searched ? "disabled" : ""}>Search</button></div>
+        ${S.searched ? `<div class="none">No report with this title on nielsen.com, or anywhere else.</div>
+          <div class="result"><span class="u">snackcouncil.org/research/2024-plant-based</span><b>US plant-based snacks: 2024 sales estimate</b><span>Snack Industry Council. Sales reached $9.1 billion in 2024, up 11% from 2023.</span>
+          <button class="btn" data-act="use" style="margin-top:6px">Use this source in the footnote</button></div>` : ""}
+        </div></div></div>`;
+    } else if (o.task === "redact") {
+      const ok = SENSITIVE.every(i => S.red.includes(i)) && S.red.every(i => SENSITIVE.includes(i));
+      inner = `<div class="task"><h2 tabindex="-1">Take out what the AI doesn't need</h2><p class="lead">Click a column name to remove that column before the file goes into the firm's AI tool.</p>
+        <div class="win"><div class="wt"><span>Greenleaf_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb" style="overflow-x:auto">
+        <table class="redact"><thead><tr>${COLS.map((c,i) => `<th scope="col"><button data-col="${i}" aria-pressed="${S.red.includes(i)}">${c}<span aria-hidden="true">${S.red.includes(i) ? "Removed" : ""}</span></button></th>`).join("")}</tr></thead>
+        <tbody>${ROWS.map(r => `<tr>${r.map((v,i) => S.red.includes(i) ? `<td class="x"><span>${v}</span><span class="sr">removed</span></td>` : `<td>${v}</td>`).join("")}</tr>`).join("")}</tbody></table>
+        <p class="status ${S.tone}" aria-live="polite">${S.msg}</p>
+        <button class="btn" data-act="send" ${ok ? "" : "disabled"}>Send to the firm's AI tool</button></div></div></div>`;
+    } else {
+      inner = `<div class="task"><h2 tabindex="-1">What did the summary leave out?</h2><p class="lead">Skim the five articles. Select the sentence about a risk the summary skipped.</p><div class="peek" style="background:var(--tint);color:var(--ink-2)">The AI's summary: rising ingredient costs, competition from established brands, shifting consumer tastes.</div>
+        <div class="arts">${ARTS.map((a,ai) => `<div class="art"><div class="src2">${a.src}</div>${a.s.map((x,si) => { const id = ai + "-" + si, cls = (S.found && x[1] === "miss") ? "got" : (S.seen.includes(id) ? "seen" : ""); return `<button class="sent ${cls}" data-sent="${id}">${x[0]}</button>`; }).join("")}</div>`).join("")}</div>
+        <p class="status ${S.tone}" aria-live="polite">${S.msg}</p>
+        <button class="btn" data-act="addrisk" ${S.found ? "" : "disabled"}>Add it as the top risk</button></div>`;
+    }
+    h = frame(inner, d.slide, String(4 + S.step*2), true);
+  }
+  else if (S.screen === "result") {
+    const d = D[S.step], o = d.options[S.last], t = tier(o.score);
+    h = frame(`<div class="two">
+      <div class="col"><span class="kicker">You chose ${"ABC"[S.last]}: ${o.t.charAt(0).toLowerCase() + o.t.slice(1)}</span>
+        <div class="event ${t}"><span class="when">${o.when === "auto" ? "Friday, " + tod(START_MIN + S.used) : o.when}</span>${say(o.who, o.line, o.who === "laura" ? "dark" : "", "", o.who === "maya" ? ["worried","neutral","happy"][o.score] : (o.who === "priya" ? "neutral" : "stern"))}<p>${o.what}</p></div></div>
+      <div class="col"><span class="pill ${t}">${tierLabel(o.score)}</span>${say("priya", o.coach, "coach", "", o.score === 2 ? "happy" : "smile")}
+        <h2 tabindex="-1" class="sr">Feedback from Priya</h2>
+        <button class="btn" data-act="next" style="margin-top:6px">${S.step < 2 ? "Next decision" : "See how Monday goes"}</button></div>
+    </div>`, d.slide, String(4 + S.step*2), true);
+  }
+  else if (S.screen === "end") {
+    const key = S.trust >= 5 ? "good" : S.trust >= 3 ? "ok" : "bad";
+    const late = DUE_MIN - (START_MIN + S.used) < 0;
+    const endings = {
+      good: { head:"Monday goes well", msg: say("daniel","Great work on the deck. Laura asked about the labeling rule and we were ready for it.", "", "Monday, 11:02 a.m.", "happy") },
+      ok:   { head:"The deck is saved, the weekend isn't", msg: say("daniel","Found a few issues in the deck and fixed them tonight. Let's talk through it Monday morning.", "", "Sunday, 8:14 p.m.", "neutral") },
+      bad:  { head:"The client caught it", msg: say("laura","Before we go further, where does the $12.4 billion come from?", "dark", "Monday, 9:40 a.m.", "stern") + say("daniel","Let's talk after this about how that got into the deck.", "", "after the meeting", "stern") }
+    };
+    const e = endings[key];
+    const rows = D.map((d,i) => { const o = d.options[S.picks[i]], best = d.options.find(x => x.score === 2);
+      return `<tr><td><span class="score" aria-label="${o.score} of 2">${[0,1].map(j => `<i class="${j < o.score ? "f" : ""}"></i>`).join("")}</span></td><td><b>${d.slide.split(": ")[1].replace(/^./, c => c.toUpperCase())}</b><br>${o.t}</td><td>${o.score === 2 ? "Same as yours" : best.t}</td></tr>`; }).join("");
+    h = frame(`<div class="two">
+      <div class="col"><span class="pill ${key}">${key === "good" ? "Client-ready" : key === "ok" ? "Close call" : "Client caught it"}</span><h2 tabindex="-1">${e.head}</h2>${late ? say("daniel", `Still waiting on the deck. It's ${tod(START_MIN + S.used)}`, "", "Friday, Teams", "neutral") : ""}${e.msg}</div>
+      <div class="col"><span class="kicker">Your three calls, and the strongest option</span>
+        <table class="db"><thead><tr><th scope="col"><span class="sr">Score</span></th><th scope="col">Your call</th><th scope="col">Strongest option</th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="kicker">Trust score: ${S.trust} of 6, time used: ${dur(S.used)}</p>
+        <div class="row"><button class="btn" data-act="wrap">Continue</button><button class="btn line" data-act="again">Try it again</button></div></div>
+    </div>`, "Debrief", "9", true);
+  }
+  else if (S.screen === "wrap") {
+    h = frame(`<div class="col" style="gap:22px">
+      <div class="two" style="align-items:center"><div class="col"><span class="kicker">Before you go</span><h2 tabindex="-1">Four checks before anything goes to a client</h2></div>
+        <div class="col">${say("priya","Use AI. Just check it before it goes out. Most of these take a few minutes, and they're the difference between Monday going well or not.","coach","","happy")}</div></div>
+      <div class="checks">
+        <div class="check"><b>1. Should AI do this?</b><span>Low stakes and easy to check: let AI draft. Needs judgment or accountability: keep it human.</span></div>
+        <div class="check"><b>2. Protect the client</b><span>Only firm-approved tools, and only the data the task needs. Take out names and account numbers.</span></div>
+        <div class="check"><b>3. Check for the three errors</b><span>Made-up facts, bias, and anything the summary left out. Open the sources.</span></div>
+        <div class="check"><b>4. Own it</b><span>Rewrite in your words, cite real sources, and ask before it goes out if you're unsure.</span></div>
+      </div>
+      <div class="row"><button class="btn line" data-act="again">Replay the scenario</button><span class="kicker">The printable checklist is in the next lesson.</span></div>
+    </div>`, "Northbridge Partners, internal training", "10", false);
+  }
+  deck.innerHTML = h;
+  const head = deck.querySelector("h1, h2"); if (head) head.focus({preventScroll:true});
+  if (S.drop) { const c = document.getElementById("clock"); if (c) { c.classList.add("shake"); } S.drop = 0; }
+}
+
+deck.addEventListener("click", ev => {
+  const b = ev.target.closest("button"); if (!b) return;
+  const a = b.dataset.act;
+  if (a === "start") S.screen = "setup";
+  else if (a === "go") { S.screen = "decide"; S.step = 0; }
+  else if (a === "skip") { endLapse(); return; }
+  else if (a === "cite") { S.cite = true; render(); return; }
+  else if (a === "search") { S.searched = true; }
+  else if (a === "use" || a === "send" || a === "addrisk") { S.screen = "result"; S.msg = ""; S.tone = ""; }
+  else if (b.dataset.col !== undefined) {
+    const c = Number(b.dataset.col);
+    if (S.red.includes(c)) { S.red = S.red.filter(x => x !== c); S.msg = ""; S.tone = ""; }
+    else if (SENSITIVE.includes(c)) { S.red.push(c); const done = SENSITIVE.every(i => S.red.includes(i)); S.msg = done ? "Customer names and account numbers are out. The tool only sees what it needs." : "Good. Anything else that identifies the client's customers?"; S.tone = done ? "good" : ""; }
+    else { S.msg = `You'll need "${COLS[c]}" for the analysis. Keep it.`; S.tone = "bad"; }
+    render(); const btn = deck.querySelector(`[data-col="${c}"]`); if (btn) btn.focus(); return;
+  }
+  else if (b.dataset.sent !== undefined) {
+    const id = b.dataset.sent, [ai, si] = id.split("-").map(Number), kind = ARTS[ai].s[si][1];
+    if (kind === "miss") { S.found = true; S.msg = "Found it. The summary skipped the new labeling rules, and two articles cover them."; S.tone = "good"; }
+    else { if (!S.seen.includes(id)) S.seen.push(id); S.msg = kind === "in" ? "That one's already in the summary." : "Interesting, but it's not a risk."; S.tone = ""; }
+    render(); const nb = deck.querySelector(`[data-sent="${id}"]`); if (nb) nb.focus(); return;
+  }
+  else if (b.dataset.pick !== undefined) {
+    const i = Number(b.dataset.pick), o = D[S.step].options[i];
+    const from = START_MIN + S.used;
+    S.picks[S.step] = i; S.last = i; S.trust += o.score; S.used += o.cost;
+    if (REDUCED) { S.drop = o.cost; S.screen = o.task ? "task" : "result"; }
+    else { S.lapse = { act:o.act, cap:o.cap, from, to: from + o.cost }; S.screen = "lapse"; render(); runLapse(); return; }
+    const left = DUE_MIN - (START_MIN + S.used);
+    announce.textContent = `${costLabel(o.cost)} used. It's ${tod(START_MIN + S.used)}. ${left < 0 ? dur(left) + " late." : dur(left) + " left."}`;
+  }
+  else if (a === "next") { if (S.step < 2) { S.step++; S.screen = "decide"; } else S.screen = "end"; }
+  else if (a === "wrap") S.screen = "wrap";
+  else if (a === "again") { reset(); S.screen = "setup"; }
+  render();
+  deck.scrollIntoView({block:"start"});
+});
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let lapseTimer = null, lapseRaf = null;
+function runLapse(){
+  const L = S.lapse, t0 = performance.now(), dur = 2600, dig = () => document.getElementById("dig");
+  const step = now => {
+    const k = Math.min(1, (now - t0) / dur), e = k < .5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2)/2;
+    const m = Math.round(L.from + (L.to - L.from) * e), el = dig();
+    if (el) { el.textContent = tod(m); el.classList.toggle("late", m > DUE_MIN); }
+    if (k < 1) lapseRaf = requestAnimationFrame(step);
+  };
+  lapseRaf = requestAnimationFrame(step);
+  lapseTimer = setTimeout(endLapse, dur + 700);
+}
+function endLapse(){
+  if (S.screen !== "lapse") return;
+  clearTimeout(lapseTimer); cancelAnimationFrame(lapseRaf);
+  const o = D[S.step].options[S.last];
+  S.drop = o.cost; S.screen = o.task ? "task" : "result"; render(); deck.scrollIntoView({block:"start"});
+}
+render();
+</script>
+</body>
+</html>
