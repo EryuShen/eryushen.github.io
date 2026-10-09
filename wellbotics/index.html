@@ -241,11 +241,22 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   .loop{max-width:320px}
 }
 @media (max-width:560px){.five{grid-template-columns:1fr}.lesson{flex-direction:column}.lesson div{border-right:0;border-bottom:1px solid var(--rule)}}
+@media (max-width:600px){.top nav a:not(:first-child){display:none}}
+@media (max-width:600px){
+  .tbl{background:transparent;border:0}
+  .tbl table{min-width:0}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl tr{display:block;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1rem;margin-bottom:.75rem}
+  .tbl th,.tbl td{display:block;border:0;padding:0;width:auto}
+  .tbl tbody th{width:auto;font-size:1rem}
+  .tbl td{margin-top:.65rem}
+  .tbl td::before{content:attr(data-label);display:block;font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:.1rem}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
-<header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#challenge">Challenge</a><a href="#idea">Idea</a><a href="#prototypes">Prototypes</a><a href="#ping">Ping!</a><a href="#playtesting">Playtesting</a><a href="#curriculum">Curriculum</a><a href="#reflection">Reflection</a></nav></header>
+<header class="top"><nav aria-label="Case study"><a href="../">← Eryu Shen</a><a href="#challenge">Challenge</a><a href="#idea">Idea</a><a href="#prototypes">Prototypes</a><a href="#ping">Ping!</a><a href="#playtesting">Playtesting</a><a href="#curriculum">Curriculum</a><a href="#reflection">Reflection</a></nav></header>
 
 <div class="band">
   <div class="in">
@@ -463,9 +474,9 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <table>
         <thead><tr><th scope="col">Grade</th><th scope="col">Programming</th><th scope="col">Feelings</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Kindergarten</th><td>Sequence 1 to 2 steps with visual direction cards</td><td>Name and model emotions through bee roles: worker, scout, queen</td></tr>
-          <tr><th scope="row">1st grade</th><td>Chain 2 to 3 commands logically</td><td>Notice when the hive is "stressed" or "healthy" and how their choices affect it</td></tr>
-          <tr><th scope="row">2nd grade</th><td>Try simple conditionals: "if blocked, turn left," and debug a sequence that didn't work</td><td>Role-play and reflect: "How would a lost scout feel?"</td></tr>
+          <tr><th scope="row">Kindergarten</th><td data-label="Programming">Sequence 1 to 2 steps with visual direction cards</td><td data-label="Feelings">Name and model emotions through bee roles: worker, scout, queen</td></tr>
+          <tr><th scope="row">1st grade</th><td data-label="Programming">Chain 2 to 3 commands logically</td><td data-label="Feelings">Notice when the hive is "stressed" or "healthy" and how their choices affect it</td></tr>
+          <tr><th scope="row">2nd grade</th><td data-label="Programming">Try simple conditionals: "if blocked, turn left," and debug a sequence that didn't work</td><td data-label="Feelings">Role-play and reflect: "How would a lost scout feel?"</td></tr>
         </tbody>
       </table>
     </div>

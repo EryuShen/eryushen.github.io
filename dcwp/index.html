@@ -58,7 +58,8 @@ a{color:inherit}
 .progress a{text-decoration:none;color:var(--muted);white-space:nowrap;padding-bottom:.2rem;border-bottom:2px solid transparent}
 .progress a span{font-variant-numeric:tabular-nums;margin-right:.35rem;opacity:.7}
 .progress a.on{color:var(--ink);border-bottom-color:var(--mark)}
-.progress .back{margin-right:auto;color:var(--ink)}
+.progress .back{margin-right:auto;color:var(--ink);font-weight:600}
+@media (max-width:600px){.progress ol{gap:1.1rem}.progress a:not(.back){font-size:0}.progress a span{font-size:.875rem;margin-right:0}.progress a.on{font-size:.875rem}.progress a.on span{margin-right:.35rem}}
 
 /* document grid: main column plus a review margin */
 .wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
@@ -355,6 +356,34 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 
 /* adopted */
 .adopted{margin-top:.5rem}
+/* phones: the year timeline becomes a dated list, tables reflow */
+.tl-list{display:none}
+@media (max-width:700px){
+  .tlsec .scroll-x{display:none}
+  .tl-list{display:block;list-style:none;padding:0;margin:1.25rem 0 0;font-family:var(--sans)}
+  .tl-list li{display:grid;grid-template-columns:6.2rem 1fr;column-gap:.9rem;padding:.6rem 0;border-top:1px solid var(--rule)}
+  .tl-list li:last-child{border-bottom:1px solid var(--rule)}
+  .tl-list .d{font-size:.78rem;color:var(--muted);line-height:1.35;padding-top:.1rem}
+  .tl-list b{display:block;font-size:.92rem;font-weight:600;line-height:1.35}
+  .tl-list small{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--muted);margin-top:.15rem}
+  .tl-list small::before{content:"";flex:none;width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+}
+@media (max-width:600px){
+  .xrow table,.kc{min-width:0}
+  .xrow thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .xrow tr{display:grid;grid-template-columns:auto 1fr;column-gap:.7rem;padding:.7rem .8rem;border-bottom:1px solid var(--rule)}
+  .xrow tr:last-child{border-bottom:0}
+  .xrow td{border:0;padding:0}
+  .xrow td:nth-child(1){grid-row:1 / span 3}
+  .xrow td:nth-child(n+3){grid-column:2;font-size:.8rem;color:var(--muted)}
+  .xrow td:nth-child(n+3)::before{content:attr(data-label) ": "}
+  .skillmap{font-size:.8rem}
+  .skillmap table{min-width:0}
+  .skillmap th,.skillmap td{padding:.5rem .2rem}
+  .skillmap thead th{font-size:.72rem}
+  .totals{font-size:.85rem}
+  .totals th,.totals td{padding:.5rem .3rem}
+}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem}
 .pair>div{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:.9rem 1rem}
 .pair p{margin:.35rem 0 0;font-size:1rem;line-height:1.45}
@@ -368,7 +397,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 <body>
 <nav class="progress" aria-label="Case study sections">
   <ol>
-    <li><a class="back" href="../">Eryu Shen</a></li>
+    <li><a class="back" href="../">← Eryu Shen</a></li>
     <li><a href="#judge"><span>1</span>Judge</a></li>
     <li><a href="#equip"><span>2</span>Equip</a></li>
     <li><a href="#test"><span>3</span>Test</a></li>
@@ -420,6 +449,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <h2>The year at a glance</h2>
     <p>Several lines of work ran in parallel: reviewing vendor drafts, testing lessons in classrooms, training educators, and aligning and measuring the curriculum against the state's new requirement.</p>
     <div class="scroll-x"><div class="tl" id="tl" role="img" aria-label="Timeline from summer 2025 to August 2026: rubric in September, review from October to June, classroom testing from October to February, three train-the-trainer sessions from January to April, four quarterly meetings, the state crosswalk from March, and handoff in August"></div></div>
+    <ol class="tl-list" id="tl-list"></ol>
   </div>
 </section>
 <section class="sec" id="judge">
@@ -588,13 +618,13 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <table class="kc">
         <thead><tr><th scope="col">Decision</th><th scope="col">Item (high school, Understanding Banking Products)</th><th scope="col">Tagged to</th><th scope="col">Why</th></tr></thead>
         <tbody>
-          <tr><td><span class="st k">Keep</span></td><td>Online-only vs. traditional banks</td><td>Saving &amp; Investing</td><td>Banking landscape</td></tr>
-          <tr><td><span class="st k">Keep</span></td><td>Bank vs. credit union: key difference</td><td>Saving &amp; Investing</td><td>Institutions</td></tr>
-          <tr><td><span class="st k">Keep</span></td><td>How banks protect your money</td><td>Risk Management</td><td>Deposit insurance anchor</td></tr>
-          <tr><td><span class="st k">Keep</span></td><td>First step if a credit card is stolen</td><td>Risk Management</td><td>Applied risk</td></tr>
-          <tr class="cut"><td><span class="st c">Cut</span></td><td>“Credit-union deposits aren't insured” (T/F)</td><td>Risk Management</td><td>Redundant with the deposit insurance item</td></tr>
-          <tr class="cut"><td><span class="st c">Cut</span></td><td>What is a non-bank fintech</td><td>Saving &amp; Investing</td><td>Weak stem; overlaps the online-bank item</td></tr>
-          <tr class="cut"><td><span class="st c">Cut</span></td><td>Agency for checking and savings data</td><td>Risk Management</td><td>Narrow recall</td></tr>
+          <tr><td data-label="Decision"><span class="st k">Keep</span></td><td data-label="Item">Online-only vs. traditional banks</td><td data-label="Tagged to">Saving &amp; Investing</td><td data-label="Why">Banking landscape</td></tr>
+          <tr><td data-label="Decision"><span class="st k">Keep</span></td><td data-label="Item">Bank vs. credit union: key difference</td><td data-label="Tagged to">Saving &amp; Investing</td><td data-label="Why">Institutions</td></tr>
+          <tr><td data-label="Decision"><span class="st k">Keep</span></td><td data-label="Item">How banks protect your money</td><td data-label="Tagged to">Risk Management</td><td data-label="Why">Deposit insurance anchor</td></tr>
+          <tr><td data-label="Decision"><span class="st k">Keep</span></td><td data-label="Item">First step if a credit card is stolen</td><td data-label="Tagged to">Risk Management</td><td data-label="Why">Applied risk</td></tr>
+          <tr class="cut"><td data-label="Decision"><span class="st c">Cut</span></td><td data-label="Item">“Credit-union deposits aren't insured” (T/F)</td><td data-label="Tagged to">Risk Management</td><td data-label="Why">Redundant with the deposit insurance item</td></tr>
+          <tr class="cut"><td data-label="Decision"><span class="st c">Cut</span></td><td data-label="Item">What is a non-bank fintech</td><td data-label="Tagged to">Saving &amp; Investing</td><td data-label="Why">Weak stem; overlaps the online-bank item</td></tr>
+          <tr class="cut"><td data-label="Decision"><span class="st c">Cut</span></td><td data-label="Item">Agency for checking and savings data</td><td data-label="Tagged to">Risk Management</td><td data-label="Why">Narrow recall</td></tr>
         </tbody>
       </table>
     </div>
@@ -749,6 +779,20 @@ chart.innerHTML=data.map(d=>`<div class="topic${d.flag?" flag":""}"><div class="
     h+="</div></div>";
   });
   el.innerHTML=h;
+  // the same data as a dated list, shown on phones
+  const list=document.getElementById("tl-list"); if(!list) return;
+  const NAMES=["Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"];
+  const yr=m=>m<6?2025:2026, mo=m=>NAMES[m]+"\u00a0"+yr(m);
+  const COL={"Curriculum review":"var(--mark)","Classroom testing":"color-mix(in srgb,var(--ink) 70%,var(--paper))","Educator support":"color-mix(in srgb,var(--gap) 75%,var(--paper))","Quarterly meeting activities":"var(--ink)","Alignment & measurement":"var(--cover)"};
+  const rows=[];
+  lanes.forEach(L=>L.items.forEach(it=>{
+    let d=mo(it.m);
+    if(it.t==="bar"){const end=it.d2===1?it.m2-1:it.m2; if(end!==it.m) d=(yr(it.m)===yr(end)?NAMES[it.m]:mo(it.m))+"–"+mo(end);}
+    const label=L.n==="Quarterly meeting activities"?"Quarterly meeting activity, "+it.l:it.l;
+    rows.push({k:it.m+(it.d-1)/31,d,label,lane:L.n});
+  }));
+  rows.sort((a,b)=>a.k-b.k);
+  list.innerHTML=rows.map(r=>`<li><span class="d">${r.d}</span><div><b>${r.label}</b><small style="--c:${COL[r.lane]}">${r.lane}</small></div></li>`).join("");
 })();
 
 // scavenger hunt: completing a step reveals its design rationale

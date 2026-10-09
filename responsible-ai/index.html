@@ -167,11 +167,23 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   .aid figure{max-width:360px}
 }
 @media (max-width:560px){.four{grid-template-columns:1fr}}
+@media (max-width:600px){.top nav a:not(:first-child){display:none}}
+@media (max-width:600px){
+  .tbl{background:transparent;border:0}
+  .tbl table{min-width:0}
+  .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .tbl tr{display:block;background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:.9rem 1rem;margin-bottom:.75rem}
+  .tbl th,.tbl td{display:block;border:0;padding:0;width:auto}
+  .tbl tbody th{width:auto;font-size:1rem}
+  .tbl td{margin-top:.65rem}
+  .tbl td::before{content:attr(data-label);display:block;font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:.1rem}
+  .tbl td.best{padding:.5rem .6rem;border-radius:4px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
-<header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#problem">Problem</a><a href="#structure">Structure</a><a href="#alignment">Alignment</a><a href="#scenario">Scenario</a><a href="#job-aid">Job aid</a><a href="#next-steps">Next steps</a></nav></header>
+<header class="top"><nav aria-label="Case study"><a href="../">← Eryu Shen</a><a href="#problem">Problem</a><a href="#structure">Structure</a><a href="#alignment">Alignment</a><a href="#scenario">Scenario</a><a href="#job-aid">Job aid</a><a href="#next-steps">Next steps</a></nav></header>
 
 <div class="band">
   <div class="in">
@@ -248,11 +260,11 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <table>
         <thead><tr><th scope="col">Objective: learners will…</th><th scope="col">Practiced in</th><th scope="col">Checked by</th><th scope="col">Supported on the job by</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Explain why AI output can sound confident and still be wrong</th><td>"Where AI gets it wrong" (lesson 1); flashcards (lesson 3)</td><td>Knowledge check: a growth rate that comes with a source</td><td>Rule of thumb: if a number surprises you, open the source</td></tr>
-          <tr><th scope="row">Decide whether a task is best done by AI, a person, or together</th><td>"Who should do it?" sort (lesson 2)</td><td>Scenario debrief (self-check): was I rushing, or over-checking?</td><td>Check 1: let AI draft, keep it human, or AI drafts and you decide</td></tr>
-          <tr><th scope="row">Identify invented facts, bias and missing information</th><td>Scenario decisions 1 and 3; "spot the error" sort (lesson 3)</td><td>Knowledge checks: the growth rate and the contract summary</td><td>Check 3: one question for each error</td></tr>
-          <tr><th scope="row">Protect client data with approved tools and only the data a task needs</th><td>Scenario decision 2, where learners remove the sensitive columns themselves</td><td>Knowledge check: finding patterns in a client's sales file</td><td>Check 2: four tick boxes before anything goes into a tool</td></tr>
-          <tr><th scope="row">Apply a short checking routine before anything goes out</th><td>The four checks (lesson 3)</td><td>The whole scenario, scored on trust and time used</td><td>The job aid itself</td></tr>
+          <tr><th scope="row">Explain why AI output can sound confident and still be wrong</th><td data-label="Practiced in">"Where AI gets it wrong" (lesson 1); flashcards (lesson 3)</td><td data-label="Checked by">Knowledge check: a growth rate that comes with a source</td><td data-label="Supported on the job by">Rule of thumb: if a number surprises you, open the source</td></tr>
+          <tr><th scope="row">Decide whether a task is best done by AI, a person, or together</th><td data-label="Practiced in">"Who should do it?" sort (lesson 2)</td><td data-label="Checked by">Scenario debrief (self-check): was I rushing, or over-checking?</td><td data-label="Supported on the job by">Check 1: let AI draft, keep it human, or AI drafts and you decide</td></tr>
+          <tr><th scope="row">Identify invented facts, bias and missing information</th><td data-label="Practiced in">Scenario decisions 1 and 3; "spot the error" sort (lesson 3)</td><td data-label="Checked by">Knowledge checks: the growth rate and the contract summary</td><td data-label="Supported on the job by">Check 3: one question for each error</td></tr>
+          <tr><th scope="row">Protect client data with approved tools and only the data a task needs</th><td data-label="Practiced in">Scenario decision 2, where learners remove the sensitive columns themselves</td><td data-label="Checked by">Knowledge check: finding patterns in a client's sales file</td><td data-label="Supported on the job by">Check 2: four tick boxes before anything goes into a tool</td></tr>
+          <tr><th scope="row">Apply a short checking routine before anything goes out</th><td data-label="Practiced in">The four checks (lesson 3)</td><td data-label="Checked by">The whole scenario, scored on trust and time used</td><td data-label="Supported on the job by">The job aid itself</td></tr>
         </tbody>
       </table>
     </div>
@@ -277,9 +289,9 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <table>
         <thead><tr><th scope="col">Decision</th><th scope="col">Risky shortcut</th><th scope="col">Partial</th><th scope="col">Strongest</th></tr></thead>
         <tbody>
-          <tr><th scope="row">The market size<span class="t">The AI cites "Nielsen, 2024" with no link</span></th><td>Paste it into the slide<span class="t">2 min. The report doesn't exist; the client asks on Monday.</span></td><td>Ask the AI if it's sure<span class="t">3 min. Same answer, more confident, still no source.</span></td><td class="best">Find the report first<span class="t">20 min. It doesn't exist; a real source replaces it.</span></td></tr>
-          <tr><th scope="row">The client's data<span class="t">A confidential sales file under NDA</span></th><td>Paste it into a free public AI tool<span class="t">5 min. IT flags it; the partner calls the client.</span></td><td>Skip AI, do it all in Excel<span class="t">2 hours. Safe, and most of the afternoon.</span></td><td class="best">Approved tool, identifying columns removed<span class="t">25 min. Same insight, nothing leaves the firm.</span></td></tr>
-          <tr><th scope="row">The risk summary<span class="t">An AI summary of five articles</span></th><td>Use the three risks as they are<span class="t">2 min. It missed a new labeling rule; the client asks.</span></td><td>Ask a colleague to review<span class="t">60 min of her Friday evening.</span></td><td class="best">Skim the five articles<span class="t">20 min. The labeling rule goes first on the slide.</span></td></tr>
+          <tr><th scope="row">The market size<span class="t">The AI cites "Nielsen, 2024" with no link</span></th><td data-label="Risky shortcut">Paste it into the slide<span class="t">2 min. The report doesn't exist; the client asks on Monday.</span></td><td data-label="Partial">Ask the AI if it's sure<span class="t">3 min. Same answer, more confident, still no source.</span></td><td class="best" data-label="Strongest">Find the report first<span class="t">20 min. It doesn't exist; a real source replaces it.</span></td></tr>
+          <tr><th scope="row">The client's data<span class="t">A confidential sales file under NDA</span></th><td data-label="Risky shortcut">Paste it into a free public AI tool<span class="t">5 min. IT flags it; the partner calls the client.</span></td><td data-label="Partial">Skip AI, do it all in Excel<span class="t">2 hours. Safe, and most of the afternoon.</span></td><td class="best" data-label="Strongest">Approved tool, identifying columns removed<span class="t">25 min. Same insight, nothing leaves the firm.</span></td></tr>
+          <tr><th scope="row">The risk summary<span class="t">An AI summary of five articles</span></th><td data-label="Risky shortcut">Use the three risks as they are<span class="t">2 min. It missed a new labeling rule; the client asks.</span></td><td data-label="Partial">Ask a colleague to review<span class="t">60 min of her Friday evening.</span></td><td class="best" data-label="Strongest">Skim the five articles<span class="t">20 min. The labeling rule goes first on the slide.</span></td></tr>
         </tbody>
       </table>
     </div>

@@ -197,11 +197,25 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   .panel figure{max-width:260px}
   .steps{grid-template-columns:repeat(5,minmax(4.5rem,1fr));overflow-x:auto}
 }
+@media (max-width:600px){.top nav a:not(:first-child){display:none}}
+@media (max-width:600px){
+  .aimap table{min-width:0}
+  .aimap thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .aimap tr{display:block;padding:.85rem 1rem;border-bottom:1px solid var(--rule)}
+  .aimap tr:last-child{border-bottom:0}
+  .aimap td{display:block;border:0;padding:0}
+  .aimap td+td{margin-top:.3rem}
+  .aimap td:last-child{white-space:normal;font-size:.82rem}
+  .aimap td:last-child::before{content:attr(data-label) ": "}
+  .evo{font-size:.7rem}
+  .evo ol{gap:.2rem}
+  .evo li{padding:.4rem .1rem;min-width:0}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
-<header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#problem">Problem</a><a href="#idea">Idea</a><a href="#design">Learning design</a><a href="#product">Prototype</a><a href="#system">AI platform</a><a href="#next-steps">Evaluation</a></nav></header>
+<header class="top"><nav aria-label="Case study"><a href="../">← Eryu Shen</a><a href="#problem">Problem</a><a href="#idea">Idea</a><a href="#design">Learning design</a><a href="#product">Prototype</a><a href="#system">AI platform</a><a href="#next-steps">Evaluation</a></nav></header>
 
 <div class="band">
   <div class="in">
@@ -369,11 +383,11 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <table>
         <thead><tr><th scope="col">Stage</th><th scope="col">What the AI does</th><th scope="col">Powered by</th></tr></thead>
         <tbody>
-          <tr><td><b>Capture</b></td><td>Screens every question for safety, then answers in short, child-friendly language with a warm reaction</td><td>Moderation API, Claude</td></tr>
-          <tr><td><b>Cluster</b></td><td>Turns each question into an embedding and groups questions by meaning into themes</td><td>PostgreSQL + pgvector</td></tr>
-          <tr><td><b>Synthesize</b></td><td>Writes a short lesson as structured slides plus quiz options, then narrates it aloud</td><td>Claude (JSON output), OpenAI TTS</td></tr>
-          <tr><td><b>Reflect</b></td><td>Transcribes the child's spoken explanation, gives feedback, and compares it with their confidence rating</td><td>Whisper, Claude</td></tr>
-          <tr><td><b>Retrieve</b></td><td>Scores each recall attempt as correct, partial or missed, which sets the next review date</td><td>Claude, spaced-repetition schedule</td></tr>
+          <tr><td data-label="Stage"><b>Capture</b></td><td data-label="What the AI does">Screens every question for safety, then answers in short, child-friendly language with a warm reaction</td><td data-label="Powered by">Moderation API, Claude</td></tr>
+          <tr><td data-label="Stage"><b>Cluster</b></td><td data-label="What the AI does">Turns each question into an embedding and groups questions by meaning into themes</td><td data-label="Powered by">PostgreSQL + pgvector</td></tr>
+          <tr><td data-label="Stage"><b>Synthesize</b></td><td data-label="What the AI does">Writes a short lesson as structured slides plus quiz options, then narrates it aloud</td><td data-label="Powered by">Claude (JSON output), OpenAI TTS</td></tr>
+          <tr><td data-label="Stage"><b>Reflect</b></td><td data-label="What the AI does">Transcribes the child's spoken explanation, gives feedback, and compares it with their confidence rating</td><td data-label="Powered by">Whisper, Claude</td></tr>
+          <tr><td data-label="Stage"><b>Retrieve</b></td><td data-label="What the AI does">Scores each recall attempt as correct, partial or missed, which sets the next review date</td><td data-label="Powered by">Claude, spaced-repetition schedule</td></tr>
         </tbody>
       </table>
     </div>
