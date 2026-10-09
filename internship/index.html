@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Momentum Internship Program, a 24-week curriculum | Eryu Shen</title>
+<meta name="description" content="Eryu Shen redesigned PROJXON's 24-week internship into a milestone-based Canvas curriculum: six phases, 24 modules, built-in coaching, now the standard for every new cohort.">
+<meta property="og:title" content="Momentum Internship Program | Eryu Shen">
+<meta property="og:description" content="A 24-week Canvas curriculum that takes interns from onboarding to client work, one milestone at a time.">
+<link rel="canonical" href="https://eryushen.github.io/internship/">
+<meta property="og:url" content="https://eryushen.github.io/internship/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://eryushen.github.io/images/pj-cover-mockup.jpg">
+<meta property="og:image:alt" content="The Momentum Internship Program course in Canvas on a laptop, next to a program slide">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#F6F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111723" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,650;1,7..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --sheet:#FFFFFF; --ink:#17233B; --muted:#5A6476; --rule:#D9DCE3;
+  --mark:#F3D34A; --mark-soft:rgba(243,211,74,.38); --cover:#2F7A68; --gap:#A23B4D;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80}}
+:root[data-theme="dark"]{--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cover);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top nav{max-width:1100px;margin:0 auto;padding:.7rem 1.25rem;display:flex;gap:1.5rem;font-family:var(--sans);font-size:.9rem}
+.top nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+.top nav a:first-child{margin-right:auto;color:var(--ink);font-weight:600}
+section{padding:4.5rem 0;border-top:1px solid var(--rule)}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;font-weight:500;letter-spacing:-.03em;margin:0}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-spacing:-.01em;margin:0 0 .8rem}
+h3{font-size:1.15rem;margin:0 0 .5rem}
+p{margin:0 0 1rem}
+.intro{max-width:40em}
+.sub-h{font-size:1.15rem;margin:2.5rem 0 .5rem}
+figure{margin:0}
+figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-top:.55rem;line-height:1.45}
+.shotbtn{display:block;width:100%;padding:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#fff;cursor:zoom-in;position:relative}
+.shotbtn img{width:100%;height:auto}
+.shotbtn::after{content:"⤢ Enlarge";position:absolute;right:.6rem;bottom:.6rem;font-family:var(--sans);font-size:.75rem;font-weight:600;background:#17233B;color:#fff;border-radius:999px;padding:.3rem .65rem;opacity:.88}
+.mypart{font-family:var(--sans);font-size:.95rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.8rem 0;margin:0 0 1.75rem;max-width:44em}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
+.org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
+.sub{font-size:1.3rem;line-height:1.35;font-style:italic;margin:1rem 0 1.25rem;max-width:24em}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.85rem;font-weight:600;line-height:1.35;color:var(--cover);background:color-mix(in srgb,var(--cover) 11%,transparent);border-radius:999px;padding:.3rem .8rem .3rem .65rem;margin:0 0 1.25rem}
+.status::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--cover);box-shadow:0 0 0 3px color-mix(in srgb,var(--cover) 25%,transparent)}
+.lede{font-size:1.1rem;max-width:32em}
+.glance{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1.5rem;font-family:var(--sans);font-size:.92rem;margin:1.75rem 0 0;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.glance dt{color:var(--muted)} .glance dd{margin:0}
+.hero .mock{border-radius:10px;overflow:hidden}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:0}
+.nums div{border-top:1px solid var(--rule);padding-top:.7rem;font-family:var(--sans);font-size:.88rem;color:var(--muted);line-height:1.35}
+.nums b{display:block;font-family:var(--serif);font-weight:500;font-size:2.2rem;color:var(--ink);line-height:1.1;margin-bottom:.15rem}
+
+/* phases */
+.phases{list-style:none;padding:0;margin:1.75rem 0 0;display:flex;gap:.5rem}
+.phases li{background:var(--sheet);border:1px solid var(--rule);border-top:4px solid var(--ph,var(--cover));border-radius:8px;padding:.9rem .95rem 1rem;font-family:var(--sans);min-width:0}
+.phases .wk{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.15rem}
+.phases b{display:block;font-family:var(--serif);font-size:1.02rem;line-height:1.25;margin-bottom:.4rem}
+.phases .f{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:.25rem}
+.phases .a{display:block;font-size:.84rem;color:var(--muted);line-height:1.4}
+.ramp{display:flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin:.9rem 0 0}
+.ramp::before{content:"";flex:1;height:2px;background:linear-gradient(90deg,var(--rule),var(--ink));order:1}
+.ramp span:last-child{order:2}
+
+/* weekly template */
+.week{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:2.5rem;align-items:start;margin-top:1.75rem}
+.tpl{list-style:none;padding:0;margin:0;font-family:var(--sans);counter-reset:t}
+.tpl li{display:grid;grid-template-columns:2rem 1fr;gap:.75rem;padding:.85rem 0;border-top:1px solid var(--rule)}
+.tpl li:last-child{border-bottom:1px solid var(--rule)}
+.tpl li::before{counter-increment:t;content:counter(t);width:1.7rem;height:1.7rem;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:.8rem;font-weight:600}
+.tpl b{display:block;font-size:.98rem}
+.tpl span{display:block;font-size:.9rem;color:var(--muted);line-height:1.45}
+.touch{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 0}
+.touch i{font-style:normal;font-size:.78rem;font-weight:600;border-radius:999px;padding:.15rem .6rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.prog{margin:2.5rem 0 0;max-width:820px}
+.prog .bar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:.75rem 0 .4rem}
+.prog .bar span{height:12px;border-radius:3px;background:color-mix(in srgb,var(--cover) calc(var(--p) * 1%),var(--rule))}
+.prog .lab{display:grid;grid-template-columns:repeat(4,1fr);font-family:var(--sans);font-size:.82rem;color:var(--muted)}
+.prog .lab span{text-align:right}
+.prog p{font-family:var(--sans);font-size:.92rem;color:var(--muted);margin:.6rem 0 0}
+
+/* decisions */
+.decs{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2.5rem;font-family:var(--sans)}
+.decs li{border-top:2px solid var(--ink);padding-top:.7rem}
+.decs b{display:block;font-size:1.02rem;margin-bottom:.3rem}
+.decs span{font-size:.93rem;color:var(--muted);line-height:1.5}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.25rem}
+
+/* outcome */
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.out>div{background:var(--sheet);border:1px solid var(--rule);border-left:4px solid var(--cover);border-radius:6px;padding:1rem 1.15rem;font-family:var(--sans)}
+.out b{display:block;font-size:1rem;margin-bottom:.25rem}
+.out span{font-size:.92rem;color:var(--muted);line-height:1.45}
+.quote{font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.35;font-weight:500;max-width:26em;margin:2.25rem 0 0}
+.quote em{font-style:normal;background-image:linear-gradient(var(--mark-soft),var(--mark-soft))}
+.downloads{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem;font-family:var(--sans);font-size:.9rem}
+.downloads a{border:1px solid var(--ink);border-radius:999px;padding:.5rem 1rem;text-decoration:none}
+.next{display:flex;flex-wrap:wrap;gap:.75rem;font-family:var(--sans);font-size:.95rem;margin-top:1.5rem}
+.next a{border:1px solid var(--ink);border-radius:999px;padding:.6rem 1.1rem;text-decoration:none}
+footer{border-top:1px solid var(--rule);padding:2rem 0 3rem;font-family:var(--sans);font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem}
+footer .l{display:flex;gap:1.25rem}
+footer a{color:var(--ink);text-underline-offset:3px}
+dialog.lb{border:0;padding:0;max-width:min(96vw,1500px);background:transparent}
+dialog.lb::backdrop{background:rgba(10,14,24,.85)}
+dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;background:#fff}
+dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+
+@media (max-width:900px){
+  .hero,.week{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .phases{flex-wrap:wrap}
+  .phases li{flex:1 1 calc(33% - .5rem) !important}
+  .decs,.shots,.out{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .top nav a:not(:first-child){display:none}
+  .phases{flex-direction:column}
+  .phases li{flex:none !important}
+  .ramp{display:none}
+  .glance{grid-template-columns:1fr;gap:.1rem}
+  .glance dd{margin-bottom:.6rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<header class="top"><nav aria-label="Page"><a href="../">← Eryu Shen</a><a href="#phases">Phases</a><a href="#weekly">Weekly design</a><a href="#outcome">Outcome</a></nav></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="org">PROJXON, Learning &amp; Development Designer, May to September 2025</p>
+      <h1>Momentum Internship Program</h1>
+      <p class="sub">A 24-week curriculum that takes interns from onboarding to client work, one milestone at a time</p>
+      <p class="status">Used for two intern cohorts, now the standard for every new cohort</p>
+      <p class="lede">PROJXON's remote interns needed to get productive quickly, build skills in a deliberate order and be ready for client-facing work by the end. I audited the previous internship model using intern feedback and program data, then redesigned it as a milestone-based program in Canvas.</p>
+      <dl class="glance">
+        <dt>My role</dt><dd>Audit, program structure, weekly curriculum maps, all 24 Canvas modules, visuals, templates and coaching check-in workflows</dd>
+        <dt>Learners</dt><dd>Interns across departments, working remotely</dd>
+        <dt>Worked with</dt><dd>Subject matter experts who sourced module content</dd>
+        <dt>Tools</dt><dd>Canvas LMS, ClickUp, Canva, Figma, Google Workspace</dd>
+      </dl>
+    </div>
+    <figure><button class="shotbtn mock" type="button" aria-label="Enlarge the program mockup"><img src="../images/pj-cover-hero.jpg" alt="The Momentum Internship Program course home in Canvas on a laptop, with modules for Welcome to MIP, Check-In, Coaching and Module 1: Access and Orientation, next to a program slide for Module 4: Warmup 1"></button>
+      <figcaption>The course in Canvas, and a module slide from the program deck I designed.</figcaption></figure>
+  </div>
+
+  <div class="nums" aria-label="Program at a glance">
+    <div><b>6</b>phases, from onboarding to career launch</div>
+    <div><b>24</b>weekly modules in Canvas</div>
+    <div><b>5</b>professional projects per intern</div>
+    <div><b>8+ / 5+</b>reflection check-ins / coaching sessions</div>
+  </div>
+
+  <section id="phases" aria-labelledby="ph-h" style="margin-top:3.5rem">
+    <h2 id="ph-h">Six phases, each with more ownership</h2>
+    <p class="intro">Interns move from guided warm-ups to team projects, then their own portfolio project, then real client work. Each phase hands over a little more responsibility than the last.</p>
+    <ol class="phases">
+      <li style="flex:3;--ph:#8FA3BF"><span class="wk">Weeks 1–3</span><b>Onboarding</b><span class="f">Orientation and foundations</span><span class="a">Tool setup, intro modules, team building, warm-up tasks</span></li>
+      <li style="flex:3;--ph:#6E8FB5"><span class="wk">Weeks 4–6</span><b>Warm-up projects</b><span class="f">Skill application and feedback</span><span class="a">Mini projects, planning tools, peer collaboration</span></li>
+      <li style="flex:7;--ph:#3D74D6"><span class="wk">Weeks 7–13</span><b>Team projects 1 and 2</b><span class="f">Project-based learning</span><span class="a">A full group project, real-time iteration, delivery in ClickUp</span></li>
+      <li style="flex:4;--ph:var(--cover)"><span class="wk">Weeks 14–17</span><b>Portfolio project</b><span class="f">Individual ownership and storytelling</span><span class="a">Design and deliver a signature case study</span></li>
+      <li style="flex:4;--ph:#C9A92E"><span class="wk">Weeks 18–21</span><b>Contract client</b><span class="f">Real-world readiness</span><span class="a">Solve a live or simulated client brief as a team</span></li>
+      <li style="flex:3;--ph:var(--ink)"><span class="wk">Weeks 22–24</span><b>Offboarding</b><span class="f">Reflection and career launch</span><span class="a">Retrospective, handoff docs, final feedback, alumni transition</span></li>
+    </ol>
+    <p class="ramp"><span>Guided</span><span>Independent, client-facing</span></p>
+  </section>
+
+  <section id="weekly" aria-labelledby="wk-h">
+    <h2 id="wk-h">Every week works the same way</h2>
+    <p class="intro">Twenty-four weeks is a long time to stay oriented. Every module uses the same four-part template, so interns always know where to look, and coaches always know where an intern stands.</p>
+    <div class="week">
+      <ol class="tpl">
+        <li><div><b>Module overview</b><span>The week's goals and what to deliver.</span></div></li>
+        <li><div><b>Learning materials</b><span>Short, targeted lessons from PROJXON's course library, picked for what the week needs.</span></div></li>
+        <li><div><b>A human touchpoint</b><span>Every week includes one, rotating so interns get each kind regularly.</span><span class="touch"><i>Check-in</i><i>Coaching</i><i>Performance review</i></span></div></li>
+        <li><div><b>Weekly checklist</b><span>What "done" looks like before moving on.</span></div></li>
+      </ol>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the Canvas modules screenshot"><img loading="lazy" decoding="async" src="../images/pj-canvas-modules.jpg" alt="Canvas modules page showing Module 23: Program Completion and Module 24: Offboarding, each with Module Overview, Learning Materials, a weekly check-in or performance review, and a Weekly Checklist"></button>
+        <figcaption>The same template in the last two modules: overview, materials, a touchpoint, a checklist.</figcaption></figure>
+    </div>
+
+    <div class="prog">
+      <h3>Projects tracked by milestone, not by deadline alone</h3>
+      <div class="bar" aria-hidden="true"><span style="--p:25"></span><span style="--p:50"></span><span style="--p:75"></span><span style="--p:100"></span></div>
+      <div class="lab" aria-hidden="true"><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+      <p>Each multi-week project has a weekly checkpoint, such as 25%, 50%, 75% and final delivery, so problems show up while there's still time to coach.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="dc-h">
+    <h2 id="dc-h">Design decisions</h2>
+    <ul class="decs">
+      <li><b>Structure around milestones</b><span>Weekly progress checkpoints on every project turn a long program into short, visible steps, for interns and their coaches.</span></li>
+      <li><b>Hand over responsibility gradually</b><span>Warm-ups build confidence before team projects; team projects build skills before interns own a portfolio project and then client work.</span></li>
+      <li><b>Reuse the course library, sequenced</b><span>Instead of writing new content, I worked with subject matter experts to pull the right lessons from existing courses, like ClickUp, communication tools and career development, into the week interns need them.</span></li>
+      <li><b>Build reflection and coaching into the schedule</b><span>Check-ins, coaching and performance reviews are part of the weekly template, not left to chance, adding up to 8+ reflection check-ins and 5+ coaching sessions per intern.</span></li>
+    </ul>
+    <div class="shots">
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the Canvas course home"><img loading="lazy" decoding="async" src="../images/pj-canvas-home.jpg" alt="Canvas course home for the Momentum Internship Program with Welcome to MIP, MIP Deck, Check-In and Coaching pages, then Module 1: Access and Orientation"></button>
+        <figcaption>The course home: program-wide pages first, then the weekly modules.</figcaption></figure>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the learning materials page"><img loading="lazy" decoding="async" src="../images/pj-canvas-materials.jpg" alt="A week 2 Learning Materials page listing lessons from other PROJXON courses, such as Communication Tools and Discord Basics, Project Management Training, Career Development and ClickUp Training, beside the list of published courses"></button>
+        <figcaption>Week 2's learning materials draw on lessons from PROJXON's existing courses.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="outcome" aria-labelledby="oc-h">
+    <h2 id="oc-h">Outcome</h2>
+    <div class="out">
+      <div><b>Two cohorts</b><span>Implemented for the 2025 Q2 and Q3 intern cohorts.</span></div>
+      <div><b>The new standard</b><span>Adopted as the onboarding structure for every future cohort.</span></div>
+      <div><b>100 learners</b><span>Reached through virtual training I delivered.</span></div>
+    </div>
+    <p class="intro" style="margin-top:1.5rem">With clear weekly milestones, reflection points and coaching check-ins, onboarding became clearer, interns stayed more engaged, and projects lined up better across departments.</p>
+    <p class="quote">This project changed how I think about learning design: not only creating content, but <em>designing momentum, motivation and meaning</em>.</p>
+    <div class="downloads">
+      <a href="docs/momentum-internship-program-deck.pdf" target="_blank" rel="noopener">Program deck, all 24 modules (PDF)</a>
+      <a href="https://scribehow.com/shared/Creating_Your_Dashboard__KqMcXYPzR9i-WQiX25FnCw" target="_blank" rel="noopener">Training guide: setting up your dashboard<span aria-hidden="true"> ↗</span></a>
+    </div>
+    <div class="next"><a href="../">Back to portfolio</a></div>
+  </section>
+
+  <footer><span>Eryu Shen, learning designer</span><span class="l"><a href="mailto:es4267@tc.columbia.edu">es4267@tc.columbia.edu</a><a href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener">LinkedIn</a></span></footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img alt=""></dialog>
+<script>
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.shotbtn').forEach(b=>b.addEventListener('click',()=>{const im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lb.showModal();}));
+document.getElementById('lbx').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+</script>
+</body>
+</html>
