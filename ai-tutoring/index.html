@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Tutoring Formats, a research proposal | Eryu Shen</title>
+<meta name="description" content="A research proposal by Eryu Shen and Junyi Zhu on how text, voice and video AI tutors shape the way student groups build knowledge together.">
+<meta property="og:title" content="AI Tutoring Formats: text, voice or video? | Eryu Shen">
+<meta property="og:description" content="A research proposal on how the form of an AI tutor shapes collaborative knowledge building.">
+<link rel="canonical" href="https://eryushen.github.io/ai-tutoring/">
+<meta property="og:url" content="https://eryushen.github.io/ai-tutoring/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://eryushen.github.io/images/at-poster.jpg">
+<meta property="og:image:alt" content="Research poster: The Impact of Different Forms of AI Tutoring on Collaborative Knowledge Building Process">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#F6F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111723" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,650;1,7..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --sheet:#FFFFFF; --ink:#17233B; --muted:#5A6476; --rule:#D9DCE3;
+  --mark:#F3D34A; --mark-soft:rgba(243,211,74,.38); --cover:#2F7A68; --gap:#A23B4D;
+  --b-bg:#E3ECF7; --b-ink:#13306E; --b-soft:#3D5684; --b-dot:#1E387B; --b-line:rgba(19,48,110,.22);
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80;--b-bg:#1B2F63;--b-ink:#EEF3FB;--b-soft:#B9C7E3;--b-dot:#A9C0EE;--b-line:rgba(238,243,251,.22)}}
+:root[data-theme="dark"]{--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80;--b-bg:#1B2F63;--b-ink:#EEF3FB;--b-soft:#B9C7E3;--b-dot:#A9C0EE;--b-line:rgba(238,243,251,.22)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cover);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top nav{max-width:1100px;margin:0 auto;padding:.7rem 1.25rem;display:flex;gap:1.5rem;font-family:var(--sans);font-size:.9rem}
+.top nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+.top nav a:first-child{margin-right:auto;color:var(--ink);font-weight:600}
+section{padding:4.5rem 0;border-top:1px solid var(--rule)}
+h1{font-size:clamp(2.8rem,8vw,5rem);line-height:1;font-weight:500;letter-spacing:-.03em;margin:0}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-spacing:-.01em;margin:0 0 .8rem}
+h3{font-size:1.15rem;margin:0 0 .5rem}
+p{margin:0 0 1rem}
+.intro{max-width:40em}
+figure{margin:0}
+figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-top:.55rem;line-height:1.45}
+.shotbtn{display:block;width:100%;padding:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#fff;cursor:zoom-in;position:relative}
+.shotbtn img{width:100%;height:auto}
+.shotbtn::after{content:"⤢ Enlarge";position:absolute;right:.6rem;bottom:.6rem;font-family:var(--sans);font-size:.75rem;font-weight:600;background:#17233B;color:#fff;border-radius:999px;padding:.3rem .65rem;opacity:.88}
+.org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
+.org b{font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:.1rem .55rem;margin-right:.4rem;white-space:nowrap}
+.sub{font-size:1.3rem;line-height:1.35;font-style:italic;margin:1rem 0 0;max-width:26em}
+.glance{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1.5rem;font-family:var(--sans);font-size:.92rem;margin:0}
+.glance dt{color:var(--muted)} .glance dd{margin:0}
+
+/* band: the poster's pale blue, with the study design as the picture */
+.band{background:var(--b-bg);color:var(--b-ink)}
+.band .in{max-width:1100px;margin:0 auto;padding:4.25rem 1.25rem 3.75rem}
+.band .org{color:var(--b-soft)}
+.band .org b{color:var(--b-ink);border-color:var(--b-line)}
+.band h1{color:var(--b-ink)}
+.band .sub{color:var(--b-ink)}
+.design{margin:3rem 0 0;display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:1.75rem;align-items:center;font-family:var(--sans)}
+.dots{display:grid;grid-template-columns:repeat(5,12px);gap:7px}
+.dots i{width:12px;height:12px;border-radius:50%;background:var(--b-dot)}
+.pool b,.groups b{display:block;font-size:.9rem;font-weight:600;margin-top:.7rem}
+.pool small,.groups small{display:block;font-size:.8rem;color:var(--b-soft);line-height:1.4;margin-top:.15rem}
+.groups small.d{margin-top:.4rem;opacity:.85}
+.to{font-size:.8rem;color:var(--b-soft);display:flex;align-items:center;gap:.5rem;white-space:nowrap}
+.to::after{content:"";width:2.5rem;height:0;border-top:1.5px solid var(--b-soft)}
+.groups{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.groups li{border-left:1px solid var(--b-line);padding-left:1rem}
+.groups .ctl .dots i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--b-dot)}
+.band .note{font-family:var(--sans);font-size:.85rem;color:var(--b-soft);margin:2rem 0 0;max-width:46em}
+
+/* intro row */
+.intro-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3.5rem;align-items:start;padding:3.5rem 0 4.5rem}
+.intro-row .lede{font-size:1.2rem;line-height:1.6;margin:0}
+.intro-row .glance{padding-left:1.75rem;border-left:1px solid var(--rule)}
+
+.rq{font-size:clamp(1.3rem,2.6vw,1.7rem);line-height:1.4;font-weight:500;max-width:30em;margin:1.25rem 0 1.5rem;padding-left:1.1rem;border-left:4px solid var(--b-dot)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;max-width:900px}
+.two>div{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:1.15rem 1.25rem}
+.two b{display:block;font-family:var(--sans);font-size:1rem;margin-bottom:.15rem}
+.two .src{display:block;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-bottom:.6rem}
+.two p{margin:0;font-size:.98rem;line-height:1.55}
+.two .use{display:block;font-family:var(--sans);font-size:.85rem;margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--rule)}
+.exp{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.exp>div{border-top:2px solid var(--ink);padding-top:.7rem;font-family:var(--sans)}
+.exp b{display:block;font-size:1.05rem;margin-bottom:.5rem}
+.exp .k{display:block;font-size:.75rem;font-weight:600;color:var(--muted);margin-top:.6rem}
+.exp p{margin:.1rem 0 0;font-size:.92rem;line-height:1.5}
+.alt{font-family:var(--sans);font-size:.92rem;max-width:46em;margin:2rem 0 0}
+.alt ul{margin:.4rem 0 0;padding-left:1.1rem;color:var(--muted)}
+.alt li{margin:.3rem 0}
+.poster{max-width:900px;margin-top:1.25rem}
+.next{display:flex;flex-wrap:wrap;gap:.75rem;font-family:var(--sans);font-size:.95rem;margin-top:1.75rem}
+.next a{border:1px solid var(--ink);border-radius:999px;padding:.6rem 1.1rem;text-decoration:none}
+footer{border-top:1px solid var(--rule);padding:2rem 0 3rem;font-family:var(--sans);font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem}
+footer .l{display:flex;gap:1.25rem}
+footer a{color:var(--ink);text-underline-offset:3px}
+dialog.lb{border:0;padding:0;max-width:min(96vw,1500px);background:transparent}
+dialog.lb::backdrop{background:rgba(10,14,24,.85)}
+dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;background:#fff}
+dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+@media (max-width:900px){
+  .design{grid-template-columns:1fr;gap:1.25rem}
+  .to::after{width:0;height:1.5rem;border-top:0;border-left:1.5px solid var(--b-soft);order:-1}
+  .groups{grid-template-columns:1fr 1fr;gap:1.25rem 1rem}
+  .intro-row,.two,.exp{grid-template-columns:1fr}
+  .intro-row{gap:2rem;padding:2.5rem 0 3.5rem}
+  .intro-row .glance{border-left:0;padding:1.25rem 0 0;border-top:1px solid var(--rule)}
+}
+@media (max-width:600px){
+  .top nav a:not(:first-child){display:none}
+  .glance{grid-template-columns:1fr;gap:.1rem}
+  .glance dd{margin-bottom:.6rem}
+}
+</style>
+</head>
+<body>
+<header class="top"><nav aria-label="Page"><a href="../">← Eryu Shen</a><a href="#question">Question</a><a href="#expected">Expected results</a><a href="#poster">Poster</a></nav></header>
+
+<div class="band">
+  <div class="in">
+    <p class="org"><b>Research proposal</b>Teachers College, Columbia University, 2025</p>
+    <h1>Text, voice or video?</h1>
+    <p class="sub">How the form of an AI tutor could change the way a group of students builds knowledge together</p>
+    <div class="design" role="img" aria-label="Study design: 20 university students, randomly assigned to four groups of five. A text AI group, a voice AI group, a video AI group and a control group without AI.">
+      <div class="pool"><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><b>20 students</b><small>University students</small></div>
+      <div class="to">Randomly assigned</div>
+      <ol class="groups">
+        <li><span class="dots"><i></i><i></i><i></i><i></i><i></i></span><b>Text AI</b><small>A chat tutor</small><small class="d">Data: log files</small></li>
+        <li><span class="dots"><i></i><i></i><i></i><i></i><i></i></span><b>Voice AI</b><small>A voice assistant</small><small class="d">Data: recordings, transcripts</small></li>
+        <li><span class="dots"><i></i><i></i><i></i><i></i><i></i></span><b>Video AI</b><small>Watches the group work and responds</small><small class="d">Data: recordings, transcripts</small></li>
+        <li class="ctl"><span class="dots"><i></i><i></i><i></i><i></i><i></i></span><b>Control</b><small>Textbook or lecture, no AI</small><small class="d">Data: recordings, observation</small></li>
+      </ol>
+    </div>
+    <p class="note">Every group gets the same 30-minute open problem and the same prompting script, so the form of the tutor is the only thing that changes.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="intro-row">
+    <p class="lede">Most research on AI tutors looks at one student and one AI. My teammate Junyi Zhu and I designed a study that asks what happens when a group works with an AI tutor, and whether it matters if that tutor writes, speaks or watches. This is the proposal: the question, the theory behind it, how we'd measure it and what we expected to find.</p>
+    <dl class="glance">
+      <dt>My part</dt><dd>Literature review, co-writing the proposal, developing the research methods, designing the poster</dd>
+      <dt>Team</dt><dd>Two people, with Junyi Zhu</dd>
+      <dt>Course</dt><dd>Learning Analytics and the Learning Sciences, Teachers College, Columbia University</dd>
+      <dt>Format</dt><dd>Research proposal and poster</dd>
+    </dl>
+  </div>
+
+  <section id="question" aria-labelledby="q-h">
+    <h2 id="q-h">The question</h2>
+    <p class="rq">How do different AI tutoring modalities (voice, text, video) influence students' collaborative knowledge-building processes and learning outcomes in computer-supported collaborative learning environments?</p>
+    <p class="intro">Most AI tutoring studies focus on individual learning, and the few comparisons usually set AI against a teacher or a textbook, not one form of AI against another. In a group, the form decides how the AI enters the conversation: on everyone's own laptop, through one spokesperson at a shared speaker, or as a camera watching the table.</p>
+
+    <h3 style="margin-top:2.5rem">Two theories, one for each half of the question</h3>
+    <div class="two">
+      <div><b>Knowledge building theory</b><span class="src">Scardamalia &amp; Bereiter</span><p>Learning is the group refining ideas together, not just finishing the task. It happens through three moves: idea generation, critique and synthesis.</p><span class="use">In the study: the three moves become the coding scheme for every turn of talk.</span></div>
+      <div><b>Cognitive-affective theory of learning with media</b><span class="src">Moreno &amp; Mayer, 2007</span><p>Sound, text and images reach us through separate channels, and only a little can be processed at once. So the form of the input changes what the group has room to think about.</p><span class="use">In the study: the reason text, voice and video could lead to different talk.</span></div>
+    </div>
+
+    <h3 style="margin-top:2.5rem">How we'd measure it</h3>
+    <p class="intro">Each session's talk is recorded and transcribed (the text group's chat is logged), split into turns, and coded by two independent coders. Interaction analysis counts who talks to whom, peer to peer or peer to AI. Collaborative process analysis looks at what the talk does: generate ideas, critique them or bring them together. All data is anonymized, with informed consent.</p>
+  </section>
+
+  <section id="expected" aria-labelledby="e-h">
+    <h2 id="e-h">What we expected to see</h2>
+    <p class="intro">Our hypotheses, before any data, for each form of tutor.</p>
+    <div class="exp">
+      <div><b>Text AI</b><span class="k">How the group uses it</span><p>Everyone asks on their own device: frequent, fragmented exchanges with the AI.</p><span class="k">What it may do to the talk</span><p>More critique and synthesis, because there's a lot of information to pull together.</p></div>
+      <div><b>Voice AI</b><span class="k">How the group uses it</span><p>One shared device and a spokesperson: sequential, coordinated, but brief answers.</p><span class="k">What it may do to the talk</span><p>More idea generation and direct critique, since it feels like a conversation; less synthesis.</p></div>
+      <div><b>Video AI</b><span class="k">How the group uses it</span><p>High engagement at first, with a risk of cognitive overload and drifting off topic.</p><span class="k">What it may do to the talk</span><p>More new ideas early on; critique and synthesis less developed.</p></div>
+    </div>
+    <div class="alt"><b>And how we might be wrong</b>
+      <ul>
+        <li>Groups might share one text AI instead of each using their own.</li>
+        <li>Prior knowledge and communication skills might matter more than the form of the tutor.</li>
+        <li>With the same task and script, the three knowledge-building moves might not differ at all.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="poster" aria-labelledby="p-h">
+    <h2 id="p-h">The poster</h2>
+    <p class="intro">I designed the poster for our presentation of the proposal.</p>
+    <figure class="poster"><button class="shotbtn" type="button" aria-label="Enlarge the research poster"><img loading="lazy" decoding="async" src="../images/at-poster.jpg" width="1656" height="1172" alt="Research poster titled The Impact of Different Forms of AI Tutoring on Collaborative Knowledge Building Process, by Junyi Zhu and Eryu Shen, Teachers College, Columbia University, with panels for introduction, significance, theories, methodology, expected results and references"></button>
+      <figcaption>The research poster, by Junyi Zhu and Eryu Shen.</figcaption></figure>
+  </section>
+
+  <section aria-labelledby="r-h">
+    <h2 id="r-h">Reflection</h2>
+    <p class="intro">This project helped me see that the form of an AI tool, text, voice or video, can shape how a group talks to it and to each other. It also gave me hands-on experience applying learning theories to research design. <a href="../mori/">Mori</a>, an AI learning companion for six-year-olds, draws on the same cognitive load research.</p>
+    <div class="next"><a href="../">Back to portfolio</a></div>
+  </section>
+
+  <footer><span>Eryu Shen, learning designer</span><span class="l"><a href="mailto:es4267@tc.columbia.edu">es4267@tc.columbia.edu</a><a href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener">LinkedIn</a></span></footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img alt=""></dialog>
+<script>
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.shotbtn').forEach(b=>b.addEventListener('click',()=>{const im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lb.showModal();}));
+document.getElementById('lbx').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+</script>
+</body>
+</html>
