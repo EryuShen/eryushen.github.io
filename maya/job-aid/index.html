@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before it goes to the client, job aid | Eryu Shen</title>
+<meta name="description" content="A one-page job aid by Eryu Shen: four checks for any client work AI helped make, from the branching scenario Maya's Friday.">
+<meta property="og:title" content="Before it goes to the client: a one-page job aid | Eryu Shen">
+<meta property="og:description" content="Four checks for anything AI helped you make. Most take a few minutes.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://eryushen.github.io/maya/job-aid/">
+<meta property="og:url" content="https://eryushen.github.io/maya/job-aid/">
+<meta property="og:image" content="https://eryushen.github.io/images/maya-job-aid.jpg">
+<meta property="og:image:alt" content="A one-page checklist titled Before it goes to the client, with four numbered checks">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#E9ECF1; --sheet:#FFFFFF; --navy:#13294B; --ink:#1B2433; --ink-2:#465163; --muted:#6B7686; --rule:#D8DDE5; --tint:#F3F5F8;
+  --amber:#F7DA8E; --amber-bg:#FDF4DC; --ok:#2E7D5B;
+  --font:"Source Sans 3","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:3px solid #3D74D6;outline-offset:3px;border-radius:4px}
+h1,h2,p,ul{margin:0}
+
+/* portfolio bar, outside the training material */
+.pf{max-width:8.5in;margin:0 auto;padding:12px 16px 0;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 20px;font-size:14px;color:var(--ink-2)}
+.pf a{color:var(--navy);font-weight:600;text-decoration:none}
+.pf a:hover{text-decoration:underline;text-underline-offset:3px}
+.pf span{color:var(--muted)}
+
+.wrap{max-width:8.5in;margin:0 auto;padding:12px 16px 40px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 12px}
+.btn{font:inherit;font-weight:600;font-size:15px;border-radius:6px;padding:9px 16px;text-decoration:none;cursor:pointer;border:1px solid var(--navy)}
+.btn.solid{background:var(--navy);color:#fff}
+.btn.line{background:var(--sheet);color:var(--navy)}
+
+/* the sheet */
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;box-shadow:0 1px 2px rgba(19,41,75,.06);padding:28px 34px 22px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:3px solid var(--navy)}
+.brand{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2)}
+.brand .mark{width:26px;height:26px;border-radius:4px;background:var(--navy);display:flex;align-items:center;justify-content:center;flex:none}
+.brand b{color:var(--navy);font-weight:700}
+.tag{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);border:1.5px solid var(--navy);border-radius:4px;padding:2px 8px;white-space:nowrap}
+
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,15.5rem);gap:22px;align-items:end;margin:20px 0 18px}
+h1{font-size:36px;line-height:1.05;font-weight:700;letter-spacing:-.015em;color:var(--navy)}
+.lede{font-size:17px;color:var(--ink-2);margin-top:8px}
+.rule{background:var(--amber-bg);border-left:5px solid var(--amber);border-radius:4px;padding:10px 14px;font-size:15px;line-height:1.35}
+.rule b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.check{border:1px solid var(--rule);border-top:4px solid var(--navy);border-radius:4px;padding:12px 16px 14px;break-inside:avoid}
+.check h2{display:flex;align-items:center;gap:10px;font-size:19px;line-height:1.2;color:var(--navy);font-weight:700}
+.n{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;flex:none}
+.ask{font-size:15px;font-weight:600;color:var(--ink);margin:8px 0 6px}
+.check ul{padding-left:1.1em;font-size:14.5px;color:var(--ink-2)}
+.check li{margin:3px 0}
+.check li::marker{color:var(--navy)}
+.check li b{color:var(--ink);font-weight:600}
+
+.when{margin-top:16px}
+.when h2{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--rule)}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--tint)}
+td:first-child{width:38%;font-weight:600;color:var(--ink)}
+td:last-child{color:var(--ink-2)}
+
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+
+@media (max-width:700px){
+  .sheet{padding:20px 18px 18px}
+  .head{grid-template-columns:1fr;gap:14px}
+  h1{font-size:30px}
+  .checks{grid-template-columns:1fr}
+  td:first-child{width:auto}
+  th:first-child,td:first-child{padding-left:0}
+}
+@media print{
+  @page{size:letter;margin:.42in}
+  body{background:#fff;font-size:15px}
+  .pf,.actions{display:none}
+  .wrap{max-width:none;padding:0}
+  .sheet{border:0;box-shadow:none;border-radius:0;padding:0}
+  .head{grid-template-columns:minmax(0,1fr) 15.5rem}
+  .checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<nav class="pf" aria-label="Portfolio"><a href="../../">← Eryu Shen, portfolio</a><span>The job aid that goes with the <a href="../">Maya's Friday</a> scenario. Larkmoor Advisory is fictional.</span></nav>
+
+<div class="wrap">
+  <div class="actions">
+    <a class="btn solid" href="before-it-goes-to-the-client.pdf" download>Download PDF</a>
+    <button class="btn line" type="button" id="print">Print</button>
+    <a class="btn line" href="../">Play the scenario</a>
+  </div>
+
+  <article class="sheet">
+    <header class="top">
+      <div class="brand"><span class="mark" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16"><path d="M4 2v12h9" fill="none" stroke="#fff" stroke-width="2.2"/></svg></span><span><b>Larkmoor Advisory</b> | Using AI in client work</span></div>
+      <span class="tag">Job aid</span>
+    </header>
+
+    <div class="head">
+      <div>
+        <h1>Before it goes to the client</h1>
+        <p class="lede">Four checks for anything AI helped you make. Most take a few minutes.</p>
+      </div>
+      <p class="rule"><b>Rule of thumb</b>If you can't open the source yourself, it doesn't go on the slide.</p>
+    </div>
+
+    <div class="checks">
+      <section class="check">
+        <h2><span class="n">1</span>Should AI do this?</h2>
+        <p class="ask">If this is wrong, who catches it, and when?</p>
+        <ul>
+          <li><b>Let AI draft</b> when the stakes are low and you can check the result: outlines, first passes, reformatting.</li>
+          <li><b>Keep it human</b> when it needs judgment or someone accountable: recommendations, client advice, anything you'll defend in the room.</li>
+          <li>Don't rule AI out by default. An approved tool can save hours on safe tasks.</li>
+        </ul>
+      </section>
+
+      <section class="check">
+        <h2><span class="n">2</span>Protect the client</h2>
+        <p class="ask">Would the client be comfortable seeing where their data went?</p>
+        <ul>
+          <li>Use <b>only firm-approved AI tools</b> for client work. Free public tools are off limits.</li>
+          <li>Share <b>only the data the task needs</b>.</li>
+          <li>Take out <b>names, account numbers</b> and anything else that identifies a person or account.</li>
+          <li>Not sure a tool is approved? Ask before you upload, not after.</li>
+        </ul>
+      </section>
+
+      <section class="check">
+        <h2><span class="n">3</span>Check for the three errors</h2>
+        <p class="ask">What would a careful reader catch?</p>
+        <ul>
+          <li><b>Made-up facts.</b> Open every source. Asking the AI "Are you sure?" isn't checking; it can't check itself.</li>
+          <li><b>Bias.</b> Look for one-sided framing or assumptions about people, markets or options.</li>
+          <li><b>What's missing.</b> Summaries leave things out. Skim the originals for anything skipped.</li>
+        </ul>
+      </section>
+
+      <section class="check">
+        <h2><span class="n">4</span>Own it</h2>
+        <p class="ask">Could you explain every line if the client asked?</p>
+        <ul>
+          <li><b>Rewrite</b> AI output in your own words.</li>
+          <li><b>Cite real sources</b> you've opened yourself, in the footnote.</li>
+          <li><b>Unsure? Ask a colleague</b> before it goes out. Checking the sources first saves their time.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="when">
+      <h2>When this happens, do this</h2>
+      <table>
+        <thead><tr><th scope="col">Situation</th><th scope="col">What to do</th></tr></thead>
+        <tbody>
+          <tr><td>AI gives you a number and names a source</td><td>Find and open that source. If it doesn't exist, use a real one and cite it.</td></tr>
+          <tr><td>You want AI to analyze a client file</td><td>Use the approved tool and remove identifying columns first.</td></tr>
+          <tr><td>AI summarizes several articles for you</td><td>Skim each original for risks or facts the summary skipped.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="foot"><span>From "Before it goes to the client," new analyst training, module 2</span><span>Larkmoor Advisory is fictional. Designed by Eryu Shen.</span></footer>
+  </article>
+</div>
+
+<script>
+document.getElementById('print').addEventListener('click',()=>window.print());
+</script>
+</body>
+</html>
