@@ -105,6 +105,10 @@ figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-to
 .feats li{border-top:2px solid var(--ink);padding-top:.6rem}
 .feats b{display:block;font-size:.98rem;margin-bottom:.2rem}
 .feats span{font-size:.9rem;color:var(--muted);line-height:1.45}
+.intro-vid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:2rem;align-items:center;margin:2.5rem 0 0;max-width:1000px}
+.intro-vid p{margin:0 0 .8rem}
+.intro-vid .small{font-family:var(--sans);font-size:.9rem;color:var(--muted)}
+.intro-vid video{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--rule);border-radius:8px;background:#000}
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1.25rem;margin-top:2rem}
 .stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.5rem 0 0;padding:0;list-style:none;font-family:var(--sans);font-size:.85rem}
 .stack li{border:1px solid var(--rule);border-radius:999px;padding:.25rem .7rem;background:var(--sheet)}
@@ -130,7 +134,7 @@ dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;backgr
 dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
 
 @media (max-width:900px){
-  .hero,.aid{grid-template-columns:1fr}
+  .hero,.aid,.intro-vid{grid-template-columns:1fr}
   .four{grid-template-columns:1fr 1fr}
   .lessons,.feats,.why3,.shots{grid-template-columns:1fr}
   .aid figure{max-width:360px}
@@ -152,8 +156,8 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <dl class="glance">
         <dt>My role</dt><dd>Sole designer and developer: instructional design, Rise development, scenario design and build, job aid</dd>
         <dt>Learners</dt><dd>First-year analysts at a consulting firm</dd>
-        <dt>Format</dt><dd>3 lessons, about 15 minutes, with an 8-minute branching scenario and a one-page job aid</dd>
-        <dt>Tools</dt><dd>Articulate Rise 360, HTML, CSS, JavaScript</dd>
+        <dt>Format</dt><dd>3 lessons, about 15 minutes: a 70-second intro video, an 8-minute branching scenario and a one-page job aid</dd>
+        <dt>Tools</dt><dd>Articulate Rise 360, HTML, CSS, JavaScript, Synthesia</dd>
         <dt>Setting</dt><dd>Larkmoor Advisory, a fictional firm created for the course</dd>
       </dl>
       <div class="try">
@@ -189,6 +193,20 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <li><h3>Check it before it goes out</h3><p class="role">Consolidate and take away</p>
         <ul><li>The four checks</li><li>Protecting client data: five rules</li><li>Flashcards: the three errors, with client examples</li><li>Sort: likely AI error or acceptable output</li><li>Two knowledge checks</li><li class="star">One-page job aid to download</li></ul></li>
     </ol>
+    <div class="intro-vid">
+      <div>
+        <h3 class="sub-h" style="margin-top:0">The intro video</h3>
+        <p>Lesson 1 opens with Priya, the senior associate learners meet again in the scenario. In 70 seconds she names the stakes, says the course isn't anti-AI, previews the risks, and hands learners into Maya's Friday.</p>
+        <p class="small">I wrote the script and designed the six scene layouts, keeping the presenter clear of the content so each scene reads at a glance. Built with Synthesia's AI presenter; captions on.</p>
+      </div>
+      <figure>
+        <video controls preload="none" playsinline poster="media/intro-poster.jpg" aria-label="Intro video: Priya introduces the course">
+          <source src="media/intro-video.mp4" type="video/mp4">
+          <track kind="captions" src="media/intro-video.en.vtt" srclang="en" label="English" default>
+        </video>
+        <figcaption>70 seconds. Captions are on by default.</figcaption>
+      </figure>
+    </div>
     <p class="flow" aria-label="Learning sequence"><span>Understand the risk</span>→<span>Make the calls under pressure</span>→<span>Reflect on what worked</span>→<span>Practice spotting errors</span>→<span>Take the checklist</span></p>
   </section>
 
@@ -264,7 +282,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 
   <section id="next-steps" aria-labelledby="next-h">
     <h2 id="next-h">Next steps and how I'd measure it</h2>
-    <p class="intro">In production: a 70-second intro video, made in Synthesia, to open lesson 1. As a concept project, the course hasn't been run with real learners yet. This is how I'd evaluate it.</p>
+    <p class="intro">As a concept project, the course hasn't been run with real learners yet. This is how I'd evaluate it.</p>
     <div class="why3">
       <div><b>In the scenario</b><p>Which option learners choose on their first attempt, and whether replays move them toward the strongest one.</p></div>
       <div><b>In the knowledge checks</b><p>Which wrong answers are chosen most, to see which shortcut is most tempting and where the course needs to push harder.</p></div>
