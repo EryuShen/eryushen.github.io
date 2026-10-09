@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maya's Friday | Northbridge Partners training</title>
+<title>Maya's Friday | Larkmoor Advisory training</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -244,7 +244,7 @@ const D = [
     slide: "Decision 2 of 3: the client's data",
     title: "How does Maya analyze the client's sales file?",
     think: "If AI could find the patterns in this, I'd save an hour.",
-    context: () => `<div class="win"><div class="wt"><span>Greenleaf_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb">
+    context: () => `<div class="win"><div class="wt"><span>Fernway_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb">
       <div class="sheet"><div class="h">Customer</div><div class="h">Account no.</div><div class="h">Channel</div><div class="h">Q3 sales</div>
       ${ROWS.map(r => `<div>${r[0]}</div><div>${r[1]}</div><div>${r[2]}</div><div>${r[3]}</div>`).join("")}</div>
       <div class="src">Shared by the client under NDA. 14 tabs like this one.</div></div></div>`,
@@ -268,7 +268,7 @@ const D = [
     title: "Is this risk slide ready to send?",
     think: "Five articles summarized in ten seconds. It reads well.",
     context: () => `<div class="win"><div class="wt"><span>Firm AI assistant: summary of 5 articles</span><span>5:02 p.m.</span></div><div class="wb">
-      <div class="a"><b>Top 3 risks for Greenleaf</b><ol class="r"><li>Rising ingredient costs</li><li>Competition from established brands</li><li>Shifting consumer tastes</li></ol></div></div></div>`,
+      <div class="a"><b>Top 3 risks for Fernway</b><ol class="r"><li>Rising ingredient costs</li><li>Competition from established brands</li><li>Shifting consumer tastes</li></ol></div></div></div>`,
     options: [
       { t:"Drop the three risks into the slide as they are", act:"paste", cap:"Maya drops the summary into the slide", cost:2, score:0, who:"laura", when:"Monday, 10:05 a.m., in the client meeting",
         line:"How does the new labeling rule change this?",
@@ -345,7 +345,7 @@ function clockHTML(){
   return `<div class="clock ${cls}" id="clock" aria-label="Time: ${tod(now)}. ${left < 0 ? dur(left) + " late" : dur(left) + " left"}"><div class="now">${tod(now)}</div><div class="side"><div class="left">${txt}</div><div class="track"><div class="fill" style="width:${pct}%"></div></div></div>${S.drop ? `<span class="minus" aria-hidden="true">−${dur(S.drop)}</span>` : ""}</div>`;
 }
 function frame(inner, footL, footR, showClock){
-  return `<header class="top"><div class="brand"><span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 14V2l12 12V2" fill="none" stroke="#fff" stroke-width="2.2"/></svg></span><span><b>Northbridge Partners</b> | Using AI in client work</span></div>${showClock ? clockHTML() : ""}</header>
+  return `<header class="top"><div class="brand"><span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2v12h9" fill="none" stroke="#fff" stroke-width="2.2"/></svg></span><span><b>Larkmoor Advisory</b> | Using AI in client work</span></div>${showClock ? clockHTML() : ""}</header>
     <div class="body">${inner}</div><footer class="foot"><span>${footL}</span><span>${footR}</span></footer>`;
 }
 const tier = s => s === 2 ? "good" : s === 1 ? "ok" : "bad";
@@ -361,17 +361,17 @@ function render(){
         <p class="lead">A Friday deadline, an AI assistant, and three calls to make. About 8 minutes.</p>
         <button class="btn" data-act="start" style="margin-top:10px">Start</button></div>
       <div class="col">${say("priya","Last quarter, two decks went out with numbers AI made up. One client caught it in the room. This module is about making sure that doesn't happen to you.","coach")}</div>
-    </div>`, "Northbridge Partners, internal training", "1", false);
+    </div>`, "Larkmoor Advisory, internal training", "1", false);
   }
   else if (S.screen === "setup") {
     h = frame(`<div class="two">
       <div class="col"><span class="kicker">Friday, 4:12 p.m.</span><h2 tabindex="-1">You're Maya, three months into the job</h2>
-        <p class="lead">Daniel needs a market overview for Monday's meeting with Greenleaf Foods. You've got the firm's AI assistant, and until 6:00.</p>
+        <p class="lead">Daniel needs a market overview for Monday's meeting with Fernway Foods. You've got the firm's AI assistant, and until 6:00.</p>
         <p class="lead">Every choice takes time. Watch the clock.</p>
         <button class="btn" data-act="go" style="margin-top:6px">Open the AI assistant</button></div>
-      <div class="col">${say("daniel","Hi Maya, can you pull together the plant-based snacks overview for Greenleaf? Market size, what their sales file shows, and top risks. Need it by 6 so I can review over the weekend. Thanks!","", "in Teams, 4:12 p.m.")}
+      <div class="col">${say("daniel","Hi Maya, can you pull together the plant-based snacks overview for Fernway? Market size, what their sales file shows, and top risks. Need it by 6 so I can review over the weekend. Thanks!","", "in Teams, 4:12 p.m.")}
         ${say("maya","Under two hours, three slides. AI should make this easy.","think","","happy")}</div>
-    </div>`, "Northbridge Partners, internal training", "2", true);
+    </div>`, "Larkmoor Advisory, internal training", "2", true);
   }
   else if (S.screen === "decide") {
     const d = D[S.step];
@@ -401,7 +401,7 @@ function render(){
     } else if (o.task === "redact") {
       const ok = SENSITIVE.every(i => S.red.includes(i)) && S.red.every(i => SENSITIVE.includes(i));
       inner = `<div class="task"><h2 tabindex="-1">Take out what the AI doesn't need</h2><p class="lead">Click a column name to remove that column before the file goes into the firm's AI tool.</p>
-        <div class="win"><div class="wt"><span>Greenleaf_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb" style="overflow-x:auto">
+        <div class="win"><div class="wt"><span>Fernway_Q3_sales_by_channel.xlsx</span><span class="conf">Confidential</span></div><div class="wb" style="overflow-x:auto">
         <table class="redact"><thead><tr>${COLS.map((c,i) => `<th scope="col"><button data-col="${i}" aria-pressed="${S.red.includes(i)}">${c}<span aria-hidden="true">${S.red.includes(i) ? "Removed" : ""}</span></button></th>`).join("")}</tr></thead>
         <tbody>${ROWS.map(r => `<tr>${r.map((v,i) => S.red.includes(i) ? `<td class="x"><span>${v}</span><span class="sr">removed</span></td>` : `<td>${v}</td>`).join("")}</tr>`).join("")}</tbody></table>
         <p class="status ${S.tone}" aria-live="polite">${S.msg}</p>
@@ -454,7 +454,7 @@ function render(){
         <div class="check"><b>4. Own it</b><span>Rewrite in your words, cite real sources, and ask before it goes out if you're unsure.</span></div>
       </div>
       <div class="row"><button class="btn line" data-act="again">Replay the scenario</button><span class="kicker">The printable checklist is in the next lesson.</span></div>
-    </div>`, "Northbridge Partners, internal training", "10", false);
+    </div>`, "Larkmoor Advisory, internal training", "10", false);
   }
   deck.innerHTML = h;
   const head = deck.querySelector("h1, h2"); if (head) head.focus({preventScroll:true});
