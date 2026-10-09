@@ -174,14 +174,18 @@ a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 .facts li{border-top:1px solid var(--rule);padding:.7rem 0}
 .facts span{display:block;color:var(--muted);font-size:.8rem}
 
-.path{list-style:none;padding:0;margin:1.75rem 0;display:grid;grid-template-columns:repeat(5,1fr);gap:0;font-family:var(--sans);position:relative}
-.path li{position:relative;padding:1.4rem .9rem 0 0;border-top:2px solid var(--rule)}
-.path li::before{content:"";position:absolute;top:-.45rem;left:0;width:.8rem;height:.8rem;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
-.path li:last-child::before{background:var(--mark);border-color:var(--ink)}
-.path .where{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.3rem}
-.path b{display:block;font-family:var(--serif);font-size:1.02rem;font-weight:600;line-height:1.3;margin-bottom:.35rem}
-.path .what{display:block;font-size:.85rem;line-height:1.45;color:var(--ink)}
-@media (max-width:900px){.path{grid-template-columns:1fr}.path li{border-top:0;border-left:2px solid var(--rule);padding:0 0 1.25rem 1.25rem}.path li::before{top:.1rem;left:-.45rem}}
+.path{list-style:none;padding:0;margin:2rem 0;font-family:var(--sans);max-width:44rem}
+.path li{display:grid;grid-template-columns:6.5rem minmax(0,1fr);column-gap:1.25rem}
+.path .when{font-size:.82rem;color:var(--muted);text-align:right;padding-top:.05rem;white-space:nowrap}
+.path .body{position:relative;padding:0 0 1.6rem 1.6rem;border-left:2px solid var(--rule)}
+.path li:last-child .body{border-left-color:transparent;padding-bottom:0}
+.path .body::before{content:"";position:absolute;left:-.5rem;top:.2rem;width:.8rem;height:.8rem;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
+.path .now .body::before{background:var(--mark)}
+.path .now .when{color:var(--ink);font-weight:600}
+.path .where{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.15rem}
+.path b{display:block;font-family:var(--serif);font-size:1.12rem;font-weight:600;line-height:1.3;margin-bottom:.3rem}
+.path .what{display:block;font-size:.92rem;line-height:1.5;color:var(--ink);max-width:36em}
+@media (max-width:600px){.path{padding-left:.45rem}.path li{grid-template-columns:1fr}.path .when{text-align:left;padding:0 0 .3rem 1.6rem;border-left:2px solid var(--rule)}.path li:last-child .when{border-left-color:var(--rule)}}
 /* contact */
 .contact h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:500}
 .close-note{font-size:1.15rem;max-width:34em;margin:1rem 0 0}
@@ -293,19 +297,18 @@ footer a{color:var(--ink);text-underline-offset:3px}
   <section id="about" aria-labelledby="about-h" class="about">
     <div class="text">
       <h2 id="about-h">About</h2>
-      <p>I started out in second language teaching, which is where I first got curious about how people learn. That curiosity has taken me across four countries and into learning design.</p>
+      <p>I started out in second language teaching, which is where I first got curious about how people learn. That curiosity has taken me across four countries and into learning design, for learners from kindergarten to adult.</p>
       <ol class="path">
-        <li><span class="where">China</span><b>Second language teaching</b><span class="what">BA, Teaching Chinese to Speakers of Other Languages.</span></li>
-        <li><span class="where">Dresden</span><b>A semester of business</b><span class="what">Exchange semester in business administration, HTW Dresden, fall 2023. Handy now that I design courses for a business school.</span></li>
-        <li><span class="where">London</span><b>How people learn to read and write</b><span class="what">MA, Education (Literacy), UCL. Literacy development and the pedagogy behind it.</span></li>
-        <li><span class="where">New York</span><b>Designing for learning</b><span class="what">MA, Instructional Technology and Media, Columbia. Adult learning theory, design technologies, and a K–2 learning game at the Game Research Lab.</span></li>
-        <li><span class="where">In practice</span><b>Across contexts</b><span class="what">Universities, EdTech platforms, a city agency and workplace training, with learners from kindergarten to adult, across cultures and subject areas.</span></li>
+        <li><span class="when">BA, 2023</span><div class="body"><span class="where">China</span><b>Second language teaching</b><span class="what">BA, Teaching Chinese to Speakers of Other Languages, China Jiliang University.</span></div></li>
+        <li><span class="when">Fall 2022</span><div class="body"><span class="where">Dresden</span><b>A semester of business</b><span class="what">Exchange semester in business administration at HTW Dresden, during my BA. Handy now that I design courses for a business school.</span></div></li>
+        <li><span class="when">2022–2023</span><div class="body"><span class="where">Wisdom Tree</span><b>Courses at national scale</b><span class="what">Instructional designer for a credit-course platform used by 3,000+ Chinese universities. I built 60+ courses end to end in Articulate Storyline and Captivate, from storyboard to SCORM package.</span></div></li>
+        <li><span class="when">MA, 2024</span><div class="body"><span class="where">London</span><b>How people learn to read and write</b><span class="what">MA, Education (Literacy), UCL. Literacy development and the pedagogy behind it.</span></div></li>
+        <li><span class="when">MA, 2026</span><div class="body"><span class="where">New York</span><b>Designing for learning</b><span class="what">MA, Instructional Technology and Media, Columbia. Alongside it, the work on this site: a citywide curriculum at NYC DCWP, an internship program at PROJXON and a K–2 game at the Game Research Lab.</span></div></li>
+        <li class="now"><span class="when">Now</span><div class="body"><span class="where">Gies College of Business, University of Illinois Urbana-Champaign</span><b>Online business courses</b><span class="what">Associate Learning Designer. Nine courses across four program lines, including the iMBA and iMSM, built with faculty on an eight-week cycle.</span></div></li>
       </ol>
-      <p>Each step has kept me moving between theory and practice, with each one sharpening the other.</p>
       <p>When I'm not designing, you'll probably find me wandering around a museum, people-watching in a cozy café or taking a long walk in Central Park.</p>
     </div>
     <ul class="facts">
-      <li><span>Now</span>Associate Learning Designer, Gies College of Business, University of Illinois Urbana-Champaign</li>
       <li><span>Full experience and education</span><a class="resume-btn big-btn" href="EryuShen_Resume.pdf" download>Download resume (PDF)</a></li>
     </ul>
   </section>
