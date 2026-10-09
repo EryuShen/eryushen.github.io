@@ -89,7 +89,10 @@ p{margin:0 0 1rem}
 .hero .margin{align-self:end;opacity:0;transform:translateY(6px);transition:opacity .5s ease 1.4s,transform .5s ease 1.4s}
 .loaded .hero .margin{opacity:1;transform:none}
 
-.glance{margin:3rem 0 0;display:grid;grid-template-columns:max-content 1fr;gap:.55rem 1.75rem;font-family:var(--sans);font-size:.95rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+.status{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.85rem;font-weight:600;line-height:1.35;color:var(--cover);background:color-mix(in srgb,var(--cover) 11%,transparent);border-radius:999px;padding:.3rem .8rem .3rem .65rem}
+.status::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--cover);box-shadow:0 0 0 3px color-mix(in srgb,var(--cover) 25%,transparent)}
+.hero .status{margin:2rem 0 0}
+.glance{margin:2rem 0 0;display:grid;grid-template-columns:max-content 1fr;gap:.55rem 1.75rem;font-family:var(--sans);font-size:.95rem;border-top:1px solid var(--rule);padding-top:1.5rem}
 .glance dt{color:var(--muted)}
 .glance dd{margin:0}
 .figures{display:flex;flex-wrap:wrap;gap:1.25rem 2rem;margin-top:2.25rem}
@@ -366,13 +369,14 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 
     <div class="figures">
       <div><b>1,000+</b>review comments across three rounds of revision</div>
-      <div><b>15</b>school districts in the pilot</div>
+      <div><b>15</b>school districts, now live and rolling out</div>
       <div><b>56</b>state objectives mapped, line by line</div>
       <div><b>49→28</b>survey items, rebuilt to measure learning</div>
     </div>
 
+    <p class="status">Where it is now: live in NYC public schools, with library partnerships underway</p>
     <dl class="glance">
-      <dt>Program</dt><dd>Brings financial education into NYC public schools: Financial Educators in classrooms plus in-school banking, piloted in 15 school districts</dd>
+      <dt>Program</dt><dd>Brings financial education into NYC public schools: Financial Educators in classrooms plus in-school banking, rolling out across 15 school districts</dd>
       <dt>Worked with</dt><dd>Three curriculum vendors, training partners, Financial Educators, the DCWP program team</dd>
       <dt>I built</dt><dd>Review rubric, line-level curriculum feedback, train-the-trainer design, educator feedback tool, NYSED crosswalk, survey redesign</dd>
       <dt>Frameworks</dt><dd>Jump$tart Standards, NYS Next Gen Standards, CFPB Building Blocks and youth pedagogy, UDL, trauma-informed design</dd>
