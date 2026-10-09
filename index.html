@@ -136,6 +136,17 @@ a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 .feat .status{margin:0 0 1rem}
 .feat-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
 .feat-pair .cover{aspect-ratio:16/9;min-height:0}
+/* covers echo each case study's opening band */
+.feat .cover.c-mori{background:radial-gradient(70% 70% at 50% 100%,rgba(242,193,78,.25),rgba(242,193,78,0) 70%),#2C3B1C;padding:1.4rem 1.6rem 0;overflow:hidden}
+.feat .cover.c-mori img{height:auto;object-fit:initial;border-radius:8px 8px 0 0;box-shadow:0 0 0 1px rgba(242,193,78,.3),0 16px 40px rgba(12,20,6,.4)}
+.feat .cover.c-rai{background:#13294B;display:flex;align-items:flex-end;justify-content:flex-end;padding:1.4rem 0 0 1.6rem;overflow:hidden}
+.feat .cover.c-rai img{width:104%;max-width:none;height:auto;object-fit:initial;flex:none}
+.feat .cover.c-wb{background:#F2B230;position:relative;display:grid;place-items:center;padding:2.25rem 2.5rem 2.5rem 3rem;overflow:hidden}
+.feat .cover.c-wb .pr{background:#fff;padding:8px;height:auto;object-fit:initial;box-shadow:0 2px 3px rgba(60,40,0,.18),0 14px 30px rgba(60,40,0,.26);transform:rotate(-2deg)}
+.feat .cover.c-wb .bot{position:absolute;left:1.4rem;top:1.25rem;width:24%;padding:6px;transform:rotate(-6deg)}
+.r-ctx::before{content:"";display:inline-block;width:.65rem;height:.65rem;border-radius:2px;margin-right:.5rem;vertical-align:-.05rem;background:var(--sw,transparent);box-shadow:var(--sw2,none)}
+.sw-pj{--sw:#FFD400;--sw2:inset 0 0 0 2px #2E2E2E}
+.sw-ld{--sw:#175F50}
 .tag-soon{display:inline-block;font-family:var(--sans);font-size:.8rem;border:1px dashed var(--muted);border-radius:999px;padding:.25rem .7rem;color:var(--muted)}
 .more-h{font-size:1.3rem;font-weight:600;margin:3.5rem 0 1rem}
 .rows{list-style:none;padding:0;margin:0;border-top:1px solid var(--rule)}
@@ -236,7 +247,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
 
     <div class="feat-pair">
       <a class="feat" href="mori/">
-        <div class="cover"><img loading="lazy" decoding="async" src="images/mori-home-screen.jpg" alt="Mori home screen: a glowing knowledge tree with topic leaves in a forest"></div>
+        <div class="cover c-mori"><img loading="lazy" decoding="async" src="images/mori-home-screen.jpg" alt="Mori home screen: a glowing knowledge tree with topic leaves in a forest"></div>
         <div class="body">
           <p class="kind">AI and learning products</p>
           <h3>Mori</h3>
@@ -246,7 +257,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
         </div>
       </a>
       <div class="feat">
-        <a class="cover cover-link" href="responsible-ai/" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/rai-cover-mockup.jpg" alt=""></a>
+        <a class="cover cover-link c-rai" href="responsible-ai/" tabindex="-1" aria-hidden="true"><img loading="lazy" decoding="async" src="images/rai-devices.webp" width="1458" height="827" alt=""></a>
         <div class="body">
           <p class="kind">eLearning</p>
           <h3>Before It Goes to the Client</h3>
@@ -258,7 +269,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
     </div>
 
     <a class="feat big rev" href="wellbotics/">
-      <div class="cover"><img loading="lazy" decoding="async" src="images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the sadness tile"></div>
+      <div class="cover c-wb"><img class="pr" loading="lazy" decoding="async" src="images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the sadness tile"><img class="pr bot" loading="lazy" decoding="async" src="images/wb-beebot.jpg" alt=""></div>
       <div class="body">
         <p class="kind">Game-based learning</p>
         <h3>Wellbotics</h3>
@@ -272,8 +283,8 @@ footer a{color:var(--ink);text-underline-offset:3px}
     <h3 class="more-h">More projects</h3>
     
     <ul class="rows" id="grid">
-      <li data-s="training pm"><a class="row" href="internship/"><span class="r-ctx">Curriculum design, Canvas</span><span class="r-main"><b>Momentum Internship Program, PROJXON</b><span>A 24-week Canvas curriculum that takes interns from onboarding to client work through milestones and weekly coaching. Now the standard for every new cohort.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
-      <li data-s="training theory"><a class="row" href="leadership-dialogue/"><span class="r-ctx">Leadership training</span><span class="r-main"><b>Constructive Dialogue for Leadership Transition</b><span>The S.T.A.R. framework and a 60-minute role-play session I designed to help a family business hold its succession conversations, within a four-module team program.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
+      <li data-s="training pm"><a class="row sw-pj" href="internship/"><span class="r-ctx">Curriculum design, Canvas</span><span class="r-main"><b>Momentum Internship Program, PROJXON</b><span>A 24-week Canvas curriculum that takes interns from onboarding to client work through milestones and weekly coaching. Now the standard for every new cohort.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
+      <li data-s="training theory"><a class="row sw-ld" href="leadership-dialogue/"><span class="r-ctx">Leadership training</span><span class="r-main"><b>Constructive Dialogue for Leadership Transition</b><span>The S.T.A.R. framework and a 60-minute role-play session I designed to help a family business hold its succession conversations, within a four-module team program.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
       <li data-s="research tech"><a class="row" href="https://glittery-marmoset-772.notion.site/240b7f06287680b9ac22dbb952e97ae8" target="_blank" rel="noopener"><span class="r-ctx">Research study</span><span class="r-main"><b>AI Tutoring Formats: Text, Voice and Video</b><span>How AI tutoring modalities affect collaborative knowledge building in computer-supported collaborative learning.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
     </ul>
   </section>
