@@ -16,6 +16,7 @@
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<script>try{if(window.self!==window.top)document.documentElement.classList.add("framed")}catch(e){document.documentElement.classList.add("framed")}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -42,6 +43,8 @@ p{margin:0}
 .pf a{color:var(--navy);font-weight:600;text-decoration:none}
 .pf a:hover{text-decoration:underline;text-underline-offset:3px}
 .pf span{color:var(--muted)}
+.pf span a{font-weight:600}
+.framed .pf{display:none}
 
 /* the deck frame */
 .outer{max-width:1180px;margin:0 auto;padding:clamp(10px,2.5vw,28px)}
@@ -191,7 +194,7 @@ table.db td{border-bottom:1px solid var(--rule);padding:10px 8px;vertical-align:
 </style>
 </head>
 <body>
-<nav class="pf" aria-label="Portfolio"><a href="../">← Eryu Shen, portfolio</a><span>A branching scenario I designed and built. Larkmoor Advisory and its people are fictional.</span></nav>
+<nav class="pf" aria-label="Portfolio"><a href="../">← Eryu Shen, portfolio</a><span>A branching scenario I designed and built for the <a href="../responsible-ai/">Before It Goes to the Client</a> course. Larkmoor Advisory and its people are fictional.</span></nav>
 <div class="outer"><div class="deck" id="deck"></div></div>
 <div class="sr" id="announce" aria-live="polite"></div>
 
