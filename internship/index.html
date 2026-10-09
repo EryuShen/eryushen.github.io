@@ -100,6 +100,18 @@ figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-to
 .prog .lab span{text-align:right}
 .prog p{font-family:var(--sans);font-size:.92rem;color:var(--muted);margin:.6rem 0 0}
 
+/* before / after */
+.ba{margin:1.75rem 0 0;border-top:1px solid var(--rule);font-family:var(--sans)}
+.ba-head,.ba-row{display:grid;grid-template-columns:10rem minmax(0,1fr) minmax(0,1.15fr);gap:1.25rem;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+.ba-head{font-size:.78rem;font-weight:600;color:var(--muted);padding:.6rem 0}
+.ba-head .af{color:var(--cover)}
+.ba-row b{font-size:.92rem}
+.ba-row .bf{font-size:.92rem;color:var(--muted);line-height:1.45}
+.ba-row .af{font-size:.92rem;line-height:1.45;padding-left:.75rem;border-left:3px solid var(--cover)}
+.ba-row i{display:none;font-style:normal;font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:.1rem}
+.ba-row .af i{color:var(--cover)}
+.oldfig{max-width:620px;margin-top:2rem}
+
 /* decisions */
 .decs{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 2.5rem;font-family:var(--sans)}
 .decs li{border-top:2px solid var(--ink);padding-top:.7rem}
@@ -140,12 +152,15 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   .ramp{display:none}
   .glance{grid-template-columns:1fr;gap:.1rem}
   .glance dd{margin-bottom:.6rem}
+  .ba-head{display:none}
+  .ba-row{grid-template-columns:1fr;gap:.45rem}
+  .ba-row i{display:block}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
 </head>
 <body>
-<header class="top"><nav aria-label="Page"><a href="../">← Eryu Shen</a><a href="#phases">Phases</a><a href="#weekly">Weekly design</a><a href="#outcome">Outcome</a></nav></header>
+<header class="top"><nav aria-label="Page"><a href="../">← Eryu Shen</a><a href="#before-after">Before and after</a><a href="#phases">Phases</a><a href="#weekly">Weekly design</a><a href="#outcome">Outcome</a></nav></header>
 
 <main class="wrap">
   <div class="hero">
@@ -173,7 +188,21 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <div><b>8+ / 5+</b>reflection check-ins / coaching sessions</div>
   </div>
 
-  <section id="phases" aria-labelledby="ph-h" style="margin-top:3.5rem">
+  <section id="before-after" aria-labelledby="ba-h" style="margin-top:3.5rem">
+    <h2 id="ba-h">Before and after</h2>
+    <p class="intro">The previous model ran 12 weeks: three similar projects, each with a kickoff and a showcase, and career preparation squeezed into week 11. The redesign keeps what worked, projects and showcases, and adds the structure in between.</p>
+    <div class="ba">
+      <div class="ba-head" aria-hidden="true"><span></span><span>Before: 12 weeks</span><span class="af">After: 24 weeks</span></div>
+      <div class="ba-row"><b>Projects</b><span class="bf"><i>Before</i>Three back-to-back projects of similar scope</span><span class="af"><i>After</i>Five projects that grow from guided team work to individual and client work</span></div>
+      <div class="ba-row"><b>Tracking progress</b><span class="bf"><i>Before</i>A kickoff and a showcase for each project</span><span class="af"><i>After</i>A milestone every week: 25%, 50%, 75%, delivery</span></div>
+      <div class="ba-row"><b>Support</b><span class="bf"><i>Before</i>Two check-ins and two performance reviews, no coaching sessions</span><span class="af"><i>After</i>A human touchpoint every week: 8+ check-ins, 5+ coaching sessions, regular reviews</span></div>
+      <div class="ba-row"><b>Career readiness</b><span class="bf"><i>Before</i>One week for a resume review and mock interview</span><span class="af"><i>After</i>A portfolio project, real client work and a full offboarding phase</span></div>
+    </div>
+    <figure class="oldfig"><button class="shotbtn" type="button" aria-label="Enlarge the previous 12-week structure"><img loading="lazy" decoding="async" src="../images/pj-old-12-week.jpg" alt="The previous 12-week weekly breakdown table: onboarding, three projects with kickoff, check-in and showcase weeks, then career development and offboarding"></button>
+      <figcaption>The previous 12-week structure.</figcaption></figure>
+  </section>
+
+  <section id="phases" aria-labelledby="ph-h">
     <h2 id="ph-h">Six phases, each with more ownership</h2>
     <p class="intro">Interns move from guided warm-ups to team projects, then their own portfolio project, then real client work. Each phase hands over a little more responsibility than the last.</p>
     <ol class="phases">
@@ -230,7 +259,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <div class="out">
       <div><b>Two cohorts</b><span>Implemented for the 2025 Q2 and Q3 intern cohorts.</span></div>
       <div><b>The new standard</b><span>Adopted as the onboarding structure for every future cohort.</span></div>
-      <div><b>100 learners</b><span>Reached through virtual training I delivered.</span></div>
+      <div><b>About 100 learners</b><span>Reached through virtual training I delivered.</span></div>
     </div>
     <p class="intro" style="margin-top:1.5rem">With clear weekly milestones, reflection points and coaching check-ins, onboarding became clearer, interns stayed more engaged, and projects lined up better across departments.</p>
     <p class="quote">This project changed how I think about learning design: not only creating content, but <em>designing momentum, motivation and meaning</em>.</p>
