@@ -1,28 +1,287 @@
-<!doctype html>
-<!-- 
-course package version: 89lxm2W6
-rise_frontend sha: 1e1f564701c86168d620da811b47acd78c3c75fa
-ai_scenario sha: b95772e32f5d44edeac559c74b8de79bcdd27899
-learn_distribution_frontend sha: 7decf397015881642bb800cb47ce2b631f9b0bfc
-mondrian sha: ecc2fcd0b11757c28e49334e860f73b004ea9806
-sandbox sha: 42753f3391b109fa3788c525c22880445ab48325
- -->
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Before It Goes to the Client</title>
-    
-    <script type="application/json" id="__CONFIG__">
-      {"remoteManifest":{"ai_scenario":{".js":["ai-scenario/entry.js"]},"learn_distribution_frontend":{".js":["learn_dist/entry.js"]},"mondrian":{".js":["mondrian/entry.js"]}},"assetTargetPrefixes":{"media":"assets","font":"lib/fonts"},"loadOnlyInLms":false,"surface":"web-export"}
-    </script>
-    
-    <script src="lib/dist/7137cfb8.js"></script>
-  </head>
-  <body>
-    <div id="app"></div>
-    
-      <script src="lib/rise/49ef11e4.js"></script>
-    
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before It Goes to the Client, a responsible AI course | Eryu Shen</title>
+<meta name="description" content="Case study by Eryu Shen: a 15-minute Articulate Rise course that teaches new analysts to use AI and check it before client work goes out, built around a custom branching scenario.">
+<meta property="og:title" content="Before It Goes to the Client | Eryu Shen">
+<meta property="og:description" content="A Rise course, a custom branching scenario and a one-page job aid that teach new analysts to check AI before it reaches a client.">
+<link rel="canonical" href="https://eryushen.github.io/responsible-ai/">
+<meta property="og:url" content="https://eryushen.github.io/responsible-ai/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://eryushen.github.io/images/maya-decision.jpg">
+<meta property="og:image:alt" content="Scenario screen: an AI assistant cites a market-size figure and the learner decides what to do with it">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#F6F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111723" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,650;1,7..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --sheet:#FFFFFF; --ink:#17233B; --muted:#5A6476; --rule:#D9DCE3;
+  --mark:#F3D34A; --mark-soft:rgba(243,211,74,.38); --cover:#2F7A68; --gap:#A23B4D;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80}}
+:root[data-theme="dark"]{--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cover);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top nav{max-width:1100px;margin:0 auto;padding:.7rem 1.25rem;display:flex;gap:1.5rem;font-family:var(--sans);font-size:.9rem;overflow-x:auto}
+.top nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+.top nav a:first-child{margin-right:auto;color:var(--ink);font-weight:600}
+section{padding:4.5rem 0;border-top:1px solid var(--rule)}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.02;font-weight:500;letter-spacing:-.03em;margin:0}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-spacing:-.01em;margin:0 0 .8rem}
+h3{font-size:1.15rem;margin:0 0 .5rem}
+p{margin:0 0 1rem}
+.intro{max-width:40em}
+.sub-h{font-size:1.15rem;margin:2.5rem 0 .4rem}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
+.org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
+.org b{font-weight:600;color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:.1rem .55rem;margin-right:.4rem;background:var(--sheet)}
+.sub{font-size:1.3rem;line-height:1.35;font-style:italic;margin:1rem 0 1.5rem;max-width:24em}
+.lede{font-size:1.1rem;max-width:32em}
+.glance{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1.5rem;font-family:var(--sans);font-size:.92rem;margin:1.75rem 0 0;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.glance dt{color:var(--muted)} .glance dd{margin:0}
+.try{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;font-family:var(--sans);font-size:.92rem}
+.try a{border:1px solid var(--ink);border-radius:999px;padding:.55rem 1.05rem;text-decoration:none}
+.try a.primary{background:var(--ink);color:var(--paper)}
+figure{margin:0}
+.shotbtn{display:block;width:100%;padding:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#fff;cursor:zoom-in;position:relative}
+.shotbtn img{width:100%;height:auto}
+.shotbtn::after{content:"⤢ Enlarge";position:absolute;right:.6rem;bottom:.6rem;font-family:var(--sans);font-size:.75rem;font-weight:600;background:#17233B;color:#fff;border-radius:999px;padding:.3rem .65rem;opacity:.88}
+figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-top:.55rem;line-height:1.45}
+
+/* cards */
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem}
+.four>div{background:var(--sheet);border:1px solid var(--rule);border-top:3px solid var(--gap);border-radius:6px;padding:1.05rem 1.15rem}
+.four b{display:block;font-family:var(--sans);font-size:1rem;margin-bottom:.35rem}
+.four p{margin:0;font-size:.95rem;line-height:1.5}
+.goal{margin:2.25rem 0 0;max-width:46em;background:var(--sheet);border:1px solid var(--rule);border-left:4px solid var(--mark);border-radius:6px;padding:1.1rem 1.3rem}
+.goal b{display:block;font-family:var(--sans);font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.25rem}
+.goal p{margin:0;font-size:1.08rem}
+
+/* lessons */
+.lessons{list-style:none;padding:0;margin:1.75rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;counter-reset:l}
+.lessons>li{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1.2rem 1.25rem;position:relative}
+.lessons>li::before{counter-increment:l;content:"Lesson " counter(l);display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--cover);margin-bottom:.3rem}
+.lessons h3{font-size:1.12rem;line-height:1.3;margin:0 0 .3rem}
+.lessons .role{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0 0 .8rem}
+.lessons ul{margin:0;padding-left:1.05rem;font-family:var(--sans);font-size:.88rem;line-height:1.5}
+.lessons ul li{margin:.25rem 0}
+.lessons .star{font-weight:600}
+.flow{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;font-family:var(--sans);font-size:.85rem;margin:1rem 0 0;color:var(--muted)}
+.flow span{border:1px solid var(--rule);border-radius:999px;padding:.2rem .65rem;background:var(--sheet);color:var(--ink)}
+
+/* tables */
+.scroll-x{overflow-x:auto}
+.tbl{margin:1.5rem 0 0;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.tbl table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.9rem;min-width:760px}
+.tbl th,.tbl td{text-align:left;padding:.8rem .9rem;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.45}
+.tbl thead th{font-weight:500;color:var(--muted);font-size:.8rem}
+.tbl tbody th{font-weight:600;width:24%}
+.tbl tr:last-child td,.tbl tr:last-child th{border-bottom:0}
+.tbl .t{display:block;color:var(--muted);font-size:.8rem;margin-top:.15rem}
+.tbl td.best{background:color-mix(in srgb,var(--cover) 9%,var(--sheet))}
+.note{font-family:var(--sans);font-size:.92rem;max-width:46em;margin:1rem 0 0;padding-left:.9rem;border-left:3px solid var(--mark)}
+
+/* scenario */
+.feats{list-style:none;padding:0;margin:1.75rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem 2rem;font-family:var(--sans)}
+.feats li{border-top:2px solid var(--ink);padding-top:.6rem}
+.feats b{display:block;font-size:.98rem;margin-bottom:.2rem}
+.feats span{font-size:.9rem;color:var(--muted);line-height:1.45}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1.25rem;margin-top:2rem}
+.stack{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.5rem 0 0;padding:0;list-style:none;font-family:var(--sans);font-size:.85rem}
+.stack li{border:1px solid var(--rule);border-radius:999px;padding:.25rem .7rem;background:var(--sheet)}
+
+/* job aid */
+.aid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:2.5rem;align-items:start}
+.aid ul{padding-left:1.1rem;margin:0 0 1.25rem}
+.aid li{margin:.35rem 0}
+
+.why3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.why3>div{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.2rem}
+.why3 b{display:block;font-family:var(--sans);font-size:1rem;margin-bottom:.35rem}
+.why3 p{margin:0;font-size:.97rem;line-height:1.55}
+.next{display:flex;flex-wrap:wrap;gap:.75rem;font-family:var(--sans);font-size:.95rem;margin-top:2rem}
+.next a{border:1px solid var(--ink);border-radius:999px;padding:.6rem 1.1rem;text-decoration:none}
+footer{border-top:1px solid var(--rule);padding:2rem 0 3rem;font-family:var(--sans);font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem}
+footer .l{display:flex;gap:1.25rem}
+footer a{color:var(--ink);text-underline-offset:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+dialog.lb{border:0;padding:0;max-width:min(96vw,1500px);background:transparent}
+dialog.lb::backdrop{background:rgba(10,14,24,.85)}
+dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;background:#fff}
+dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+
+@media (max-width:900px){
+  .hero,.aid{grid-template-columns:1fr}
+  .four{grid-template-columns:1fr 1fr}
+  .lessons,.feats,.why3,.shots{grid-template-columns:1fr}
+  .aid figure{max-width:360px}
+}
+@media (max-width:560px){.four{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#problem">Problem</a><a href="#structure">Structure</a><a href="#alignment">Alignment</a><a href="#scenario">Scenario</a><a href="#job-aid">Job aid</a><a href="#next-steps">Next steps</a></nav></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="org"><b>Concept project</b>Articulate Rise course with a custom-built scenario</p>
+      <h1>Before It Goes to the Client</h1>
+      <p class="sub">A 15-minute course that teaches new analysts to use AI, and to check it, before client work goes out</p>
+      <p class="lede">AI can draft a client email in seconds and summarize twenty reports before lunch. It can also invent a statistic and sound completely sure of itself. This course is for first-year analysts who use AI every day, and it practices the calls that matter under the time pressure they actually work in.</p>
+      <dl class="glance">
+        <dt>My role</dt><dd>Instructional design, course development in Rise, scenario design and build, job aid</dd>
+        <dt>Learners</dt><dd>First-year analysts at a consulting firm</dd>
+        <dt>Format</dt><dd>3 lessons, about 15 minutes, with an 8-minute branching scenario and a one-page job aid</dd>
+        <dt>Tools</dt><dd>Articulate Rise 360, HTML, CSS, JavaScript</dd>
+        <dt>Setting</dt><dd>Larkmoor Advisory, a fictional firm created for the course</dd>
+      </dl>
+      <div class="try">
+        <a class="primary" href="course/" target="_blank" rel="noopener">Take the course<span aria-hidden="true"> ↗</span><span class="vh"> (opens in a new tab)</span></a>
+        <a href="../maya/" target="_blank" rel="noopener">Play the scenario<span aria-hidden="true"> ↗</span><span class="vh"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+    <figure><button class="shotbtn" type="button" aria-label="Enlarge the first decision screen"><img src="../images/maya-decision.jpg" alt="Scenario screen: the firm's AI assistant says the US plant-based snack market is worth 12.4 billion dollars and cites Nielsen 2024. Maya wonders if it's right, and the learner chooses between three options, each with a time cost."></button>
+      <figcaption>Decision 1 of 3. Every option shows what it will cost against the 6:00 deadline.</figcaption></figure>
+  </div>
+
+  <section id="problem" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem: fast, fluent, and sometimes wrong</h2>
+    <p class="intro">AI writes what sounds likely, not what's verified. For a new analyst on a deadline, a risky shortcut and a careful check can look almost the same. The course covers the risks that matter in client work, including these four.</p>
+    <div class="four">
+      <div><b>Invented facts</b><p>Numbers, quotes and sources that look real and aren't.</p></div>
+      <div><b>Missing information</b><p>A summary that reads well and still skips the point that matters most.</p></div>
+      <div><b>Biased wording</b><p>Stereotypes from training data, like assuming who a "decision-maker" is.</p></div>
+      <div><b>Client data in the wrong tool</b><p>Anything pasted into an unapproved tool may leave the firm for good.</p></div>
+    </div>
+    <div class="goal"><b>The goal</b><p>Not to scare analysts away from AI, but to build one habit: check it before it goes out. The course treats over-checking as a cost too, because advice that only says "be careful" doesn't survive a Friday deadline.</p></div>
+  </section>
+
+  <section id="structure" aria-labelledby="structure-h">
+    <h2 id="structure-h">How the course is built</h2>
+    <p class="intro">Three short lessons move from understanding the risk, to practicing the calls in a realistic situation, to a routine learners can take back to their desk.</p>
+    <ol class="lessons">
+      <li><h3>Why AI gets things wrong</h3><p class="role">Explain</p>
+        <ul><li>Five learning objectives up front</li><li>Where AI helps: six everyday uses</li><li>Where it gets it wrong: five risks</li><li>Knowledge check</li></ul></li>
+      <li><h3>Maya's Friday deadline</h3><p class="role">Practice in context</p>
+        <ul><li class="star">Embedded branching scenario</li><li>Debrief: five questions to check yourself against</li><li>Sort 8 tasks: AI, human, or together</li></ul></li>
+      <li><h3>Check it before it goes out</h3><p class="role">Consolidate and take away</p>
+        <ul><li>The four checks</li><li>Protecting client data: five rules</li><li>Flashcards: the three errors, with client examples</li><li>Sort: likely AI error or acceptable output</li><li>Two knowledge checks</li><li class="star">One-page job aid to download</li></ul></li>
+    </ol>
+    <p class="flow" aria-label="Learning sequence"><span>Understand the risk</span>→<span>Make the calls under pressure</span>→<span>Reflect on what worked</span>→<span>Practice spotting errors</span>→<span>Take the checklist</span></p>
+  </section>
+
+  <section id="alignment" aria-labelledby="alignment-h">
+    <h2 id="alignment-h">Objectives, practice and assessment, lined up</h2>
+    <p class="intro">Each objective is practiced at least once, checked at least once, and backed by something on the job aid.</p>
+    <div class="tbl scroll-x">
+      <table>
+        <thead><tr><th scope="col">Objective: learners will…</th><th scope="col">Practiced in</th><th scope="col">Checked by</th><th scope="col">Supported on the job by</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Explain why AI output can sound confident and still be wrong</th><td>"Where AI gets it wrong" (lesson 1); flashcards (lesson 3)</td><td>Knowledge check: a growth rate that comes with a source</td><td>Rule of thumb: if a number surprises you, open the source</td></tr>
+          <tr><th scope="row">Decide whether a task is best done by AI, a person, or together</th><td>"Who should do it?" sort (lesson 2)</td><td>Scenario debrief (self-check): was I rushing, or over-checking?</td><td>Check 1: let AI draft, keep it human, or AI drafts and you decide</td></tr>
+          <tr><th scope="row">Identify invented facts, bias and missing information</th><td>Scenario decisions 1 and 3; "spot the error" sort (lesson 3)</td><td>Knowledge checks: the growth rate and the contract summary</td><td>Check 3: one question for each error</td></tr>
+          <tr><th scope="row">Protect client data with approved tools and only the data a task needs</th><td>Scenario decision 2, where learners remove the sensitive columns themselves</td><td>Knowledge check: finding patterns in a client's sales file</td><td>Check 2: four tick boxes before anything goes into a tool</td></tr>
+          <tr><th scope="row">Apply a short checking routine before anything goes out</th><td>The four checks (lesson 3)</td><td>The whole scenario, scored on trust and time used</td><td>The job aid itself</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">The knowledge checks reuse the scenario's tempting moves as wrong answers: trusting the AI's citation, asking the AI to confirm, doing everything by hand. A learner who took a shortcut in the scenario meets it again, out of context.</p>
+  </section>
+
+  <section id="scenario" aria-labelledby="scenario-h">
+    <h2 id="scenario-h">The scenario: built outside Rise, embedded inside it</h2>
+    <p class="intro">Rise's scenario block handles branching dialogue. This scenario needed three things it doesn't do, so I built it in HTML, CSS and JavaScript and embedded it in lesson 2.</p>
+    <ul class="feats">
+      <li><b>A clock that every choice spends</b><span>The deck is due at 6:00. Each option shows its time cost, and the clock moves when you choose. Shortcuts save minutes and cost trust; over-checking is safe but burns the afternoon.</span></li>
+      <li><b>Consequences before feedback</b><span>Learners first see what happens on Monday, in the client meeting or in an email from IT. Only then does Priya, a senior associate, explain the habit behind it.</span></li>
+      <li><b>Do the check, don't pick it</b><span>The strongest options lead to short tasks: remove the identifying columns from a client file, or find the risk an AI summary left out of five articles.</span></li>
+    </ul>
+
+    <h3 class="sub-h">Three decisions, three kinds of answer</h3>
+    <p class="intro">Every decision offers the same three kinds of choice: a risky shortcut, a partial answer that feels responsible but costs too much or checks nothing, and the strongest option.</p>
+    <div class="tbl scroll-x">
+      <table>
+        <thead><tr><th scope="col">Decision</th><th scope="col">Risky shortcut</th><th scope="col">Partial</th><th scope="col">Strongest</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">The market size<span class="t">The AI cites "Nielsen, 2024" with no link</span></th><td>Paste it into the slide<span class="t">2 min. The report doesn't exist; the client asks on Monday.</span></td><td>Ask the AI if it's sure<span class="t">3 min. Same answer, more confident, still no source.</span></td><td class="best">Find the report first<span class="t">20 min. It doesn't exist; a real source replaces it.</span></td></tr>
+          <tr><th scope="row">The client's data<span class="t">A confidential sales file under NDA</span></th><td>Paste it into a free public AI tool<span class="t">5 min. IT flags it; the partner calls the client.</span></td><td>Skip AI, do it all in Excel<span class="t">2 hours. Safe, and most of the afternoon.</span></td><td class="best">Approved tool, identifying columns removed<span class="t">25 min. Same insight, nothing leaves the firm.</span></td></tr>
+          <tr><th scope="row">The risk summary<span class="t">An AI summary of five articles</span></th><td>Use the three risks as they are<span class="t">2 min. It missed a new labeling rule; the client asks.</span></td><td>Ask a colleague to review<span class="t">60 min of her Friday evening.</span></td><td class="best">Skim the five articles<span class="t">20 min. The labeling rule goes first on the slide.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="shots">
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the consequence screen"><img loading="lazy" decoding="async" src="../images/rai-consequence.jpg" alt="Consequence screen after pasting the number: on Monday the client asks where the 12.4 billion came from, the report doesn't exist, and Priya explains that if you can't open the source, the number can't go on a slide."></button>
+        <figcaption>Consequence first, then coaching. The clock shows the 2 minutes the shortcut "saved."</figcaption></figure>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the data task"><img loading="lazy" decoding="async" src="../images/rai-redact.jpg" alt="Task screen: the learner clicks column names to remove Customer and Account number from a confidential sales file before sending it to the firm's approved AI tool."></button>
+        <figcaption>The data task: learners remove what identifies the client's customers themselves. Removing a column the analysis needs gets a nudge.</figcaption></figure>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the source check task"><img loading="lazy" decoding="async" src="../images/rai-find.jpg" alt="Task screen: five short source articles, with the learner highlighting the sentences about a new labeling regulation that the AI summary left out."></button>
+        <figcaption>The source check: find the risk the summary skipped. Sentences already covered, or not risks, get their own feedback.</figcaption></figure>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the debrief screen"><img loading="lazy" decoding="async" src="../images/rai-debrief.jpg" alt="Debrief screen titled The deck is saved, the weekend isn't, with a message from the partner and a table comparing each of the learner's three calls with the strongest option, plus a trust score and time used."></button>
+        <figcaption>The debrief: how Monday went, each call next to the strongest option, a trust score and the time used. Replaying shows a different outcome.</figcaption></figure>
+    </div>
+    <ul class="stack" aria-label="Scenario build"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Inline SVG characters and scenes</li><li>Keyboard accessible, with screen reader announcements</li><li>Embedded in Rise with an iframe</li></ul>
+  </section>
+
+  <section id="job-aid" aria-labelledby="aid-h">
+    <h2 id="aid-h">The job aid: four checks on one page</h2>
+    <div class="aid">
+      <div>
+        <p class="intro">The course ends by handing learners a checklist to keep next to their screen. It's built to be used in the moment, not reread.</p>
+        <ul>
+          <li><b>Should AI do this?</b> A three-row table matches the task to who should do it.</li>
+          <li><b>Protect the client</b> and <b>Own it:</b> tick boxes to run through before pasting and before sending.</li>
+          <li><b>Check for the three errors:</b> one question for each, in the same words the course used.</li>
+          <li>It closes on the course's rule of thumb: if a number surprises you, that's your cue to open the source.</li>
+        </ul>
+        <div class="try"><a href="before-it-goes-to-the-client-checklist.pdf" download>Download the job aid (PDF)</a></div>
+      </div>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the job aid"><img loading="lazy" decoding="async" src="../images/rai-job-aid.jpg" alt="One-page job aid titled Before it goes to the client, with four numbered checks: Should AI do this, Protect the client, Check for the three errors, and Own it."></button></figure>
+    </div>
+  </section>
+
+  <section id="next-steps" aria-labelledby="next-h">
+    <h2 id="next-h">Next steps and how I'd measure it</h2>
+    <p class="intro">In production: a 70-second intro video, made in Synthesia, to open lesson 1. As a concept project, the course hasn't been run with real learners yet. This is how I'd evaluate it.</p>
+    <div class="why3">
+      <div><b>In the scenario</b><p>Which option learners choose on their first attempt, and whether replays move them toward the strongest one.</p></div>
+      <div><b>In the knowledge checks</b><p>Which wrong answers are chosen most, to see which shortcut is most tempting and where the course needs to push harder.</p></div>
+      <div><b>On the job</b><p>A spot check of client deliverables a month later: unsourced numbers, unreviewed summaries, and data shared with unapproved tools.</p></div>
+    </div>
+    <div class="next"><a href="../">Back to portfolio</a></div>
+  </section>
+
+  <footer><span>Eryu Shen, learning designer</span><span class="l"><a href="mailto:es4267@tc.columbia.edu">es4267@tc.columbia.edu</a><a href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener">LinkedIn</a></span></footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img alt=""></dialog>
+
+<script>
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.shotbtn').forEach(b=>b.addEventListener('click',()=>{const im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lb.showModal();}));
+document.getElementById('lbx').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+</script>
+</body>
 </html>
