@@ -3,7 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Maya's Friday | Larkmoor Advisory training</title>
+<title>Maya's Friday, a branching scenario | Eryu Shen</title>
+<meta name="description" content="An interactive branching scenario by Eryu Shen: a new analyst, a Friday deadline and an AI assistant. Three decisions about checking sources, protecting client data and catching what AI summaries leave out.">
+<meta property="og:title" content="Maya's Friday, a branching scenario | Eryu Shen">
+<meta property="og:description" content="A Friday deadline, an AI assistant, and three calls to make. About 8 minutes.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://eryushen.github.io/maya/">
+<meta property="og:url" content="https://eryushen.github.io/maya/">
+<meta property="og:image" content="https://eryushen.github.io/images/maya-decision.jpg">
+<meta property="og:image:alt" content="Branching scenario screen: an AI assistant cites a market-size figure, and the learner decides what to do with it">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,6 +36,12 @@ h1{font-size:clamp(34px,5vw,48px);line-height:1.08}
 h2{font-size:clamp(23px,2.8vw,29px);line-height:1.2}
 h1:focus,h2:focus{outline:none}
 p{margin:0}
+
+/* portfolio bar, outside the training frame */
+.pf{max-width:1180px;margin:0 auto;padding:12px clamp(10px,2.5vw,28px) 0;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 20px;font-size:14px;color:var(--ink-2)}
+.pf a{color:var(--navy);font-weight:600;text-decoration:none}
+.pf a:hover{text-decoration:underline;text-underline-offset:3px}
+.pf span{color:var(--muted)}
 
 /* the deck frame */
 .outer{max-width:1180px;margin:0 auto;padding:clamp(10px,2.5vw,28px)}
@@ -173,6 +191,7 @@ table.db td{border-bottom:1px solid var(--rule);padding:10px 8px;vertical-align:
 </style>
 </head>
 <body>
+<nav class="pf" aria-label="Portfolio"><a href="../">← Eryu Shen, portfolio</a><span>A branching scenario I designed and built. Larkmoor Advisory and its people are fictional.</span></nav>
 <div class="outer"><div class="deck" id="deck"></div></div>
 <div class="sr" id="announce" aria-live="polite"></div>
 
