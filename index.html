@@ -107,6 +107,8 @@ h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-sp
 .feat{display:grid;grid-template-rows:auto 1fr;background:var(--sheet);border:1px solid var(--rule);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
 a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 .feat.big{grid-template-columns:1.05fr 1fr;grid-template-rows:none}
+.feat.big.rev{grid-template-columns:1fr 1.05fr;margin-top:1rem}
+.feat.big.rev .cover{order:2}
 .feat .cover{background:var(--rule);min-height:220px}
 .feat .cover img{width:100%;height:100%;object-fit:cover;display:block}
 .feat .cover.type{display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;background:#17233B;color:#F6F7F4;min-height:220px;position:relative;overflow:hidden}
@@ -145,7 +147,7 @@ a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 .r-main b{display:block;font-weight:600;font-size:1.05rem;line-height:1.3;margin-bottom:.15rem}
 .r-main span{display:block;font-size:.95rem;line-height:1.5;color:var(--muted)}
 .r-go{font-family:var(--sans);color:var(--muted);transition:transform .15s;text-align:right}
-@media (max-width:900px){.feat.big{grid-template-columns:1fr}.feat-pair{grid-template-columns:1fr}.row{grid-template-columns:1fr 1.5rem}.r-ctx{grid-column:1 / -1}.feat .cover{min-height:180px}}
+@media (max-width:900px){.feat.big,.feat.big.rev{grid-template-columns:1fr}.feat.big.rev .cover{order:0}.feat-pair{grid-template-columns:1fr}.row{grid-template-columns:1fr 1.5rem}.r-ctx{grid-column:1 / -1}.feat .cover{min-height:180px}}
 /* skills */
 .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem 2rem;margin:0;padding:0;list-style:none}
 .skills li{border-top:2px solid var(--ink);padding-top:.8rem}
@@ -217,7 +219,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
 
   <section id="work" aria-labelledby="work-h">
     <h2 id="work-h">Selected work</h2>
-    <p class="intro">Three projects that show how I work, and a few more that add range.</p>
+    <p class="intro">Four projects that show how I work, and a few more that add range.</p>
 
     <a class="feat big" href="dcwp/">
       <div class="cover"><img src="images/dcwp-cover.jpg" alt="Financial Educators adding sticky notes to a Delivery Technique wall chart during a training session"></div>
@@ -255,11 +257,22 @@ footer a{color:var(--ink);text-underline-offset:3px}
       </div>
     </div>
 
+    <a class="feat big rev" href="wellbotics/">
+      <div class="cover"><img loading="lazy" decoding="async" src="images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the sadness tile"></div>
+      <div class="body">
+        <p class="kind">Game-based learning</p>
+        <h3>Wellbotics</h3>
+        <p class="org">Game Research Lab, Teachers College, with Harlem CoLab, 2025–2026</p>
+        <p>A cooperative K–2 game where programming a robot becomes practice for recognizing and managing feelings. I co-designed the core mechanics and wrote the curriculum, standards alignment and facilitator prompts, through four prototypes to Ping!.</p>
+        <div class="nums"><div><b>4</b>prototypes</div><div><b>10+</b>rounds of playtesting</div><div><b>K–2</b>one game, three grade levels</div></div>
+        <span class="go">Read the case study</span>
+      </div>
+    </a>
+
     <h3 class="more-h">More projects</h3>
     
     <ul class="rows" id="grid">
       <li data-s="training pm"><a class="row" href="https://glittery-marmoset-772.notion.site/235b7f062876801eb789fd1ac2106424" target="_blank" rel="noopener"><span class="r-ctx">Curriculum design, Canvas</span><span class="r-main"><b>Internship Curriculum Design</b><span>A 24-week Canvas curriculum that helps interns onboard quickly, build skills step by step, and move into client-facing work.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
-      <li data-s="theory tech"><a class="row" href="https://glittery-marmoset-772.notion.site/239b7f062876807bb800f185d7041584" target="_blank" rel="noopener"><span class="r-ctx">Game-based learning</span><span class="r-main"><b>Game-Based Learning for K–2</b><span>A research-based game, built with Harlem CoLab and Wellbotics, that weaves social-emotional learning into early computational thinking.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
       <li data-s="training theory"><a class="row" href="https://glittery-marmoset-772.notion.site/319b7f062876804fac76c71c135a315b" target="_blank" rel="noopener"><span class="r-ctx">Leadership training</span><span class="r-main"><b>Constructive Dialogue for Leadership Transition</b><span>A four-module training on emotional intelligence and structured dialogue for a family business going through succession.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
       <li data-s="research tech"><a class="row" href="https://glittery-marmoset-772.notion.site/240b7f06287680b9ac22dbb952e97ae8" target="_blank" rel="noopener"><span class="r-ctx">Research study</span><span class="r-main"><b>AI Tutoring Formats: Text, Voice and Video</b><span>How AI tutoring modalities affect collaborative knowledge building in computer-supported collaborative learning.</span></span><span class="r-go" aria-hidden="true">→</span></a></li>
     </ul>

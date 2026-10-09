@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wellbotics and Ping!, a K–2 learning game | Eryu Shen</title>
+<meta name="description" content="Case study by Eryu Shen: four prototypes and 10+ playtests behind Ping!, a cooperative K–2 game that teaches early programming and emotional regulation together.">
+<meta property="og:title" content="Wellbotics and Ping! | Eryu Shen">
+<meta property="og:description" content="Programming a robot as practice for recognizing and managing feelings: four prototypes, 10+ playtests, one design thesis.">
+<link rel="canonical" href="https://eryushen.github.io/wellbotics/">
+<meta property="og:url" content="https://eryushen.github.io/wellbotics/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://eryushen.github.io/images/wb-emotion-board.jpg">
+<meta property="og:image:alt" content="A Bee-Bot robot on a Wellbotics emotion board while a player points to the sadness tile">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#F6F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111723" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,650;1,7..72,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --sheet:#FFFFFF; --ink:#17233B; --muted:#5A6476; --rule:#D9DCE3;
+  --mark:#F3D34A; --mark-soft:rgba(243,211,74,.38); --cover:#2F7A68; --gap:#A23B4D; --leaf:#4E7A3A;
+  --serif:"Literata", Georgia, "Times New Roman", serif;
+  --sans:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80;--leaf:#8DBA72}}
+:root[data-theme="dark"]{--paper:#111723;--sheet:#182032;--ink:#E7EAF1;--muted:#A3ABBC;--rule:#2B3448;--mark:#C9A92E;--mark-soft:rgba(201,169,46,.30);--cover:#55A892;--gap:#D86A80;--leaf:#8DBA72}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.0625rem;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cover);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.top nav{max-width:1100px;margin:0 auto;padding:.7rem 1.25rem;display:flex;gap:1.5rem;font-family:var(--sans);font-size:.9rem;overflow-x:auto}
+.top nav a{text-decoration:none;color:var(--muted);white-space:nowrap}
+.top nav a:first-child{margin-right:auto;color:var(--ink);font-weight:600}
+section{padding:4.5rem 0;border-top:1px solid var(--rule)}
+h1{font-size:clamp(3rem,8vw,5.5rem);line-height:1;font-weight:500;letter-spacing:-.03em;margin:0}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-spacing:-.01em;margin:0 0 .8rem}
+h3{font-size:1.15rem;margin:0 0 .5rem}
+p{margin:0 0 1rem}
+.intro{max-width:40em}
+.sub-h{font-size:1.15rem;margin:2.5rem 0 .4rem}
+.mypart{font-family:var(--sans);font-size:.95rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.8rem 0;margin:0 0 1.75rem;max-width:44em}
+.cite{display:block;font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:.55rem;font-style:italic}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
+.org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
+.sub{font-size:1.35rem;line-height:1.35;font-style:italic;margin:1rem 0 1.5rem;max-width:22em}
+.lede{font-size:1.1rem;max-width:32em}
+.glance{display:grid;grid-template-columns:max-content 1fr;gap:.5rem 1.5rem;font-family:var(--sans);font-size:.92rem;margin:1.75rem 0 0;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.glance dt{color:var(--muted)} .glance dd{margin:0}
+.glance a{text-underline-offset:3px}
+figure{margin:0}
+.shotbtn{display:block;width:100%;padding:0;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#fff;cursor:zoom-in;position:relative}
+.shotbtn img{width:100%;height:auto}
+.shotbtn::after{content:"⤢ Enlarge";position:absolute;right:.6rem;bottom:.6rem;font-family:var(--sans);font-size:.75rem;font-weight:600;background:#17233B;color:#fff;border-radius:999px;padding:.3rem .65rem;opacity:.88}
+figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-top:.55rem;line-height:1.45}
+
+/* challenge */
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;margin-top:1.5rem}
+.five>div{background:var(--sheet);border:1px solid var(--rule);border-top:3px solid var(--gap);border-radius:6px;padding:1rem 1.05rem}
+.five b{display:block;font-family:var(--sans);font-size:.95rem;line-height:1.3;margin-bottom:.35rem}
+.five p{margin:0;font-size:.92rem;line-height:1.5}
+
+/* idea */
+.mirror{display:grid;grid-template-columns:1fr auto 1fr;gap:1.25rem;align-items:stretch;max-width:880px;margin:1.75rem 0 0;font-family:var(--sans)}
+.mirror .side{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:1.1rem 1.25rem}
+.mirror .lab{display:block;font-size:.78rem;font-weight:600;color:var(--cover);margin-bottom:.35rem}
+.mirror b{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.3;margin-bottom:.4rem}
+.mirror span.std{display:block;font-size:.8rem;color:var(--muted);margin-top:.5rem}
+.mirror p{margin:0;font-size:.92rem;line-height:1.5}
+.mirror .eq{align-self:center;font-size:1.6rem;color:var(--muted)}
+.loopwrap{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:2.5rem;align-items:center;margin-top:2.5rem;max-width:960px}
+.loop svg{width:100%;height:auto;display:block}
+.loop text{font-family:var(--sans)}
+.loop .nd{fill:var(--sheet);stroke:var(--ink);stroke-width:1.5}
+.loop .lb{fill:var(--ink);font-size:13px;font-weight:600;text-anchor:middle}
+.loop .ar{stroke:var(--muted);stroke-width:1.5;fill:none}
+.loop .ctr{fill:var(--muted);font-size:12px;text-anchor:middle}
+.steps-list{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:.92rem}
+.steps-list li{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:.6rem 0;border-top:1px solid var(--rule)}
+.steps-list li:last-child{border-bottom:1px solid var(--rule)}
+.steps-list b{font-weight:600}
+.steps-list span{color:var(--muted)}
+
+/* prototypes stepper */
+.hint{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0 0 .6rem;display:flex;align-items:center;gap:.45rem}
+.hint::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--mark);flex:none}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:var(--sheet);font-family:var(--sans)}
+.steps button{font:inherit;background:transparent;border:0;border-right:1.5px solid var(--ink);padding:.75rem .5rem;cursor:pointer;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:.15rem;transition:background .15s}
+.steps button:last-child{border-right:0}
+.steps button:hover{background:var(--mark-soft)}
+.steps button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.steps .no{font-size:.75rem;opacity:.75}
+.steps .nm{font-weight:600;font-size:.98rem;text-align:center}
+.panel{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:2.25rem;margin-top:1.75rem;align-items:start}
+.panel[hidden]{display:none}
+.panel .q{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:0 0 .3rem}
+.panel .lead{font-size:1.2rem;line-height:1.5;margin:0 0 1.25rem}
+.trio{display:grid;gap:.9rem}
+.trio div{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem}
+.trio h4{font-family:var(--sans);font-size:.8rem;font-weight:600;margin:0 0 .3rem;color:var(--muted)}
+.trio .learn{border-left:3px solid var(--mark)}
+.trio .learn h4{color:var(--ink)}
+.trio .dec{border-left:3px solid var(--cover)}
+.trio .dec h4{color:var(--cover)}
+.trio p{margin:0;font-size:.98rem;line-height:1.55}
+.noimg{border:1px dashed var(--rule);border-radius:8px;padding:1.5rem;font-family:var(--sans);font-size:.9rem;color:var(--muted);background:var(--sheet)}
+.noimg b{display:block;color:var(--ink);font-size:1rem;margin-bottom:.4rem}
+.doclink{display:inline-block;font-family:var(--sans);font-size:.85rem;margin-top:.9rem;text-underline-offset:3px}
+
+/* how it plays */
+.play{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2.5rem;align-items:start}
+.deck{list-style:none;padding:0;margin:0 0 1.5rem;font-family:var(--sans);font-size:.92rem;display:grid;gap:.6rem}
+.deck li{background:var(--sheet);border:1px solid var(--rule);border-radius:6px;padding:.75rem .9rem}
+.deck b{display:block;font-size:.95rem;margin-bottom:.15rem}
+.deck span{color:var(--muted);line-height:1.45}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin:1.5rem 0 0}
+.acts>div{border-top:2px solid var(--ink);padding-top:.6rem;font-family:var(--sans)}
+.acts b{display:block;font-size:.95rem;margin-bottom:.25rem}
+.acts span{font-size:.88rem;color:var(--muted);line-height:1.45;display:block}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.5rem;font-family:var(--sans);font-size:.88rem}
+.outcomes div{border-radius:6px;padding:.75rem .9rem;background:var(--sheet);border:1px solid var(--rule)}
+.outcomes b{display:block;font-size:.92rem;margin-bottom:.15rem}
+.outcomes span{color:var(--muted)}
+.play figure{max-width:380px;justify-self:center}
+.callout{font-size:1.15rem;line-height:1.5;margin:2rem 0 0;max-width:40em;padding-left:1rem;border-left:4px solid var(--mark)}
+
+/* playtest evolution */
+.evo{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.75rem;counter-reset:st}
+.evo>div{background:var(--sheet);border:1px solid var(--rule);border-radius:8px;padding:1.15rem 1.2rem;position:relative}
+.evo>div.win{border:1.5px solid var(--cover)}
+.evo .st{display:block;font-family:var(--sans);font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.3rem}
+.evo .win .st{color:var(--cover)}
+.evo h3{font-size:1.08rem;line-height:1.3;margin:0 0 .7rem}
+.evo dl{margin:0;font-family:var(--sans);font-size:.88rem;line-height:1.45}
+.evo dt{font-weight:600;font-size:.78rem;color:var(--muted);margin-top:.6rem}
+.evo dd{margin:.15rem 0 0}
+.evo .win dt.got{color:var(--cover)}
+.cats{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 0;padding:0;list-style:none;font-family:var(--sans);font-size:.85rem}
+.cats li{border:1px solid var(--rule);border-radius:999px;padding:.25rem .75rem;background:var(--sheet)}
+.cats li.key{border-color:var(--ink);background:var(--mark-soft);font-weight:600}
+.pics2{display:grid;grid-template-columns:1.35fr 1fr;gap:1.25rem;margin-top:2rem}
+
+/* decisions */
+.dec-list{list-style:none;padding:0;margin:1.5rem 0 0;border-top:1px solid var(--rule)}
+.dec-list li{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--rule)}
+.dec-list b{font-size:1.02rem;line-height:1.35}
+.dec-list span{font-family:var(--sans);font-size:.9rem;line-height:1.5;color:var(--muted)}
+.dec-list span i{font-style:normal;display:block;font-size:.75rem;font-weight:600;color:var(--ink);margin-bottom:.15rem}
+.dec-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:1.5rem;font-family:var(--sans);font-size:.8rem;color:var(--muted);margin-top:1.5rem}
+
+/* curriculum */
+.scroll-x{overflow-x:auto}
+.tbl{margin:1.25rem 0 0;background:var(--sheet);border:1px solid var(--rule);border-radius:6px}
+.tbl table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.9rem;min-width:680px}
+.tbl th,.tbl td{text-align:left;padding:.75rem .9rem;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.45}
+.tbl thead th{font-weight:500;color:var(--muted);font-size:.8rem}
+.tbl tbody th{font-weight:600;width:16%}
+.tbl tr:last-child td,.tbl tr:last-child th{border-bottom:0}
+.lesson{display:flex;margin:1.25rem 0 .5rem;font-family:var(--sans);font-size:.85rem;border-radius:6px;overflow:hidden;border:1px solid var(--rule);max-width:860px}
+.lesson div{padding:.75rem .9rem;background:var(--sheet);border-right:1px solid var(--rule)}
+.lesson div:last-child{border-right:0}
+.lesson b{display:block;font-size:.9rem}
+.lesson span{color:var(--muted)}
+.lesson .w{flex:25;background:color-mix(in srgb,var(--cover) 10%,var(--sheet))}
+.lesson .a{flex:10}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;padding:1.1rem 1.2rem;font-family:var(--sans)}
+.card .ty{display:inline-block;font-size:.75rem;font-weight:600;border-radius:999px;padding:.15rem .6rem;margin-bottom:.6rem}
+.card.g .ty{background:color-mix(in srgb,var(--leaf) 18%,transparent);color:var(--leaf)}
+.card.r .ty{background:color-mix(in srgb,var(--gap) 15%,transparent);color:var(--gap)}
+.card.b .ty{background:color-mix(in srgb,#3D74D6 15%,transparent);color:#3D74D6}
+.card b{display:block;font-family:var(--serif);font-size:1.1rem;margin-bottom:.35rem}
+.card p{margin:0 0 .5rem;font-size:.88rem;line-height:1.45}
+.card .fac{font-size:.85rem;color:var(--muted);font-style:italic;margin:0}
+.downloads{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;font-family:var(--sans);font-size:.9rem}
+.downloads a{border:1px solid var(--ink);border-radius:999px;padding:.5rem 1rem;text-decoration:none}
+
+/* reflection */
+.rules{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.9rem 2rem;max-width:860px;font-family:var(--sans)}
+.rules li{border-top:2px solid var(--ink);padding-top:.6rem}
+.rules b{display:block;font-size:.98rem;margin-bottom:.2rem}
+.rules span{font-size:.9rem;color:var(--muted);line-height:1.45}
+.thesis{font-size:clamp(1.4rem,3vw,2rem);line-height:1.3;font-weight:500;letter-spacing:-.01em;max-width:24em;margin:0 0 1.5rem}
+.thesis em{background-image:linear-gradient(var(--mark-soft),var(--mark-soft));font-style:normal}
+.next{display:flex;flex-wrap:wrap;gap:.75rem;font-family:var(--sans);font-size:.95rem;margin-top:2rem}
+.next a{border:1px solid var(--ink);border-radius:999px;padding:.6rem 1.1rem;text-decoration:none}
+footer{border-top:1px solid var(--rule);padding:2rem 0 3rem;font-family:var(--sans);font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 1.5rem}
+footer .l{display:flex;gap:1.25rem}
+footer a{color:var(--ink);text-underline-offset:3px}
+dialog.lb{border:0;padding:0;max-width:min(96vw,1500px);background:transparent}
+dialog.lb::backdrop{background:rgba(10,14,24,.85)}
+dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;background:#fff}
+dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+
+@media (max-width:900px){
+  .hero,.panel,.play,.loopwrap,.pics2{grid-template-columns:1fr}
+  .five{grid-template-columns:1fr 1fr}
+  .evo,.cards,.acts,.outcomes,.rules{grid-template-columns:1fr}
+  .mirror{grid-template-columns:1fr}
+  .mirror .eq{justify-self:center;transform:rotate(90deg)}
+  .steps{grid-template-columns:repeat(4,minmax(5.5rem,1fr));overflow-x:auto}
+  .dec-head{display:none}
+  .dec-list li{grid-template-columns:1fr;gap:.5rem}
+  .panel figure{max-width:420px}
+  .loop{max-width:320px}
+}
+@media (max-width:560px){.five{grid-template-columns:1fr}.lesson{flex-direction:column}.lesson div{border-right:0;border-bottom:1px solid var(--rule)}}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#challenge">Challenge</a><a href="#idea">Idea</a><a href="#prototypes">Prototypes</a><a href="#ping">Ping!</a><a href="#playtesting">Playtesting</a><a href="#curriculum">Curriculum</a><a href="#reflection">Reflection</a></nav></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="org">Game Research Lab, Teachers College, Columbia University, with Harlem CoLab and Wellbotics</p>
+      <h1>Wellbotics</h1>
+      <p class="sub">A cooperative K–2 game where programming a robot becomes practice for recognizing and managing feelings</p>
+      <p class="lede">Young children can't learn emotional regulation from a worksheet. Wellbotics uses the robot as a mirror: when a program goes wrong, children debug it together, and practice staying calm, trying again and getting back in sync with each other. Four prototypes and more than ten playtests led to Ping!, a game where connection isn't a theme. It's how the system works.</p>
+      <dl class="glance">
+        <dt>My role</dt><dd>Curriculum developer and game co-designer</dd>
+        <dt>I built</dt><dd>Curriculum framework, lesson plans, standards alignment, facilitator prompts and reflection moments; co-designed core mechanics</dd>
+        <dt>Learners</dt><dd>Ages 5 to 8 (K–2) in public schools, including neurodiverse learners</dd>
+        <dt>Standards</dt><dd>NYS Computer Science K1.CT.6, NYS SEL Benchmark 1A.3A, CSTA Level 1A, CASEL</dd>
+        <dt>Timeline</dt><dd>April 2025 to June 2026</dd>
+      </dl>
+    </div>
+    <figure><button class="shotbtn" type="button" aria-label="Enlarge the emotion board photo"><img src="../images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the tile labeled sadness. Other tiles show fear, surprise, anger, happiness and bee prompts like Be kind."></button>
+      <figcaption>Playtesting an emotion board: the Bee-Bot's path lands on feelings, and the group talks about them.</figcaption></figure>
+  </div>
+
+  <section id="challenge" aria-labelledby="challenge-h">
+    <h2 id="challenge-h">The challenge: teaching feelings without a right answer</h2>
+    <p class="intro">Wellbotics wanted children to build early programming skills and social–emotional skills at the same time, in public schools serving predominantly Black and Hispanic communities in Harlem. Five tensions shaped every design decision.</p>
+    <div class="five">
+      <div><b>No abstract labels</b><p>Five-year-olds can't regulate an emotion by naming it on a chart.</p></div>
+      <div><b>Play and outcomes</b><p>Physical, joyful play still has to build sequencing and debugging.</p></div>
+      <div><b>Mixed pacing</b><p>Neurodiverse learners and different speeds in the same group.</p></div>
+      <div><b>No "correct" feeling</b><p>Emotions can't be graded right or wrong, but learning still needs to be visible.</p></div>
+      <div><b>Support the facilitator</b><p>The system should strengthen the adult in the room, not replace them.</p></div>
+    </div>
+  </section>
+
+  <section id="idea" aria-labelledby="idea-h">
+    <h2 id="idea-h">The idea: the robot as an emotional mirror</h2>
+    <p class="intro">The core analogy pairs a computer science standard with an SEL standard. Fixing a robot's program and managing your own behavior use the same moves: notice what went wrong, stay with it, and try a different sequence.</p>
+    <div class="mirror" aria-label="The core analogy">
+      <div class="side"><span class="lab">Programming the robot</span><b>Sequencing and debugging</b><p>Plan the steps, run them, see what happens, fix what didn't work.</p><span class="std">NYS CS K1.CT.6</span></div>
+      <div class="eq" aria-hidden="true">⇄</div>
+      <div class="side"><span class="lab">Managing yourself</span><b>Recognizing and managing emotions</b><p>Notice the feeling, see how it changes what you do, choose a different response.</p><span class="std">NYS SEL Benchmark 1A.3A</span></div>
+    </div>
+    <div class="loopwrap">
+      <figure class="loop">
+        <svg viewBox="0 0 340 300" role="img" aria-labelledby="loop-t">
+          <title id="loop-t">The Wellbotics learning loop: Balance, Engage, Discover, Synthesize, Release, and back to Balance</title>
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor" style="color:var(--muted)"/></marker></defs>
+          <path class="ar" d="M216 38 Q262 50 277 108" marker-end="url(#ah)"/>
+          <path class="ar" d="M283 150 Q282 206 248 236" marker-end="url(#ah)"/>
+          <path class="ar" d="M173 258 Q132 258 110 225" marker-end="url(#ah)"/>
+          <path class="ar" d="M58 184 Q44 136 60 92" marker-end="url(#ah)"/>
+          <path class="ar" d="M106 52 Q110 34 121 33" marker-end="url(#ah)"/>
+          <rect class="nd" x="125" y="16" width="90" height="34" rx="17"/><text class="lb" x="170" y="38">Balance</text>
+          <rect class="nd" x="235" y="112" width="90" height="34" rx="17"/><text class="lb" x="280" y="134">Engage</text>
+          <rect class="nd" x="175" y="236" width="96" height="34" rx="17"/><text class="lb" x="223" y="258">Discover</text>
+          <rect class="nd" x="20" y="186" width="104" height="34" rx="17"/><text class="lb" x="72" y="208">Synthesize</text>
+          <rect class="nd" x="22" y="52" width="94" height="34" rx="17"/><text class="lb" x="69" y="74">Release</text>
+          <text class="ctr" x="170" y="140">reflection is part</text>
+          <text class="ctr" x="170" y="158">of play, not after it</text>
+        </svg>
+      </figure>
+      <ol class="steps-list">
+        <li><b>Balance</b><span>The game starts from an imbalance or challenge.</span></li>
+        <li><b>Engage</b><span>Children explore and test solutions with the robot.</span></li>
+        <li><b>Discover</b><span>Clear feedback creates the "aha" moment.</span></li>
+        <li><b>Synthesize</b><span>Reflection connects what happened to how it felt.</span></li>
+        <li><b>Release</b><span>A meaningful reset, ready for the next challenge.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="prototypes" aria-labelledby="proto-h">
+    <h2 id="proto-h">Four prototypes, four questions</h2>
+    <p class="mypart"><b>My part:</b> I co-designed the core game mechanics, wrote the curriculum framework and lesson plans, aligned outcomes to NYS and CSTA standards, designed the facilitator prompts and reflection moments, and took part in every round of prototyping and playtesting.</p>
+    <p class="intro">Rather than committing to one format early, the team tested four: physical play with a robot, robot behavior, AI and a pure card game. Each prototype answered one question and changed the next.</p>
+    <p class="hint">Select a prototype to see what we built, what we learned and what we decided.</p>
+    <div class="steps" role="tablist" aria-label="Prototypes">
+      <button role="tab" id="t1" aria-controls="p1" aria-selected="true"><span class="no">01</span><span class="nm">Bee-Bot Garden</span></button>
+      <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span class="no">02</span><span class="nm">Ozobot</span></button>
+      <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span class="no">03</span><span class="nm">AI recognition</span></button>
+      <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span class="no">04</span><span class="nm">Ping!</span></button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p1" aria-labelledby="t1">
+      <div><p class="q">Can programming a robot mirror managing yourself?</p>
+        <p class="lead">A garden board game where children program Bee-Bots to collect pollen and keep the hive healthy.</p>
+        <div class="trio">
+          <div><h4>What we built</h4><p>A garden of green, yellow and red tiles that get harder toward the center. Pollen, obstacle and dance cards bring in feelings: "Frustration Station! Take a deep breath. Can you re-program?" The facilitator plays the Queen Bee and shows hive health through costume and props. There's no winner, only a hive the group keeps healthy together.</p></div>
+          <div class="learn"><h4>What we learned</h4><p>Movement-based play naturally brings up frustration and excitement during sequencing and debugging. Facilitator prompts were what turned those moments into learning.</p></div>
+          <div class="dec"><h4>What we decided</h4><p>Reflection became a structural phase of play, not a discussion afterward. Open questions stayed open: card management for five-year-olds, tracking hive health, and mechanics that avoid feeling punitive.</p></div>
+        </div>
+        <a class="doclink" href="docs/prototype-1-bee-bot-garden.pdf" target="_blank" rel="noopener">Bee-Bot Garden design document (PDF)</a></div>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the garden board design"><img src="../images/wb-garden-board.jpg" alt="Garden board design: a grid of green, yellow and red garden tiles with the hive and flower positions marked, players seated around the board, and feedback and direction cards"></button>
+        <figcaption>The garden board: obstacles and better pollen increase toward the center.</figcaption></figure>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+      <div><p class="q">Can robot behavior represent emotion?</p>
+        <p class="lead">A feasibility study: instead of programming where the robot goes, program how it feels.</p>
+        <div class="trio">
+          <div><h4>What we built</h4><p>Explorations that mapped Ozobot's sensing to emotion: speed for intensity, color for emotional state, direction changes for regulation, robot-to-robot interaction for social dynamics. We sketched world concepts from calm courtyards to tile-built islands.</p></div>
+          <div class="learn"><h4>What we learned</h4><p>Ozobot's own Challenge Mats already looked like our maps and missions. If the form was the same, the difference had to come from emotional framing, facilitation and mechanics.</p></div>
+          <div class="dec"><h4>What we decided</h4><p>Narrow the goal to emotional recognition and regulation. Keep "build the board together" as a differentiator. Stay robot-agnostic so the game works with whatever hardware a school has.</p></div>
+        </div>
+        <a class="doclink" href="docs/prototype-2-ozobot.pdf" target="_blank" rel="noopener">Ozobot exploration document (PDF)</a></div>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the Ozobot playtest photo"><img loading="lazy" decoding="async" src="../images/wb-ozobot.jpg" alt="An Ozobot on a printed track during a playtest, next to small colored buckets used as game props"></button>
+        <figcaption>Testing how an Ozobot's path and props could stand for emotional states.</figcaption></figure>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+      <div><p class="q">What can AI do?</p>
+        <p class="lead">A screen-based design probe: could AI recognize and interpret children's answers, including how they feel?</p>
+        <div class="trio">
+          <div><h4>What we explored</h4><p>AI that recognizes patterns in children's responses, surfaces states like confusion, confidence or frustration, and prompts reflection, positioned as a mirror and guide rather than a judge.</p></div>
+          <div class="learn"><h4>What we learned</h4><p>Interpreting a young child's emotional experience needs human judgment. Automation could standardize prompts, but not replace the sense-making a facilitator does in the moment.</p></div>
+          <div class="dec"><h4>What we decided</h4><p>Facilitator prompts became core design components. AI stays in a supporting role, in line with the team's earlier agreement to weigh the ethics of AI for young children.</p></div>
+        </div>
+        <a class="doclink" href="docs/prototype-3-ai-recognition.pdf" target="_blank" rel="noopener">AI recognition exploration (PDF)</a></div>
+      <div class="noimg"><b>A design probe, not a product</b>This prototype was intentionally left open: interaction mechanics, interface and how much to automate. Its job was to find the limits of automation for early childhood, and it did.</div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+      <div><p class="q">Can connection be a system behavior?</p>
+        <p class="lead">A cooperative card game that simulates programming a robot, built and tested before any robot was added.</p>
+        <div class="trio">
+          <div><h4>What we built</h4><p>Teams build a hidden sequence of number cards to hit a shared target while staying in rhythm with the other teams. Emotion cards change how teammates can help each other. Any team can pause the whole table to re-sync.</p></div>
+          <div class="learn"><h4>What we learned</h4><p>Early prototypes rewarded individual correctness, which amplified frustration. Making emotions shared and relational supported pacing, repair and solving problems together.</p></div>
+          <div class="dec"><h4>What we decided</h4><p>Build a working learning system first, then choose the robot that best embodies it through motion, sound, light and timing.</p></div>
+        </div>
+        <a class="doclink" href="docs/prototype-4-ping.pdf" target="_blank" rel="noopener">Ping! design document (PDF)</a></div>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the Ping! playtest photo"><img loading="lazy" decoding="async" src="../images/wb-ping-table.jpg" alt="Ping! playtest: hand-written number and declaration cards laid out on a table, including a card reading Too Fast"></button>
+        <figcaption>An early Ping! playtest with hand-made cards, including a "Too Fast" declaration card.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="ping" aria-labelledby="ping-h">
+    <h2 id="ping-h">Ping!: how it plays</h2>
+    <p class="intro">Teams of two or three "program a robot" by laying number cards that must add up to the target on a shared Task Card, like "Reach 12 in 6 steps." Every team plays at once, and every team has to stay in sync.</p>
+    <div class="play">
+      <div>
+        <ul class="deck">
+          <li><b>Sequence cards</b><span>Values from −8 to 8, so a sequence can overshoot, undershoot or go negative, just like a buggy program. The leftmost card must be a 1, so teams have to coordinate.</span></li>
+          <li><b>Dual emotion cards</b><span>Each card has two halves: Happy/Sad, Calm/Worried, Proud/Frustrated, Curious/Confused, Brave/Careful, Hopeful/Disappointed. Players turn theirs to show how they feel.</span></li>
+          <li><b>"Too Fast" and "Falling Behind"</b><span>Declaration cards anyone can play to pause the whole table. Everyone re-syncs by saying "Ping!" three times.</span></li>
+        </ul>
+        <p class="sub-h" style="margin-top:0">On a turn, a player chooses one action</p>
+        <div class="acts">
+          <div><b>Program the robot</b><span>Place a sequence card face-down. There's no fixed turn order.</span></div>
+          <div><b>Take an emotion action</b><span>Rotate your feeling, blind-swap a card with a teammate, or trade openly when your feelings match.</span></div>
+          <div><b>Declare</b><span>Call "Too Fast" or "Falling Behind" and the whole table re-syncs.</span></div>
+        </div>
+      </div>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the goal card"><img loading="lazy" decoding="async" src="../images/wb-ping-goal.jpg" alt="A hand-written green goal card from a playtest reading Cross the river, with the sequence rules for each team"></button>
+        <figcaption>A hand-written goal card from a playtest.</figcaption></figure>
+    </div>
+    <p class="sub-h">When the sequence is revealed, the robot responds to the system, not the child</p>
+    <div class="outcomes">
+      <div><b>Exact match</b><span>The robot succeeds and the team "syncs."</span></div>
+      <div><b>Over or under</b><span>The robot shows a different light, sound or story cue.</span></div>
+      <div><b>Negative total</b><span>The robot "rethinks," and teams repair the sequence together.</span></div>
+    </div>
+    <p class="callout">There's no single winner. If every team completes at least one task in shared rhythm, the whole table earns a Harmonic Win.</p>
+  </section>
+
+  <section id="playtesting" aria-labelledby="pt-h">
+    <h2 id="pt-h">What 10+ playtests changed</h2>
+    <p class="intro">Each round of playtesting broke something. These are the three stages Ping! went through, and the change that made the game work.</p>
+    <div class="evo">
+      <div><span class="st">Stage 1</span><h3>Sync rituals and robot-like language</h3>
+        <dl><dt>We tried</dt><dd>Limiting communication to beeps and buzzes, like a robot, with rituals to keep teams in sync.</dd>
+          <dt>What broke</dt><dd>Awkward onboarding, loopholes for pre-planning, an emotion layer that felt bolted on, and math too hard for the age group.</dd></dl></div>
+      <div><span class="st">Stage 2</span><h3>Guess the emotion to unlock a move</h3>
+        <dl><dt>We tried</dt><dd>One player sets the robot's emotion from a scenario. Others guess it, and a correct guess unlocks programming.</dd>
+          <dt>What broke</dt><dd>Guessing became a bottleneck that stalled play, and the emotion still felt separate from the task.</dd></dl></div>
+      <div class="win"><span class="st">Stage 3: the breakthrough</span><h3>Emotions as an intensity spectrum</h3>
+        <dl><dt>We changed</dt><dd>Stopped asking for the "correct" emotion. Players judge how much: a lot or a little, and the group compares and adjusts.</dd>
+          <dt class="got">What it fixed</dt><dd>No more right or wrong feelings, and group understanding came from calibration, not unanimity. This became the rule every later version followed.</dd></dl></div>
+    </div>
+    <p class="sub-h">Then, scenarios became the core input</p>
+    <p class="intro">As play shifted from solving a number puzzle to interpreting a situation together, the team tested eight ways to describe a scenario. One consistently affected how players read emotion the most: what the body feels.</p>
+    <ul class="cats" aria-label="Scenario categories">
+      <li>Who</li><li>Action</li><li>Sound</li><li class="key">Physical sensation and body awareness</li><li>Color</li><li>When</li><li>Object</li><li>Location</li>
+    </ul>
+    <div class="pics2">
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the playtest sequence"><img loading="lazy" decoding="async" src="../images/wb-ping-sequence.jpg" alt="Five overhead photos of one playtest round: emotion cards labeled Calm, Happy, Brave, Mad, Sad and Worried above rows of pink and blue sequence cards, with the changing card circled in red in each frame"></button>
+        <figcaption>One round, frame by frame: emotion cards above, each team's sequence below. The red circle tracks the card that changed.</figcaption></figure>
+      <figure><button class="shotbtn" type="button" aria-label="Enlarge the Ozobot materials photo"><img loading="lazy" decoding="async" src="../images/wb-ozobot-materials.jpg" alt="Playtest materials on a table: printed Ozobot path sheets, a card sheet and an Ozobot color code reference"></button>
+        <figcaption>Earlier playtest materials from the Ozobot phase.</figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="dec-h">
+    <h2 id="dec-h">Five design decisions</h2>
+    <p class="intro">Each one came out of something a prototype or playtest showed us.</p>
+    <ul class="dec-list">
+      <li><b>Build feelings into the mechanics, not a reflection activity at the end</b><span><i>Why</i>Separate SEL discussion disconnected emotions from the moments they happen.</span><span><i>What it did</i>Children practice regulation and persistence during play, not after it.</span></li>
+      <li><b>Move from individual achievement to shared connection</b><span><i>Why</i>Rewarding individual correctness amplified frustration and disengagement.</span><span><i>What it did</i>Group pacing, repair and solving problems together.</span></li>
+      <li><b>Treat emotions as states of the system, not traits of a child</b><span><i>Why</i>Calling a feeling a child's own trait left little room to work with it.</span><span><i>What it did</i>Facilitators can treat frustration as a moment to learn, not a failure.</span></li>
+      <li><b>Keep the facilitator at the center</b><span><i>Why</i>The AI probe showed the limits of automating a young child's emotional experience.</span><span><i>What it did</i>Facilitator prompts became part of the design, keeping human judgment and care.</span></li>
+      <li><b>Stay robot-agnostic</b><span><i>Why</i>Optimizing for one device would cut access, and copy what that device already does.</span><span><i>What it did</i>The game can run in schools and informal settings with whatever technology they have.</span></li>
+    </ul>
+  </section>
+
+  <section id="curriculum" aria-labelledby="cur-h">
+    <h2 id="cur-h">The curriculum and facilitation</h2>
+    <p class="mypart"><b>My part:</b> I wrote the curriculum framework and sample lessons, aligned every learning goal to CSTA, NYS Computer Science and NYS SEL standards, and designed the facilitator prompts and card language.</p>
+    <p class="intro">The same game grows with the child. Each grade gets a different level of programming and a different way of talking about feelings.</p>
+    <div class="tbl scroll-x">
+      <table>
+        <thead><tr><th scope="col">Grade</th><th scope="col">Programming</th><th scope="col">Feelings</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Kindergarten</th><td>Sequence 1 to 2 steps with visual direction cards</td><td>Name and model emotions through bee roles: worker, scout, queen</td></tr>
+          <tr><th scope="row">1st grade</th><td>Chain 2 to 3 commands logically</td><td>Notice when the hive is "stressed" or "healthy" and how their choices affect it</td></tr>
+          <tr><th scope="row">2nd grade</th><td>Try simple conditionals: "if blocked, turn left," and debug a sequence that didn't work</td><td>Role-play and reflect: "How would a lost scout feel?"</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sub-h">A 45-minute lesson</p>
+    <div class="lesson" aria-label="Lesson structure">
+      <div class="a"><b>Warm up, 10 min</b><span>"Move like a Bee-Bot" and find feelings in the body</span></div>
+      <div class="w"><b>Work, 25 min</b><span>Program Bee-Bots to collect pollen; debug together when obstacles hit</span></div>
+      <div class="a"><b>Wrap up, 10 min</b><span>Hive health check and "watch and share" reflection</span></div>
+    </div>
+    <p class="sub-h">Cards that carry the facilitation</p>
+    <p class="intro">Every card has a short line for the child and a prompt for the facilitator, so the adult always has words for the moment.</p>
+    <div class="cards">
+      <div class="card g"><span class="ty">Collect pollen</span><b>"Collect Sunny Flower Pollen!"</b><p>Move the Bee-Bot to a yellow pollen tile.</p><p class="fac">Facilitator: "The hive feels happy and bright when you bring Sunny Flower Pollen!"</p></div>
+      <div class="card r"><span class="ty">Obstacle</span><b>"Tangled Vines!"</b><p>Use one extra programming card this turn.</p><p class="fac">Facilitator: "Frustration Station! It's okay to feel stuck. Take a deep breath. Can you re-program your Bee-Bot?"</p></div>
+      <div class="card b"><span class="ty">Dance</span><b>"Happy Hive Dance!"</b><p>Show your happy feelings.</p><p class="fac">Facilitator: "Dance to show how you feel when the hive is strong!"</p></div>
+    </div>
+    <div class="downloads">
+      <a href="docs/wellbotics-sample-curriculum.pdf" target="_blank" rel="noopener">Sample curriculum (PDF)</a>
+      <a href="docs/wellbotics-sample-lesson.pdf" target="_blank" rel="noopener">Sample lesson (PDF)</a>
+      <a href="docs/wellbotics-sample-cards.pdf" target="_blank" rel="noopener">Sample cards (PDF)</a>
+      <a href="https://www.figma.com/design/uixM0jB2SoxTXzN758Ydtn/Garden?node-id=0-1&amp;p=f" target="_blank" rel="noopener">Design process in Figma</a>
+    </div>
+  </section>
+
+  <section id="reflection" aria-labelledby="ref-h">
+    <h2 id="ref-h">What I'm taking away</h2>
+    <p class="thesis">The project's design thesis: <em>connection is not a theme. It is a system behavior.</em></p>
+    <p class="intro">This project taught me to turn abstract learning goals, like emotional regulation and persistence, into rules children can play. The biggest lessons came from what broke: every time the game asked players to get a feeling "right," it stalled. As Ping! moves toward adding a robot, the team set four rules to protect what playtesting taught us.</p>
+    <ul class="rules">
+      <li><b>Don't turn intensity back into correctness</b><span>Feelings stay a matter of how much, never right or wrong.</span></li>
+      <li><b>Don't force verbal explanation</b><span>Children can show a feeling through cards, movement and rhythm.</span></li>
+      <li><b>Don't value agreement over coordination</b><span>The group doesn't need to agree, just to stay in sync.</span></li>
+      <li><b>Don't add complexity that breaks access</b><span>Every addition has to work for a five-year-old and a busy facilitator.</span></li>
+    </ul>
+    <div class="next"><a href="../">Back to portfolio</a></div>
+  </section>
+
+  <footer><span>Eryu Shen, learning designer</span><span class="l"><a href="mailto:es4267@tc.columbia.edu">es4267@tc.columbia.edu</a><a href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener">LinkedIn</a></span></footer>
+</main>
+
+<dialog class="lb" id="lb" aria-label="Enlarged image"><button type="button" id="lbx">Close</button><img alt=""></dialog>
+
+<script>
+const tabs=[...document.querySelectorAll('.steps [role="tab"]')];
+function sel(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+tabs.forEach((t,i)=>{t.addEventListener('click',()=>sel(t));t.addEventListener('keydown',e=>{let j=null;if(e.key==='ArrowRight')j=(i+1)%tabs.length;if(e.key==='ArrowLeft')j=(i-1+tabs.length)%tabs.length;if(j!==null){e.preventDefault();sel(tabs[j]);tabs[j].focus();}});});
+const lb=document.getElementById('lb'),lbImg=lb.querySelector('img');
+document.querySelectorAll('.shotbtn').forEach(b=>b.addEventListener('click',()=>{const im=b.querySelector('img');lbImg.src=im.src;lbImg.alt=im.alt;lb.showModal();}));
+document.getElementById('lbx').addEventListener('click',()=>lb.close());
+lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
+</script>
+</body>
+</html>
