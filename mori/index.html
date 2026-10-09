@@ -50,6 +50,30 @@ p{margin:0 0 1rem}
 .intro{max-width:40em}
 .muted{color:var(--muted)}
 
+/* band: the forest the tree grows in */
+.band{display:flow-root;background:radial-gradient(55% 60% at 50% 100%,rgba(242,193,78,.22),rgba(242,193,78,0) 70%),#2C3B1C;color:#E6EBD8}
+.band .in{max-width:1100px;margin:0 auto;padding:4.25rem 1.25rem 0;text-align:center}
+.band .org{color:rgba(230,235,216,.72);margin-bottom:1.1rem}
+.band h1{font-size:clamp(4.75rem,14vw,9.5rem);line-height:.88;letter-spacing:-.045em;color:#F6EED5}
+.band .sub{color:#F2C14E;font-size:clamp(1.15rem,2.2vw,1.45rem);margin:1.25rem auto 0;max-width:23em}
+.band figure{max-width:900px;margin:2.75rem auto calc(-1 * var(--ov));position:relative}
+.band .shotbtn{border:0;border-radius:14px;box-shadow:0 0 0 1px rgba(242,193,78,.35),0 0 60px rgba(242,193,78,.18),0 34px 70px rgba(12,20,6,.42)}
+.band figcaption{position:absolute;left:0;right:0;top:100%;text-align:center;margin-top:.8rem}
+.band,.band+main{--ov:clamp(3.5rem,11vw,8.5rem)}
+.band+main{padding-top:calc(var(--ov) + 2.25rem)}
+
+/* intro row */
+.intro-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3.5rem;align-items:start;padding:3.5rem 0 4.5rem}
+.intro-row .lede{font-size:1.2rem;line-height:1.6;max-width:none;margin:0}
+.intro-row .glance{margin:0;padding:0 0 0 1.75rem;border-top:0;border-left:1px solid var(--rule)}
+
+/* the answer comparison, moved up front */
+#ask .voice{max-width:none;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.25fr);gap:1.25rem 2.75rem;padding:1.75rem 2rem;align-items:start;margin-bottom:0}
+#ask .vq{grid-column:1;grid-row:1 / 4;margin:0;font-size:.9rem}
+#ask .vq b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;margin-top:.4rem;letter-spacing:-.01em}
+#ask .vt{grid-column:2;justify-self:start;margin:0}
+#ask .vans{grid-column:2}
+
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
 .org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
@@ -165,7 +189,11 @@ dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;backgr
 dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
 
 @media (max-width:900px){
-  .hero,.idea,.panel{grid-template-columns:1fr}
+  .hero,.idea,.panel,.intro-row,#ask .voice{grid-template-columns:1fr}
+  .intro-row{gap:2rem;padding:2.5rem 0 3.5rem}
+  .intro-row .glance{border-left:0;padding:1.25rem 0 0;border-top:1px solid var(--rule)}
+  #ask .voice{padding:1.25rem 1.2rem}
+  #ask .vq,#ask .vt,#ask .vans{grid-column:1;grid-row:auto}
   .panel figure{max-width:260px}
   .steps{grid-template-columns:repeat(5,minmax(4.5rem,1fr));overflow-x:auto}
 }
@@ -175,24 +203,41 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 <body>
 <header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#problem">Problem</a><a href="#idea">Idea</a><a href="#design">Learning design</a><a href="#product">Prototype</a><a href="#system">AI platform</a><a href="#next-steps">Evaluation</a></nav></header>
 
-<main class="wrap">
-  <div class="hero">
-    <div>
-      <p class="org">Capstone project, Teachers College, Columbia University</p>
-      <h1>Mori</h1>
-      <p class="sub">A child's “first AI” that turns everyday questions into a tree of knowledge</p>
-      <p class="lede">Children ask questions all day, but each answer tends to stand alone and fade. Mori is designed for 6 to 7 year olds: it collects their questions, connects related ones, turns them into short illustrated lessons, and brings them back days later so the learning lasts.</p>
-      <dl class="glance">
-        <dt>My role</dt><dd>Learning science research, learning experience design, AI platform design and prompt design</dd>
-        <dt>AI platform</dt><dd>Claude API, Whisper, OpenAI TTS, PostgreSQL with pgvector</dd>
-        <dt>Learners</dt><dd>Children ages 6 to 7</dd>
-        <dt>Team</dt><dd>Three people</dd>
-        <dt>Prototype</dt><dd><a href="https://frontend-nine-tau-80.vercel.app/" target="_blank" rel="noopener">Live prototype</a> (sign-in required)</dd>
-      </dl>
-    </div>
+<div class="band">
+  <div class="in">
+    <p class="org">Capstone project, Teachers College, Columbia University</p>
+    <h1>Mori</h1>
+    <p class="sub">A child's “first AI” that turns everyday questions into a tree of knowledge</p>
     <figure><button class="shotbtn" type="button" aria-label="Enlarge the Mori home screen"><img src="../images/mori-home-screen.jpg" alt="Mori home screen: a glowing tree in a forest with topic leaves for Nature, Animals, Universe, Technology, Human Body, Science and Daily Life, and a Generate My Learning Journey button"></button>
       <figcaption>The home screen: each topic is a leaf on the child's knowledge tree.</figcaption></figure>
   </div>
+</div>
+
+<main class="wrap">
+  <div class="intro-row">
+    <p class="lede">Children ask questions all day, but each answer tends to stand alone and fade. Mori is designed for 6 to 7 year olds: it collects their questions, connects related ones, turns them into short illustrated lessons, and brings them back days later so the learning lasts.</p>
+    <dl class="glance">
+      <dt>My role</dt><dd>Learning science research, learning experience design, AI platform design and prompt design</dd>
+      <dt>AI platform</dt><dd>Claude API, Whisper, OpenAI TTS, PostgreSQL with pgvector</dd>
+      <dt>Learners</dt><dd>Children ages 6 to 7</dd>
+      <dt>Team</dt><dd>Three people</dd>
+      <dt>Prototype</dt><dd><a href="https://frontend-nine-tau-80.vercel.app/" target="_blank" rel="noopener">Live prototype</a> (sign-in required)</dd>
+    </dl>
+  </div>
+
+  <section id="ask" aria-labelledby="ask-h">
+    <h2 id="ask-h">Same question, two answers</h2>
+    <p class="intro">Mori talks to six- and seven-year-olds, so every answer has to fit a young child's words and working memory. Switch between a typical adult-style answer and the one Mori gave in our prototype.</p>
+    <div class="voice">
+      <div class="vt" role="group" aria-label="Compare answers">
+        <button type="button" aria-pressed="false" data-v="adult">Adult-style answer</button>
+        <button type="button" aria-pressed="true" data-v="mori">Mori's answer</button>
+      </div>
+      <p class="vq">A child asks: <b>“What are the stars and the moon?”</b></p>
+      <div class="vans" id="v-adult" hidden><p>Stars are massive, luminous spheres of plasma held together by gravity, generating energy through nuclear fusion in their cores. The Moon is Earth's only natural satellite; it does not emit its own light but reflects sunlight, and its apparent shape changes over a roughly 29.5-day lunar cycle.</p><span class="vnote">Illustration of a typical adult-level answer: dense, technical, several ideas at once.</span></div>
+      <div class="vans mori" id="v-mori"><p>Stars are giant balls of fire way up in space, and they shine bright light down on us! The moon is our neighbor in space and reflects sunlight so we can see it at night.</p><span class="vnote">From the Mori prototype: short sentences, familiar words, one idea at a time.</span></div>
+    </div>
+  </section>
 
   <section id="problem" aria-labelledby="problem-h">
     <h2 id="problem-h">The problem: AI built for adults, used by children</h2>
@@ -312,16 +357,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <p class="intro">I designed the AI platform behind the learning journey: the overall framework, which model does what at each stage, and the prompts that shape how Mori talks to a six-year-old.</p>
 
     <h3 class="sub-h" style="margin-top:2rem">Teaching the AI to talk to a six-year-old</h3>
-    <p class="intro">A general-purpose model answers like it's talking to an adult. I wrote Claude's prompts so every answer fits a 6 to 7 year old's language and working memory, and so nothing unsafe gets through.</p>
-    <div class="voice">
-      <div class="vt" role="group" aria-label="Compare answers">
-        <button type="button" aria-pressed="false" data-v="adult">Adult-style answer</button>
-        <button type="button" aria-pressed="true" data-v="mori">Mori's answer</button>
-      </div>
-      <p class="vq">A child asks: <b>“What are the stars and the moon?”</b></p>
-      <div class="vans" id="v-adult" hidden><p>Stars are massive, luminous spheres of plasma held together by gravity, generating energy through nuclear fusion in their cores. The Moon is Earth's only natural satellite; it does not emit its own light but reflects sunlight, and its apparent shape changes over a roughly 29.5-day lunar cycle.</p><span class="vnote">Illustration of a typical adult-level answer: dense, technical, several ideas at once.</span></div>
-      <div class="vans mori" id="v-mori"><p>Stars are giant balls of fire way up in space, and they shine bright light down on us! The moon is our neighbor in space and reflects sunlight so we can see it at night.</p><span class="vnote">From the Mori prototype: short sentences, familiar words, one idea at a time.</span></div>
-    </div>
+    <p class="intro">A general-purpose model answers like it's talking to an adult. I wrote Claude's prompts so every answer fits a 6 to 7 year old's language and working memory, and so nothing unsafe gets through. <a href="#ask">The comparison at the top of the page</a> shows the difference.</p>
     <ul class="rules">
       <li><b>Child-sized language</b><span>Short sentences, everyday words, and comparisons from a child's world, like the sun being “a lamp.”</span></li>
       <li><b>One idea at a time</b><span>Answers stay small enough for a young child's working memory, so there's room left to actually learn.</span></li>

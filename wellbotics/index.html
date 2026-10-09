@@ -52,6 +52,25 @@ p{margin:0 0 1rem}
 .mypart{font-family:var(--sans);font-size:.95rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.8rem 0;margin:0 0 1.75rem;max-width:44em}
 .cite{display:block;font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:.55rem;font-style:italic}
 
+/* band: honey, with playtest photos laid on it like prints */
+.band{background:#F2B230;color:#2A1D07;overflow:hidden}
+.band .in{max-width:1100px;margin:0 auto;padding:4.5rem 1.25rem 5rem;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:3.5rem;align-items:center}
+.band .org{color:rgba(42,29,7,.74);max-width:28em}
+.band h1{color:#1F1503;font-size:clamp(3.2rem,8vw,6rem)}
+.band .sub{color:#2A1D07;max-width:20em}
+.prints{position:relative;padding:2.25rem 0 0 2.75rem}
+.print{background:#fff;padding:10px;box-shadow:0 2px 3px rgba(60,40,0,.18),0 18px 40px rgba(60,40,0,.28)}
+.print.main{margin:0;transform:rotate(-2deg);position:relative;z-index:1}
+.print.main .shotbtn{border:0;border-radius:0}
+.print.main figcaption{color:#5A4A2A;margin:.55rem .15rem .1rem;font-size:.8rem}
+.print.bot{position:absolute;left:0;top:0;width:27%;height:auto;transform:rotate(-6deg);z-index:2;padding:8px}
+.band .shotbtn:focus-visible{outline-color:#1F1503}
+
+/* intro row */
+.intro-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3.5rem;align-items:start;padding:3.5rem 0 4.5rem}
+.intro-row .lede{font-size:1.2rem;line-height:1.6;max-width:none;margin:0}
+.intro-row .glance{margin:0;padding:0 0 0 1.75rem;border-top:0;border-left:1px solid var(--rule)}
+
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
 .org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
@@ -205,7 +224,12 @@ dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;backgr
 dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
 
 @media (max-width:900px){
-  .hero,.panel,.play,.loopwrap,.pics2{grid-template-columns:1fr}
+  .hero,.panel,.play,.loopwrap,.pics2,.intro-row,.band .in{grid-template-columns:1fr}
+  .band .in{padding:3rem 1.25rem 3.75rem;gap:2.25rem}
+  .prints{padding:1.5rem 0 0 1.5rem;max-width:560px}
+  .print.bot{width:28%}
+  .intro-row{gap:2rem;padding:2.5rem 0 3.5rem}
+  .intro-row .glance{border-left:0;padding:1.25rem 0 0;border-top:1px solid var(--rule)}
   .five{grid-template-columns:1fr 1fr}
   .evo,.cards,.acts,.outcomes,.rules{grid-template-columns:1fr}
   .mirror{grid-template-columns:1fr}
@@ -223,23 +247,31 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 <body>
 <header class="top"><nav aria-label="Case study"><a href="../">Eryu Shen</a><a href="#challenge">Challenge</a><a href="#idea">Idea</a><a href="#prototypes">Prototypes</a><a href="#ping">Ping!</a><a href="#playtesting">Playtesting</a><a href="#curriculum">Curriculum</a><a href="#reflection">Reflection</a></nav></header>
 
-<main class="wrap">
-  <div class="hero">
-    <div>
+<div class="band">
+  <div class="in">
+    <div class="txt">
       <p class="org">Game Research Lab, Teachers College, Columbia University, with Harlem CoLab and Wellbotics</p>
       <h1>Wellbotics</h1>
       <p class="sub">A cooperative K–2 game where programming a robot becomes practice for recognizing and managing feelings</p>
-      <p class="lede">Young children can't learn emotional regulation from a worksheet. Wellbotics uses the robot as a mirror: when a program goes wrong, children debug it together, and practice staying calm, trying again and getting back in sync with each other. Four prototypes and more than ten playtests led to Ping!, a game where connection isn't a theme. It's how the system works.</p>
-      <dl class="glance">
-        <dt>My role</dt><dd>Curriculum developer and game co-designer</dd>
-        <dt>I built</dt><dd>Curriculum framework, lesson plans, standards alignment, facilitator prompts and reflection moments; co-designed core mechanics</dd>
-        <dt>Learners</dt><dd>Ages 5 to 8 (K–2) in public schools, including neurodiverse learners</dd>
-        <dt>Standards</dt><dd>NYS Computer Science K1.CT.6, NYS SEL Benchmark 1A.3A, CSTA Level 1A, CASEL</dd>
-        <dt>Timeline</dt><dd>April 2025 to June 2026</dd>
-      </dl>
     </div>
-    <figure><button class="shotbtn" type="button" aria-label="Enlarge the emotion board photo"><img src="../images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the tile labeled sadness. Other tiles show fear, surprise, anger, happiness and bee prompts like Be kind."></button>
-      <figcaption>Playtesting an emotion board: the Bee-Bot's path lands on feelings, and the group talks about them.</figcaption></figure>
+    <div class="prints">
+      <figure class="print main"><button class="shotbtn" type="button" aria-label="Enlarge the emotion board photo"><img src="../images/wb-emotion-board.jpg" alt="During a playtest, a Bee-Bot robot sits on a Wellbotics emotion board while a player points to the tile labeled sadness. Other tiles show fear, surprise, anger, happiness and bee prompts like Be kind."></button>
+        <figcaption>Playtesting an emotion board: the robot's path lands on feelings, and the group talks about them.</figcaption></figure>
+      <img class="print bot" src="../images/wb-beebot.jpg" width="900" height="900" alt="A clear-shelled floor robot with a smiling face, the kind children program in the game">
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="intro-row">
+    <p class="lede">Young children can't learn emotional regulation from a worksheet. Wellbotics uses the robot as a mirror: when a program goes wrong, children debug it together, and practice staying calm, trying again and getting back in sync with each other. Four prototypes and more than ten playtests led to Ping!, a game where connection isn't a theme. It's how the system works.</p>
+    <dl class="glance">
+      <dt>My role</dt><dd>Curriculum developer and game co-designer</dd>
+      <dt>I built</dt><dd>Curriculum framework, lesson plans, standards alignment, facilitator prompts and reflection moments; co-designed core mechanics</dd>
+      <dt>Learners</dt><dd>Ages 5 to 8 (K–2) in public schools, including neurodiverse learners</dd>
+      <dt>Standards</dt><dd>NYS Computer Science K1.CT.6, NYS SEL Benchmark 1A.3A, CSTA Level 1A, CASEL</dd>
+      <dt>Timeline</dt><dd>April 2025 to June 2026</dd>
+    </dl>
   </div>
 
   <section id="challenge" aria-labelledby="challenge-h">

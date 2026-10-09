@@ -80,13 +80,31 @@ p{margin:0 0 1rem}
 .note .who i{font-style:normal;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:.7rem;font-weight:600}
 .note p{margin:0}
 
+/* band: the training room, full bleed */
+.band{position:relative;isolation:isolate;overflow:hidden;background:#0E1628;color:#fff;min-height:min(74vh,620px);display:flex;flex-direction:column;justify-content:flex-end}
+.band .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;z-index:-2}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,22,40,.94) 0%,rgba(14,22,40,.82) 38%,rgba(14,22,40,.25) 78%,rgba(14,22,40,.1) 100%),linear-gradient(0deg,rgba(14,22,40,.75) 0%,rgba(14,22,40,0) 45%)}
+.band .in{width:100%;max-width:1100px;margin:0 auto;padding:6rem 1.25rem 3.25rem}
+.band .org{color:rgba(255,255,255,.78);max-width:34em}
+.band h1{max-width:11.5em;color:#fff;font-size:clamp(2.6rem,6.2vw,4.9rem)}
+.band .sub{color:#F3D34A;font-style:normal;font-family:var(--sans);font-size:1.05rem;margin:1.1rem 0 0}
+.band .credit{position:absolute;right:1.25rem;bottom:1rem;margin:0;font-family:var(--sans);font-size:.75rem;color:rgba(255,255,255,.72);max-width:22rem;text-align:right;line-height:1.35}
+@media (max-width:700px){
+  .band{min-height:0}
+  .band .bg{position:relative;height:230px;inset:auto;z-index:0}
+  .band::before{display:none}
+  .band .in{padding:1.75rem 1.25rem 2.25rem}
+  .band .credit{display:none}
+  .wrap>.hero{padding-top:2.5rem}
+}
+
 /* hero */
-.hero{padding:5rem 0 4rem;display:grid;grid-template-columns:minmax(0,1fr) 270px;column-gap:3.5rem}
+.hero{padding:3.5rem 0 4rem;display:grid;grid-template-columns:minmax(0,1fr) 270px;column-gap:3.5rem}
 .hero .main{max-width:720px}
 .hero .sub{font-size:1.35rem;color:var(--muted);margin:1.25rem 0 2.5rem;font-style:italic}
 .hl{background-image:linear-gradient(var(--mark-soft),var(--mark-soft));background-repeat:no-repeat;background-size:0% 100%;transition:background-size 1.1s cubic-bezier(.6,0,.2,1) .4s;padding:0 .1em}
 .loaded .hl{background-size:100% 100%}
-.hero .margin{align-self:end;opacity:0;transform:translateY(6px);transition:opacity .5s ease 1.4s,transform .5s ease 1.4s}
+.hero .margin{align-self:start;margin-top:.4rem;opacity:0;transform:translateY(6px);transition:opacity .5s ease 1.4s,transform .5s ease 1.4s}
 .loaded .hero .margin{opacity:1;transform:none}
 
 .status{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.85rem;font-weight:600;line-height:1.35;color:var(--cover);background:color-mix(in srgb,var(--cover) 11%,transparent);border-radius:999px;padding:.3rem .8rem .3rem .65rem}
@@ -359,12 +377,19 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   </ol>
 </nav>
 
-<div class="wrap">
-<header class="hero">
-  <div class="main">
+<header class="band">
+  <img class="bg" src="../images/dcwp-training-wall-chart.jpg" alt="" fetchpriority="high">
+  <div class="in">
     <p class="org">NYC Department of Consumer and Worker Protection, Office of Financial Empowerment</p>
     <h1>Financial Literacy for Youth Initiative</h1>
-    <p class="sub">Curriculum Specialist (College Aide), 2025–2026</p>
+    <p class="sub">Curriculum Specialist (College Aide), <span style="white-space:nowrap">2025–2026</span></p>
+  </div>
+  <p class="credit">Financial Educators at a train-the-trainer session</p>
+</header>
+
+<div class="wrap">
+<div class="hero">
+  <div class="main">
     <p class="lede"><span class="hl">A year ago, this curriculum didn't exist.</span> Three vendors were drafting it in parallel for middle schoolers, high schoolers and parents, with a new state requirement on the way. I reviewed every lesson plan across all three curricula, designed the educator training, mapped the curriculum to New York's new personal finance requirement, and rebuilt how learning is measured.</p>
 
     <div class="figures">
@@ -387,7 +412,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   <aside class="margin" aria-label="Margin note">
     <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>The train was already moving when I joined. My job was to make three vendors' work into one curriculum, without stopping to rewrite it.</p></div>
   </aside>
-</header>
+</div>
 
 
 <section class="sec tlsec" id="year">

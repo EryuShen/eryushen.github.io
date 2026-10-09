@@ -55,6 +55,23 @@ figcaption{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-to
 .shotbtn img{width:100%;height:auto}
 .shotbtn::after{content:"⤢ Enlarge";position:absolute;right:.6rem;bottom:.6rem;font-family:var(--sans);font-size:.75rem;font-weight:600;background:#17233B;color:#fff;border-radius:999px;padding:.3rem .65rem;opacity:.88}
 
+/* band: the deck's green, S.T.A.R. set as type */
+.band{background:#175F50;color:#E3EFEA;overflow:hidden}
+.band .in{max-width:1100px;margin:0 auto;padding:4.25rem 1.25rem 3.5rem}
+.band .org{color:rgba(227,239,234,.78)}
+.band .org b{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.band h1{color:#fff}
+.band .sub{color:#E3EFEA;max-width:26em}
+.bigstar{list-style:none;padding:0;margin:2.75rem 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 1.25rem;font-family:var(--sans);font-size:.92rem;color:rgba(255,255,255,.86);line-height:1.3}
+.bigstar li{border-top:2px dashed rgba(255,255,255,.3);padding-top:.2rem}
+.bigstar span{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(4.25rem,13vw,10.5rem);line-height:.95;letter-spacing:-.03em;color:#F4EFE2;margin-bottom:.4rem}
+figure.wide{margin:2.25rem 0 0;max-width:760px}
+
+/* intro row */
+.intro-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:3.5rem;align-items:start;padding:3.5rem 0 4.5rem}
+.intro-row .lede{font-size:1.2rem;line-height:1.6;max-width:none;margin:0}
+.intro-row .glance{margin:0;padding:0 0 0 1.75rem;border-top:0;border-left:1px solid var(--rule)}
+
 /* hero */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:3rem;align-items:center;padding:4rem 0 4.5rem}
 .org{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin:0 0 .9rem}
@@ -130,7 +147,10 @@ dialog.lb img{max-height:88vh;width:auto;max-width:100%;border-radius:6px;backgr
 dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans);font-size:.85rem;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:.45rem .9rem;cursor:pointer}
 
 @media (max-width:900px){
-  .hero,.rp{grid-template-columns:1fr}
+  .hero,.rp,.intro-row{grid-template-columns:1fr}
+  .intro-row{gap:2rem;padding:2.5rem 0 3.5rem}
+  .intro-row .glance{border-left:0;padding:1.25rem 0 0;border-top:1px solid var(--rule)}
+  .bigstar{gap:0 .75rem;font-size:.8rem}
   .mods,.star{grid-template-columns:1fr 1fr}
   .refl,.book,.gal{grid-template-columns:1fr}
 }
@@ -149,22 +169,29 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 <body>
 <header class="top"><nav aria-label="Page"><a href="../">← Eryu Shen</a><a href="#framework">Framework</a><a href="#session">Session</a><a href="#reflection">Reflection</a></nav></header>
 
+<div class="band">
+  <div class="in">
+    <p class="org"><b>Graduate team project</b>Teachers College, Columbia University, fall 2025</p>
+    <h1>Constructive Dialogue</h1>
+    <p class="sub">A 60-minute leadership session that gives a family business a structure for the conversations it keeps avoiding</p>
+    <ol class="bigstar" aria-label="The S.T.A.R. framework">
+      <li><span aria-hidden="true">S</span>Setting the Stage</li>
+      <li><span aria-hidden="true">T</span>Tone of Respect</li>
+      <li><span aria-hidden="true">A</span>Approach with Inquiry</li>
+      <li><span aria-hidden="true">R</span>Resolution Orientation</li>
+    </ol>
+  </div>
+</div>
+
 <main class="wrap">
-  <div class="hero">
-    <div>
-      <p class="org"><b>Graduate team project</b>Teachers College, Columbia University, fall 2025</p>
-      <h1>Constructive Dialogue</h1>
-      <p class="sub">A 60-minute leadership session that gives a family business a structure for the conversations it keeps avoiding</p>
-      <p class="lede">A third-generation family bottling company is stuck in a leadership transition. The founder still makes every decision, his children want to modernize, and the hard conversations never happen. Our team of six designed a four-module program for its leaders. I designed Module 3, the session where they practice those conversations.</p>
-      <dl class="glance">
-        <dt>My part</dt><dd>Module 3 end to end: the S.T.A.R. framework, lesson plan, role-play activity, slide deck and Transition Talk Planner worksheet</dd>
-        <dt>Learners</dt><dd>The founder, the next generation, the general manager and department heads</dd>
-        <dt>Format</dt><dd>60-minute live workshop, in person or on Zoom</dd>
-        <dt>Setting</dt><dd>Midwest Bottling, a fictional company from a course case</dd>
-      </dl>
-    </div>
-    <figure><button class="shotbtn" type="button" aria-label="Enlarge the S.T.A.R. framework slide"><img src="../images/ld-slide-star.jpg" alt="Slide titled Structure Dialogue Framework showing the S.T.A.R. steps as a road, with a table of each step's key question, emotional cue and practical tip"></button>
-      <figcaption>The S.T.A.R. slide from the Module 3 deck I designed.</figcaption></figure>
+  <div class="intro-row">
+    <p class="lede">A third-generation family bottling company is stuck in a leadership transition. The founder still makes every decision, his children want to modernize, and the hard conversations never happen. Our team of six designed a four-module program for its leaders. I designed Module 3, the session where they practice those conversations.</p>
+    <dl class="glance">
+      <dt>My part</dt><dd>Module 3 end to end: the S.T.A.R. framework, lesson plan, role-play activity, slide deck and Transition Talk Planner worksheet</dd>
+      <dt>Learners</dt><dd>The founder, the next generation, the general manager and department heads</dd>
+      <dt>Format</dt><dd>60-minute live workshop, in person or on Zoom</dd>
+      <dt>Setting</dt><dd>Midwest Bottling, a fictional company from a course case</dd>
+    </dl>
   </div>
 
   <section aria-labelledby="fit-h">
@@ -189,6 +216,8 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <div class="st"><span class="l">R</span><b>Resolution Orientation</b><p class="q">"What is one next step we can both agree on?"</p><span class="cue">Collaboration</span><p class="tip">Summarize shared points and agree on next actions before ending.</p></div>
     </div>
     <p class="why">For this audience, respect comes before inquiry. In a family business, a proposal to modernize is easily heard as criticism of the founder, so the conversation starts by honoring what he built.</p>
+    <figure class="wide"><button class="shotbtn" type="button" aria-label="Enlarge the S.T.A.R. framework slide"><img src="../images/ld-slide-star.jpg" alt="Slide titled Structure Dialogue Framework showing the S.T.A.R. steps as a road, with a table of each step's key question, emotional cue and practical tip"></button>
+      <figcaption>The S.T.A.R. slide from the Module 3 deck I designed.</figcaption></figure>
   </section>
 
   <section id="session" aria-labelledby="ss-h">
