@@ -101,6 +101,7 @@ h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.15;font-weight:650;letter-sp
 .reach .copy.done{border-color:var(--cover);color:var(--cover)}
 .reach .li{text-decoration:none}.reach .li .url{text-decoration:underline;text-underline-offset:3px}
 .hero-reach{gap:.75rem 1.75rem;padding-top:1.25rem;border-top:1px solid var(--rule);max-width:34em}
+.hero-reach .addr{flex-basis:100%}
 .reach.big{font-size:1.1rem;margin-top:1.75rem}
 .reach .rs{display:inline-flex;flex-direction:column}
 .resume-btn{font:inherit;font-family:var(--sans);background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;text-align:left}
@@ -176,6 +177,8 @@ a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 .facts{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:.9rem}
 .facts li{border-top:1px solid var(--rule);padding:.7rem 0}
 .facts span{display:block;color:var(--muted);font-size:.8rem}
+.facts .tools{list-style:none;padding:0;margin:.4rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem}
+.facts .tools li{border:1px solid var(--rule);border-radius:999px;padding:.15rem .65rem;font-size:.82rem}
 
 .path{list-style:none;padding:0;margin:2rem 0;font-family:var(--sans);max-width:50rem}
 .path li{display:grid;grid-template-columns:6.5rem minmax(0,1fr);column-gap:1.25rem}
@@ -228,11 +231,11 @@ footer a{color:var(--ink);text-underline-offset:3px}
       <img class="avatar" src="images/eryu-shen-portrait.jpg" alt="Portrait of Eryu Shen">
       <p class="hello">Hi! 👋 I'm</p>
       <h1><span class="nm">Eryu<span class="say" role="note"><i aria-hidden="true">ES</i>Say it like “Are you”</span></span> Shen</h1>
-            <p class="pitch">I'm a learning designer. These days I build online graduate business courses at Gies. Before that, I worked on a financial literacy curriculum that's now rolling out across 15 NYC school districts, and on an AI learning companion for young children. I started out as a language teacher, and I still design from the learner's seat first.</p>
+            <p class="pitch">I'm a learning designer. These days I build online graduate business courses at Gies. Before that, I worked on a financial literacy curriculum that's now rolling out across 15 NYC school districts, and on an AI learning companion for young children. I still design from the learner's seat first.</p>
       <p class="welcome">Welcome to my portfolio, feel free to <a href="#work">explore my projects below</a>!</p>
       <div class="reach hero-reach">
         <span class="addr"><span class="lab">Email</span><span class="em">es4267@tc.columbia.edu</span><button type="button" class="copy" data-copy="es4267@tc.columbia.edu">Copy</button></span>
-        <a class="li" href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener"><span class="lab">LinkedIn</span><span class="url">LinkedIn</span></a>
+        <a class="li" href="https://www.linkedin.com/in/eryushen" target="_blank" rel="noopener"><span class="lab">LinkedIn</span><span class="url">linkedin.com/in/eryushen</span></a>
         <span class="rs"><span class="lab">Resume</span><a class="resume-btn" href="EryuShen_Resume.pdf" download>Download PDF</a></span>
       </div>
     </div>
@@ -323,6 +326,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
     </div>
     <ul class="facts">
       <li><span>Full experience and education</span><a class="resume-btn big-btn" href="EryuShen_Resume.pdf" download>Download resume (PDF)</a></li>
+      <li><span>Tools</span><ul class="tools"><li>Articulate Storyline</li><li>Articulate Rise</li><li>Adobe Captivate</li><li>Canvas</li><li>SCORM</li><li>AI tools</li></ul></li>
     </ul>
       <p class="outro">When I'm not designing, you'll probably find me wandering around a museum, people-watching in a cozy café or taking a long walk in Central Park.</p>
   </section>
