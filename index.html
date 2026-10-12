@@ -172,6 +172,7 @@ a.feat:hover{border-color:var(--ink);transform:translateY(-2px)}
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1fr) 270px;column-gap:3.5rem}
 .about .text{max-width:48em}
+.about .outro{grid-column:1/-1;margin:0}
 .facts{list-style:none;padding:0;margin:0;font-family:var(--sans);font-size:.9rem}
 .facts li{border-top:1px solid var(--rule);padding:.7rem 0}
 .facts span{display:block;color:var(--muted);font-size:.8rem}
@@ -210,7 +211,7 @@ footer a{color:var(--ink);text-underline-offset:3px}
   .portrait{justify-self:start;max-width:340px}
   .portrait .note{left:auto;right:-.5rem;bottom:-1.25rem}
   .about{grid-template-columns:1fr}
-  .about .facts{margin-top:1.75rem}
+  .about .facts{margin-top:1.75rem;order:2}
   .feature{grid-template-columns:1fr;padding:1.5rem}
   .grid,.skills{grid-template-columns:1fr}
 }
@@ -319,11 +320,11 @@ footer a{color:var(--ink);text-underline-offset:3px}
           <li>BA, Teaching Chinese to Speakers of Other Languages, China Jiliang University, 2023<span class="edu-note">Including an exchange semester in business administration at HTW Dresden, fall 2022.</span></li>
         </ul>
       </div>
-      <p>When I'm not designing, you'll probably find me wandering around a museum, people-watching in a cozy café or taking a long walk in Central Park.</p>
     </div>
     <ul class="facts">
       <li><span>Full experience and education</span><a class="resume-btn big-btn" href="EryuShen_Resume.pdf" download>Download resume (PDF)</a></li>
     </ul>
+      <p class="outro">When I'm not designing, you'll probably find me wandering around a museum, people-watching in a cozy café or taking a long walk in Central Park.</p>
   </section>
 
   <section id="contact" class="contact" aria-labelledby="contact-h">
