@@ -266,8 +266,8 @@ blockquote footer{border:0;padding:.6rem 0 0;font-style:normal;font-family:var(-
   .quotes,.tiers,.also{grid-template-columns:1fr}
 }
 
-.scale-strip{display:flex;flex-wrap:wrap;gap:1rem 2.25rem;margin:1rem 0 1.5rem;padding:1rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:.85rem;color:var(--muted)}.scale-strip{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr))}.scale-strip div{max-width:16rem;line-height:1.35}.scale-strip b{display:block;font-family:var(--serif);font-weight:500;font-size:1.9rem;color:var(--ink);line-height:1.1;margin-bottom:.2rem}
-@media (max-width:600px){.scale-strip{grid-template-columns:1fr}}
+.scale-strip{display:flex;flex-wrap:wrap;gap:1rem 2.25rem;margin:1rem 0 1.5rem;padding:1rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:.85rem;color:var(--muted)}.scale-strip{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr))}.scale-strip div{max-width:16rem;line-height:1.35}.scale-strip b{display:block;font-family:var(--serif);font-weight:500;font-size:1.9rem;color:var(--ink);line-height:1.1;margin-bottom:.2rem}
+@media (max-width:900px){.scale-strip{grid-template-columns:1fr 1fr}}@media (max-width:600px){.scale-strip{grid-template-columns:1fr}}
 .sys{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:0;align-items:stretch;margin:1.5rem 0;font-family:var(--sans);font-size:.88rem}
 .sys .side{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:1rem}
 .sys .side ul{margin:.5rem 0 0;padding-left:1.1rem}
@@ -380,10 +380,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
   .xrow td:nth-child(1){grid-row:1 / span 3}
   .xrow td:nth-child(n+3){grid-column:2;font-size:.8rem;color:var(--muted)}
   .xrow td:nth-child(n+3)::before{content:attr(data-label) ": "}
-  .skillmap{font-size:.8rem}
-  .skillmap table{min-width:0}
-  .skillmap th,.skillmap td{padding:.5rem .2rem}
-  .skillmap thead th{font-size:.72rem}
   .totals{font-size:.85rem}
   .totals th,.totals td{padding:.5rem .3rem}
 }
@@ -435,7 +431,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       <div><b>49→28</b>survey items, rebuilt to measure learning</div>
     </div>
 
-    <p class="status">Where it is now: live in NYC public schools, with library partnerships underway</p>
+    <p class="status">Fully approved and launched citywide in January 2026; now live in NYC public schools, with library partnerships underway</p>
     <dl class="glance">
       <dt>Program</dt><dd>Brings financial education into NYC public schools: Financial Educators in classrooms plus in-school banking, rolling out across 15 school districts</dd>
       <dt>Worked with</dt><dd>Three curriculum vendors, training partners, Financial Educators, the DCWP program team</dd>
@@ -468,7 +464,7 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 
     <h3>The review itself: my comments, as written</h3>
     <p>Most of the work happened in the margins of vendor drafts. I left more than 1,000 comments in total. What follows is a small sample, grouped by what each comment protects.</p>
-    <div class="scale-strip"><div><b>30–40</b>comments on each lesson plan and facilitator guide, every round</div><div><b>~10</b>comments on each workbook, slide deck and curriculum map</div><div><b>5</b>document types per module: lesson plans, facilitator guides, student workbooks, slides, curriculum maps</div></div>
+    <div class="scale-strip"><div><b>60+ / 60+</b>lesson plans / facilitator guides reviewed, line by line</div><div><b>30–40</b>comments on each lesson plan and facilitator guide, every round</div><div><b>~10</b>comments on each workbook, slide deck and curriculum map</div><div><b>5</b>document types per module: lesson plans, facilitator guides, student workbooks, slides, curriculum maps</div></div>
 
     <div class="wall">
       <p class="tabhint">Choose a theme to see my comments. Select any screenshot to enlarge it.</p>
@@ -674,25 +670,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
       </div>
     </div>
 
-  </div>
-</section>
-
-<section class="sec" id="skills">
-  <div class="main">
-    <h2>The skills behind the work</h2>
-    <p>Across the five stations, the same four skills kept showing up. Select a station to jump back to it.</p>
-    <div class="skillmap scroll-x">
-      <table>
-        
-        <thead><tr><th scope="col">Skill</th><th scope="col"><a href="#judge">Judge</a></th><th scope="col"><a href="#equip">Equip</a></th><th scope="col"><a href="#test">Test</a></th><th scope="col"><a href="#align">Align</a></th><th scope="col"><a href="#measure">Measure</a></th></tr></thead>
-        <tbody>
-          <tr><td>Training &amp; learning design</td><td></td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td></td><td></td></tr>
-          <tr><td>Learning theory &amp; pedagogy</td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td></td><td></td><td></td></tr>
-          <tr><td>Evaluation, research &amp; insight</td><td><span class="dot" aria-label="yes"></span></td><td></td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td></tr>
-          <tr><td>Project management</td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td><span class="dot" aria-label="yes"></span></td><td></td></tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </section>
 
