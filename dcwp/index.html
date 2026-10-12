@@ -80,6 +80,8 @@ p{margin:0 0 1rem}
 .note .who{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;font-weight:600}
 .note .who i{font-style:normal;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:.7rem;font-weight:600}
 .note p{margin:0}
+.note.inline{max-width:640px;margin:1.25rem 0 0;font-size:.9rem}
+.sec,.hero{grid-template-columns:minmax(0,1fr) !important}
 
 /* band: the training room, full bleed */
 .band{position:relative;isolation:isolate;overflow:hidden;background:#0E1628;color:#fff;min-height:min(74vh,620px);display:flex;flex-direction:column;justify-content:flex-end}
@@ -438,9 +440,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
 
 
   </div>
-  <aside class="margin" aria-label="Margin note">
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>There wasn't a single draft when I joined. I was there from the first lesson plans through three rounds of revision.</p></div>
-  </aside>
 </div>
 
 
@@ -525,9 +524,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <div class="call"><h4>The call I made</h4><p>Sessions were already on the calendar, so a full rewrite was off the table. I aimed my comments at the places where a small change did the most: language, framing and facilitator notes.</p></div>
     <div class="tags"><span>Evaluation, research &amp; insight</span><span>Learning theory &amp; pedagogy</span><span>Project management</span></div>
   </div>
-  <aside class="margin" aria-label="Margin note">
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>I tried to tie every comment to a standard or to a specific learner. Select any screenshot to read it full size.</p></div>
-  </aside>
 </section>
 
 <section class="sec" id="equip">
@@ -550,9 +546,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <div class="call"><h4>The call I made</h4><p>Let educators go through peer learning as learners first, so they'd know how it feels before running it with students.</p></div>
     <div class="tags"><span>Training &amp; learning design</span><span>Learning theory &amp; pedagogy</span><span>Project management</span></div>
   </div>
-  <aside class="margin" aria-label="Margin note">
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>That first quote is what I was hoping to hear. Educators did what we'd designed for students, and could picture doing it in their own classrooms.</p></div>
-  </aside>
 </section>
 
 <section class="sec" id="test">
@@ -588,20 +581,19 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <h3>What the map showed</h3>
     <p>High school coverage is stronger because it has two lessons per module and middle school has one. Many “partial” rows are close: the concept is taught but not named the way the state names it. Middle school teaches gross versus net pay hands-on, for example, but never mentions Social Security or Medicare.</p>
 
+    <p class="note inline"><b>Scope question I raised:</b> our middle school lessons are labeled grades 6–8, but the state's band is 5–8, so grade 5 isn't addressed yet.</p>
+
     <h3>What to build next, by effort</h3>
     <ol class="tiers">
       <li><b>Name what's taught</b><small>Low effort</small>Add Social Security and Medicare, “principal” and “phishing” to middle school; 529 and HSA accounts to the high school retirement chart.</li>
       <li><b>Port it down</b><small>Medium effort</small>Five middle school gaps already exist in the high school track and can be simplified rather than built new.</li>
       <li><b>Build new</b><small>High effort</small>Insurance, missing at both levels, scoped once for both bands; plus student loans, FAFSA and New York's TAP program for high school.</li>
     </ol>
+    <p class="note inline">Student loans, FAFSA and TAP are New York-specific, so state reviewers will look for them.</p>
 
     <div class="call"><h4>The call I made</h4><p>Sort every gap by how much work it takes to close, so the team could fix the quick ones first while scoping the bigger builds.</p></div>
     <div class="tags"><span>Evaluation, research &amp; insight</span><span>Project management</span></div>
   </div>
-  <aside class="margin" aria-label="Margin notes">
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>Scope question for the team: our middle school lessons are labeled grades 6–8, but the state's band is 5–8. Grade 5 isn't addressed yet.</p></div>
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>Student loans, FAFSA and TAP are New York-specific. State reviewers will look for them.</p></div>
-  </aside>
 </section>
 
 <section class="sec" id="measure">
@@ -639,9 +631,6 @@ dialog.lb button{position:absolute;top:.5rem;right:.5rem;font-family:var(--sans)
     <div class="call"><h4>The call I made</h4><p>Move self-ratings and attitude questions out of the knowledge score into their own confidence block, and tag every item to a state objective, so the surveys also serve as evidence for the crosswalk.</p></div>
     <div class="tags"><span>Evaluation, research &amp; insight</span></div>
   </div>
-  <aside class="margin" aria-label="Margin note">
-    <div class="note"><div class="who"><i>ES</i>Eryu Shen</div><p>After the training, educators asked for student reflection surveys too, so the push for better measurement was coming from them as well.</p></div>
-  </aside>
 </section>
 
 <section class="sec close" id="also">
